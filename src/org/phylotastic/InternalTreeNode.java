@@ -1,4 +1,4 @@
-
+package org.phylotastic;
 
 import org.w3c.dom.Text;
 
