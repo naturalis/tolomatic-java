@@ -1,4 +1,8 @@
-package org.phylotastic;
+//-----------------------------------------------------------------------------------------------------------------
+// wat doet programma? >>> ....
+
+//-----------------------------------------------------------------------------------------------------------------
+//Import package en andere imports
 
 import java.io.DataInput;
 import java.io.DataOutput;
@@ -6,6 +10,8 @@ import java.io.IOException;
 
 import org.apache.hadoop.io.WritableComparable;
 
+//-----------------------------------------------------------------------------------------------------------------
+// Class doet
 public class TreeNode implements WritableComparable<TreeNode> {
 	int mLabel;
 	double mLength;

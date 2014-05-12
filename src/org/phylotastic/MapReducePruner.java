@@ -1,54 +1,80 @@
-package org.phylotastic;
+//-----------------------------------------------------------------------------------------------------------------
+// wat doet programma? >>> ....
+
+//-----------------------------------------------------------------------------------------------------------------
+//Import package en andere imports
+
 import java.io.File;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
 import java.util.*;
+//import java.io.OutputStreamWriter;
+//import java.io.Writer;
 
-import jebl.evolution.io.NewickExporter;
-import jebl.evolution.trees.RootedFromUnrooted;
 import jebl.evolution.trees.RootedTree;
-import jebl.evolution.trees.SimpleTree;
 import jebl.evolution.trees.Tree;
 import jebl.evolution.trees.Utils;
+//import jebl.evolution.trees.SimpleTree;
+//import jebl.evolution.io.NewickExporter;
+//import jebl.evolution.trees.RootedFromUnrooted;
 
+import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.*;
-import org.apache.hadoop.mapred.*;
-import org.apache.log4j.Logger;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.*;
+import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
+import org.apache.log4j.Logger;
+//import org.w3c.dom.*;
+//import javax.naming.Context;
+//import org.apache.hadoop.mapred.*;
+
+//-----------------------------------------------------------------------------------------------------------------
+// Deze class doet... 
 public class MapReducePruner {
 	static Util util;
-	Logger logger = Logger.getLogger("org.phylotatic.Util");
+	Logger logger = Logger.getLogger("org.phylotastic.Util");
 	
-	@SuppressWarnings("deprecation")
-	public static class Map extends MapReduceBase implements Mapper<LongWritable, Text, Text, Text> {
+//	@SuppressWarnings("deprecation")
+	public static class Map extends Mapper<LongWritable, Text, Text, Text> {
 
 		/**
 		 * Given a single taxon name as argument, this method reads in a file whose name is 
 		 * an encoded version of the taxon name. That file should contain one line: a tab-separate 
 		 * list that describes the path, in pre-order indexed integers, from taxon to the root. 
 		 * Each segment of that path is emitted as node ID => taxon. For example, for tree
-		 * (((A,B)n3,C)n2,D)n1; if taxon is A, this emits:
+         * (((A,B)n3,C)n2,D)n1
+         *  A    B
+         *   \  /
+         *   (n3)  C
+         *     \  /
+         *     (n2)  D
+         *       \  /
+         *       (n1)
+         *
+         * if taxon is A, this emits:
 		 * n3,A
 		 * n2,A
 		 * n1,A
 		 */
 		@Override
-		public void map(LongWritable key1, Text taxon, OutputCollector<Text, Text> output, Reporter reporter) throws IOException {
-			File taxonDir = util.getTaxonDir(null, taxon.toString());
+		public void map(LongWritable key1, Text taxon, Context context) throws IOException, InterruptedException {
+//			context.write(Text, Text);
+            File taxonDir = util.getTaxonDir(null, taxon.toString());
 			String taxonCode = util.encodeTaxon(taxon.toString());
-			StringBuffer sb = new StringBuffer(taxonDir.getAbsolutePath());
+            StringBuffer sb = new StringBuffer(taxonDir.getPath());
+//			StringBuffer sb = new StringBuffer(taxonDir.getAbsolutePath());
 			List<TreeNode> nodes = util.readTaxonFile(new File(sb.append('/').append(taxonCode).toString()));
 			TreeNode tip = nodes.get(0);
 			for ( int i = 1; i < nodes.size(); i++ ) {
-				output.collect(new Text(nodes.get(i).toString()),new Text(tip.toString())); // notice the key inversion here
+				context.write(new Text(nodes.get(i).toString()), new Text(tip.toString())); // notice the key inversion here
 			}
-		}		
+		}
 	}
 	
-	@SuppressWarnings("deprecation")
-	public static class Combine extends MapReduceBase implements Reducer<Text, Text, Text, Text> {
+//	@SuppressWarnings("deprecation")
+	public static class Combine extends Reducer<Text, Text, Text, Text> {
 		
 		/**
 		 * Given a node ID (as described for "map") as a key, and all the tips that have
@@ -59,8 +85,8 @@ public class MapReducePruner {
 		 * and will emit:
 		 * A|B,n1,2
 		 */
-		@Override
-		public void reduce(Text node, Iterator<Text> tips, OutputCollector<Text, Text> context, Reporter reporter) throws IOException {
+//		@Override
+		public void reduce(Text node, Iterator<Text> tips, Context context) throws IOException, InterruptedException {
 			
 			// this will become a sorted list of tips
 			TreeNodeSet tipSet = new TreeNodeSet();
@@ -70,12 +96,12 @@ public class MapReducePruner {
 			
 			TreeNode n = TreeNode.parseNode(node.toString());
 			InternalTreeNode ancestor = new InternalTreeNode(n.getLabel(),n.getLength(),tipSet.getSize());			
-		    context.collect(new Text(tipSet.toString()),new Text(ancestor.toString()));			
+		    context.write(new Text(tipSet.toString()), new Text(ancestor.toString()));
 		}
 	}
 	
-	@SuppressWarnings("deprecation")
-	public static class Reduce extends MapReduceBase implements Reducer<Text, Text, Text, Text> {
+//	@SuppressWarnings("deprecation")
+	public static class Reduce extends Reducer<Text, Text, Text, Text> {
 
 		/**
 		 * Given a concatenated list of tips, a node ID and the number of tips it subtends,
@@ -86,8 +112,8 @@ public class MapReducePruner {
 		 * the node IDs: since these are applied in pre-order, the highest node ID in the
 		 * list is the MRCA.
 		 */
-		@Override
-		public void reduce(Text concatTips, Iterator<Text> nodes, OutputCollector<Text, Text> result, Reporter reporter) throws IOException {
+//		@Override
+		public void reduce(Text concatTips, Iterator<Text> nodes, Context context) throws IOException, InterruptedException {
 			double accumulatedBranchLengths = 0;
 			int nearestNodeId = 0;
 			int tipCount = 0;
@@ -108,33 +134,38 @@ public class MapReducePruner {
 			}
 			if ( nearestNodeId > 0 ) {
 				InternalTreeNode mrca = new InternalTreeNode(nearestNodeId,accumulatedBranchLengths,tipCount);
-				result.collect(concatTips,new Text(mrca.toString()));
+				context.write(concatTips, new Text(mrca.toString()));
 			}
 		}	   
 	}
 	
 	/**
-	 * Usage: MapReducePruner <infile> <outfile> <config>
+	 * Usage: MapReducePruner <infile> <outfile> <config> (>>conf, in, out)
 	 * @param args
 	 * @throws Exception
 	 */
 	@SuppressWarnings("deprecation")
 	public static void main(String[] args) throws Exception {
 			util = new Util(new File(args[0]));
-			
-			//*
-		    JobConf conf = new JobConf(MapReducePruner.class);
-		    conf.setJobName("mapreduceprune");
-		    conf.setOutputKeyClass(Text.class);
-		    conf.setOutputValueClass(Text.class);
-		    conf.setMapperClass(Map.class);
-		    conf.setCombinerClass(Combine.class);
-		    conf.setReducerClass(Reduce.class);
-		    conf.setInputFormat(TextInputFormat.class);
-		    conf.setOutputFormat(TextOutputFormat.class);
-		    FileInputFormat.setInputPaths(conf, new Path(args[1]));
-		    FileOutputFormat.setOutputPath(conf, util.getOutputPath());		     
-		    JobClient.runJob(conf);		    
+
+            //*
+            Configuration conf = new Configuration();
+
+            Job job = new Job(conf);
+            job.setJobName("mapreduceprune");
+
+            job.setOutputKeyClass(Text.class);
+            job.setOutputValueClass(Text.class);
+            job.setMapperClass(MapReducePruner.Map.class);
+            job.setCombinerClass(MapReducePruner.Combine.class);
+            job.setReducerClass(MapReducePruner.Reduce.class);
+            job.setInputFormatClass(TextInputFormat.class);
+            job.setOutputFormatClass(TextOutputFormat.class);
+
+            TextInputFormat.setInputPaths(job, new Path(args[1]));
+            TextOutputFormat.setOutputPath(job, util.getOutputPath());
+            job.setJarByClass(MapReducePruner.class);
+            job.waitForCompletion(true);
 		    //*/
 			
 		    //*

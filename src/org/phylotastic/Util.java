@@ -1,9 +1,14 @@
-package org.phylotastic;
+//-----------------------------------------------------------------------------------------------------------------
+// wat doet programma? >>> ....
+
+//-----------------------------------------------------------------------------------------------------------------
+//Import package en andere imports
+
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
+//import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
+//import java.io.IOException;
 import java.io.Reader;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -17,8 +22,8 @@ import java.util.Map;
 
 import jebl.evolution.graphs.Node;
 import jebl.evolution.taxa.Taxon;
-import jebl.evolution.trees.RootedTree;
-import jebl.evolution.trees.SimpleRootedTree;
+//import jebl.evolution.trees.RootedTree;
+//import jebl.evolution.trees.SimpleRootedTree;
 import jebl.evolution.trees.SimpleTree;
 import jebl.evolution.trees.Tree;
 
@@ -28,14 +33,20 @@ import org.apache.log4j.Logger;
 import org.ini4j.*;
 import org.ini4j.Ini.Section;
 
+//-----------------------------------------------------------------------------------------------------------------
+// Class doet
 public class Util {
 	Ini ini = new Ini();
-	Logger logger = Logger.getLogger("org.phylotatic.Util");	
+// ?? >> org.phylotastic??.Util
+	Logger logger = Logger.getLogger("org.phylotastic.Util");
 
 	
 	/**
 	 * This will expect to get conf/config.ini 
 	 */
+	
+	//Lege Util en Util met files
+	//Als lege, dan word nieuw Util bestand gemaakt d.m.v. .getenv
 	public Util() {
 		new Util(new File(System.getenv("PHYLOTASTIC_MAPREDUCE_CONFIG")));		
 	}
@@ -70,13 +81,13 @@ public class Util {
         for (int i = 0; i < byteData.length; i++) {
         	sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
         }
-        return sb.toString();		
+        return sb.toString();
 	}
 	
 	/**
 	 * Constructs the location of the file that encodes the tip-to-root path for the 
 	 * focal tip given the focal tree
-	 * @param tree
+	 * @param treeURL
 	 * @param taxon
 	 * @return
 	 */
@@ -98,7 +109,7 @@ public class Util {
 		logger.debug("Absolute data root is "+dataroot);
 		logger.debug("Relative data dir is "+datadir);
 		sb.append(dataroot).append('/').append(datadir).append('/');
-		
+
 		// hash taxon name
 		String encodedTaxon = encodeTaxon(taxon);
 		logger.debug("Encoded version of '"+taxon+"' is "+encodedTaxon);
@@ -112,6 +123,7 @@ public class Util {
 			sb.append(encodedTaxon.charAt(i)).append('/');
 		}
 		logger.debug("Path is "+sb.toString());
+        File tempTest = new File(sb.toString());
 		return new File(sb.toString());
 	}
 	
@@ -137,6 +149,7 @@ public class Util {
 	Path getOutputPath() {
 		Section main = ini.get("_");
 		Path tmpdir = new Path(main.get("tmpdir"));
+        System.out.println("tmpdir"+ tmpdir);
 		logger.info("TMP dir is "+tmpdir);
 		return tmpdir;
 	}
@@ -147,7 +160,8 @@ public class Util {
 	 * @return
 	 */
 	List<TreeNode> readTaxonFile(File taxonFile) {
-		String line = null;
+		System.out.println("taxonFile is " + taxonFile);
+        String line = null;
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(taxonFile));
 			line = reader.readLine();

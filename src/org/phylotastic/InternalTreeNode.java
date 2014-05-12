@@ -1,7 +1,10 @@
-package org.phylotastic;
+
 
 import org.w3c.dom.Text;
 
+
+//-----------------------------------------------------------------------------------------------------------------
+// Class doet
 public class InternalTreeNode extends TreeNode {
 	int mTipCount;
 	

@@ -1,4 +1,8 @@
-package org.phylotastic;
+//-----------------------------------------------------------------------------------------------------------------
+// wat doet programma? >>> ....
+
+//-----------------------------------------------------------------------------------------------------------------
+//Import package en andere imports
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -6,6 +10,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+//-----------------------------------------------------------------------------------------------------------------
+// Class doet
 public class TreeNodeSet {
 	private Set<TreeNode> mTipSet = new HashSet<TreeNode>();
 	
