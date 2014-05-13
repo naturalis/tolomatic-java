@@ -1,11 +1,5 @@
 package org.phylotastic;
 
-//-----------------------------------------------------------------------------------------------------------------
-// wat doet programma? >>> ....
-
-//-----------------------------------------------------------------------------------------------------------------
-//Import package en andere imports
-
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
