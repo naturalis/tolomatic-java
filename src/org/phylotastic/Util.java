@@ -30,8 +30,6 @@ import org.apache.log4j.Logger;
 import org.ini4j.*;
 import org.ini4j.Ini.Section;
 
-//-----------------------------------------------------------------------------------------------------------------
-// Class doet
 public class Util {
 	Ini ini = new Ini();
 // ?? >> org.phylotastic??.Util

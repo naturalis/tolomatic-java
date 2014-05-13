@@ -6,8 +6,6 @@ import java.io.IOException;
 
 import org.apache.hadoop.io.WritableComparable;
 
-//-----------------------------------------------------------------------------------------------------------------
-// Class doet
 public class TreeNode implements WritableComparable<TreeNode> {
 	int mLabel;
 	double mLength;

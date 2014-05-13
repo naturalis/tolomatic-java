@@ -6,8 +6,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-//-----------------------------------------------------------------------------------------------------------------
-// Class doet
 public class TreeNodeSet {
 	private Set<TreeNode> mTipSet = new HashSet<TreeNode>();
 	

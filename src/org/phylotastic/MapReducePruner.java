@@ -26,8 +26,6 @@ import org.apache.log4j.Logger;
 //import javax.naming.Context;
 //import org.apache.hadoop.mapred.*;
 
-//-----------------------------------------------------------------------------------------------------------------
-// Deze class doet... 
 public class MapReducePruner {
 	static Util util;
 	Logger logger = Logger.getLogger("org.phylotastic.Util");
