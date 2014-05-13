@@ -1,8 +1,5 @@
 package org.phylotastic;
 
-//-----------------------------------------------------------------------------------------------------------------
-//Import package en andere imports
-
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;

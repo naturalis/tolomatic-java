@@ -1,8 +1,5 @@
 package org.phylotastic;
 
-//-----------------------------------------------------------------------------------------------------------------
-//Import package en andere imports
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
