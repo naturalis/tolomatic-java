@@ -32,7 +32,6 @@ import org.ini4j.Ini.Section;
 
 public class Util {
 	Ini ini = new Ini();
-// ?? >> org.phylotastic??.Util
 	Logger logger = Logger.getLogger("org.phylotastic.Util");
 
 	
@@ -40,8 +39,6 @@ public class Util {
 	 * This will expect to get conf/config.ini 
 	 */
 	
-	//Lege Util en Util met files
-	//Als lege, dan word nieuw Util bestand gemaakt d.m.v. .getenv
 	public Util() {
 		new Util(new File(System.getenv("PHYLOTASTIC_MAPREDUCE_CONFIG")));		
 	}
@@ -76,6 +73,7 @@ public class Util {
         for (int i = 0; i < byteData.length; i++) {
         	sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
         }
+        logger.info(sb.toString());
         return sb.toString();
 	}
 	
@@ -91,34 +89,36 @@ public class Util {
 		// first need to know the tree URL string
 		if ( null == treeURL ) {
 			treeURL = getTree();
+            System.out.println(treeURL);
 		}
 		String treeString = treeURL.toString();
-		logger.debug("tree is "+treeString);
-		
+		logger.info("tree is "+treeString);
+
 		// construct first parts of the path
 		StringBuffer sb = new StringBuffer();
 		Section main = ini.get("_");
 		Section treeSection = ini.get(treeString);
 		String dataroot = main.get("dataroot");
 		String datadir = treeSection.get("datadir");
-		logger.debug("Absolute data root is "+dataroot);
-		logger.debug("Relative data dir is "+datadir);
+		logger.info("Absolute data root is "+dataroot);
+		logger.info("Relative data dir is "+datadir);
 		sb.append(dataroot).append('/').append(datadir).append('/');
 
 		// hash taxon name
 		String encodedTaxon = encodeTaxon(taxon);
-		logger.debug("Encoded version of '"+taxon+"' is "+encodedTaxon);
+		logger.info("Encoded version of '"+taxon+"' is "+encodedTaxon);
 		
 		// get the depths to which we go when splitting the encodedTaxon
 		int hashdepth = Integer.parseInt(main.get("hashdepth"));
-		logger.debug("Will split hash to "+hashdepth+" levels");
+		logger.info("Will split hash to "+hashdepth+" levels");
 		
 		// make the path
 		for ( int i = 0; i <= hashdepth; i++ ) {
 			sb.append(encodedTaxon.charAt(i)).append('/');
 		}
-		logger.debug("Path is "+sb.toString());
+		logger.info("Path is "+sb.toString());
         File tempTest = new File(sb.toString());
+        System.out.println(tempTest);
 		return new File(sb.toString());
 	}
 	
@@ -144,7 +144,6 @@ public class Util {
 	Path getOutputPath() {
 		Section main = ini.get("_");
 		Path tmpdir = new Path(main.get("tmpdir"));
-        System.out.println("tmpdir"+ tmpdir);
 		logger.info("TMP dir is "+tmpdir);
 		return tmpdir;
 	}
@@ -155,7 +154,7 @@ public class Util {
 	 * @return
 	 */
 	List<TreeNode> readTaxonFile(File taxonFile) {
-		System.out.println("taxonFile is " + taxonFile);
+		logger.info("taxonFile is " + taxonFile);
         String line = null;
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(taxonFile));

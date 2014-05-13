@@ -28,9 +28,8 @@ import org.apache.log4j.Logger;
 
 public class MapReducePruner {
 	static Util util;
-	Logger logger = Logger.getLogger("org.phylotastic.Util");
+	static Logger logger = Logger.getLogger("org.phylotastic.MapReducePruner");
 	
-//	@SuppressWarnings("deprecation")
 	public static class Map extends Mapper<LongWritable, Text, Text, Text> {
 
 		/**
@@ -54,7 +53,8 @@ public class MapReducePruner {
 		 */
 		@Override
 		public void map(LongWritable key1, Text taxon, Context context) throws IOException, InterruptedException {
-//			context.write(Text, Text);
+            logger.info("TestTest");
+
             File taxonDir = util.getTaxonDir(null, taxon.toString());
 			String taxonCode = util.encodeTaxon(taxon.toString());
             StringBuffer sb = new StringBuffer(taxonDir.getPath());
@@ -141,6 +141,9 @@ public class MapReducePruner {
 	@SuppressWarnings("deprecation")
 	public static void main(String[] args) throws Exception {
 			util = new Util(new File(args[0]));
+            logger.info("config file location is "+new File (args[0]));
+            logger.info("output dir is "+new File (args[1]));
+            logger.info("input dir "+new File (args[2]));
 
             //*
             Configuration conf = new Configuration();
@@ -157,7 +160,9 @@ public class MapReducePruner {
             job.setOutputFormatClass(TextOutputFormat.class);
 
             TextInputFormat.setInputPaths(job, new Path(args[1]));
+            logger.info("input dir is "+new Path(args[1]));
             TextOutputFormat.setOutputPath(job, util.getOutputPath());
+            logger.info("output path is "+util.getOutputPath());
             job.setJarByClass(MapReducePruner.class);
             job.waitForCompletion(true);
 		    //*/
