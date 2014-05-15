@@ -14,6 +14,14 @@ public class Soorten {
     static ArrayList<String> lijst = new ArrayList<String>();
 
     public static void main(String[] args)  throws IOException {
+        /**
+         * Given a file including the taxon names of the phylo tree, this method changes the names
+         * to the official style. The steps taken are;
+         * - splitting the names on the "space"
+         * - changing the first letter of every taxon to a capital letter
+         * - in every taxon name that includes an underscore, this has been changed to a space
+         */
+
         String fileName = "data/Soorten.txt";
         File file = new File(fileName);
         Scanner inFile = new Scanner(file);
@@ -22,9 +30,9 @@ public class Soorten {
             String i = inFile.next();
             sb.append(i + " ");
         }
-        String tekst = sb.toString();
+        String text = sb.toString();
 
-        String uitTekst[] = tekst.split(" ");
+        String uitTekst[] = text.split(" ");
         for(String i : uitTekst){
             i = i.replaceAll("_", " ");
             char letter = i.charAt(0);
