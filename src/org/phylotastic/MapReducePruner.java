@@ -29,6 +29,9 @@ import org.apache.log4j.Logger;
 public class MapReducePruner {
 	static Util util;
 	static Logger logger = Logger.getLogger("org.phylotastic.MapReducePruner");
+
+    static String slash = File.separator;
+//    logger.info("separator is " + slash);
 	
 	public static class Map extends Mapper<LongWritable, Text, Text, Text> {
 
@@ -53,13 +56,24 @@ public class MapReducePruner {
 		 */
 		@Override
 		public void map(LongWritable key1, Text taxon, Context context) throws IOException, InterruptedException {
-            logger.info("TestTest");
+//            logger.info("TestTest");
 
             File taxonDir = util.getTaxonDir(null, taxon.toString());
+            logger.info("taxonDir " + taxonDir);
+            if (taxonDir.exists() != true) {
+                logger.info("Error. Dir bestaat niet: " + taxonDir.toString());
+            }
 			String taxonCode = util.encodeTaxon(taxon.toString());
-            StringBuffer sb = new StringBuffer(taxonDir.getPath());
+            logger.info("taxonCode " +taxonCode);
+            StringBuffer taxonPath = new StringBuffer(taxonDir.getPath()).append(slash).append(taxonCode);
+            logger.info("taxonPath. " + taxonPath);
+            File taxonFile = new File(taxonPath.toString());
+            if (taxonFile.exists() != true) {
+                logger.info("Error. Bestand bestaat niet: " + taxonFile.toString());
+            }
 //			StringBuffer sb = new StringBuffer(taxonDir.getAbsolutePath());
-			List<TreeNode> nodes = util.readTaxonFile(new File(sb.append('/').append(taxonCode).toString()));
+			List<TreeNode> nodes = util.readTaxonFile(taxonFile);
+            logger.info("nodes is " + nodes);
 			TreeNode tip = nodes.get(0);
 			for ( int i = 1; i < nodes.size(); i++ ) {
 				context.write(new Text(nodes.get(i).toString()), new Text(tip.toString())); // notice the key inversion here
@@ -168,7 +182,8 @@ public class MapReducePruner {
 		    //*/
 			
 		    //*
-		    String outFile = util.getOutputPath().toString() + "/part-00000";
+		    String outFile = util.getOutputPath().toString() + "/part-r-00000";
+            logger.info("outFile " + outFile);
 		    Tree tree = util.readOutFile(new File(outFile));
 		    RootedTree rooted = Utils.rootTheTree(tree);
 		    String newick = Utils.toNewick(rooted);

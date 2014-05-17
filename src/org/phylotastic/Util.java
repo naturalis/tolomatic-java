@@ -1,16 +1,16 @@
 package org.phylotastic;
 
 
-import java.io.BufferedReader;
-import java.io.File;
+import java.io.*;
 //import java.io.FileNotFoundException;
-import java.io.FileReader;
 //import java.io.IOException;
-import java.io.Reader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -34,7 +34,9 @@ public class Util {
 	Ini ini = new Ini();
 	Logger logger = Logger.getLogger("org.phylotastic.Util");
 
-	
+    String slash = File.separator;
+//    logger.info("separator is " + slash);
+
 	/**
 	 * This will expect to get conf/config.ini 
 	 */
@@ -51,8 +53,9 @@ public class Util {
 			e.printStackTrace();
 		}
 	}
-	
-	/**
+
+
+    /**
 	 * This is an opaque way of turning taxon names into 
 	 * "safe" strings that can be turned into paths in 
 	 * the file system
@@ -85,8 +88,8 @@ public class Util {
 	 * @return
 	 */
 	File getTaxonDir(URL treeURL,String taxon) {
-		
-		// first need to know the tree URL string
+
+        // first need to know the tree URL string
 		if ( null == treeURL ) {
 			treeURL = getTree();
             System.out.println(treeURL);
@@ -102,7 +105,7 @@ public class Util {
 		String datadir = treeSection.get("datadir");
 		logger.info("Absolute data root is "+dataroot);
 		logger.info("Relative data dir is "+datadir);
-		sb.append(dataroot).append('/').append(datadir).append('/');
+		sb.append(dataroot).append(slash).append(datadir).append(slash);
 
 		// hash taxon name
 		String encodedTaxon = encodeTaxon(taxon);
@@ -114,11 +117,11 @@ public class Util {
 		
 		// make the path
 		for ( int i = 0; i <= hashdepth; i++ ) {
-			sb.append(encodedTaxon.charAt(i)).append('/');
+			sb.append(encodedTaxon.charAt(i)).append(slash);
 		}
-		logger.info("Path is "+sb.toString());
+		logger.info("Path is "+ sb.toString());
         File tempTest = new File(sb.toString());
-        System.out.println(tempTest);
+        logger.info("temptest is "+ tempTest);
 		return new File(sb.toString());
 	}
 	
@@ -143,7 +146,7 @@ public class Util {
 	 */
 	Path getOutputPath() {
 		Section main = ini.get("_");
-		Path tmpdir = new Path(main.get("tmpdir"));
+        Path tmpdir = new Path(main.get("tmpdir"));
 		logger.info("TMP dir is "+tmpdir);
 		return tmpdir;
 	}
@@ -158,16 +161,20 @@ public class Util {
         String line = null;
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(taxonFile));
+            logger.info("reader is " + reader);
 			line = reader.readLine();
 			reader.close();
 		} catch ( Exception e ) {
 			e.printStackTrace();
 		}
 	    List<TreeNode> result = new ArrayList<TreeNode>();
-	    String[] parts = line.split("\t");
+        logger.info("result is "+result);
+	    String[] parts = line.split("\\|");
+        logger.info("Parts = " + Arrays.toString(parts));
 	    for ( int i = 0; i < parts.length; i++ ) {
 	    	result.add(TreeNode.parseNode(parts[i]));
 	    }
+        logger.info("result after is "+ result);
 	    return result;
 	}
 	
@@ -187,7 +194,8 @@ public class Util {
 				
 				// split line into tipSet and ancestor
 				String[] tuple = line.split("\t");
-				TreeNodeSet tipSet = TreeNodeSet.parseTreeNodeSet(tuple[0]);
+				logger.info("tuple" + Arrays.toString(tuple));
+                TreeNodeSet tipSet = TreeNodeSet.parseTreeNodeSet(tuple[0]);
 				InternalTreeNode ancestor = InternalTreeNode.parseNode(tuple[1]);
 				
 				// iterate over tips in focal line, init/extend list of ancestors for each tip

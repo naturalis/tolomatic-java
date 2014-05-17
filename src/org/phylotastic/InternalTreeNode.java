@@ -15,7 +15,8 @@ public class InternalTreeNode extends TreeNode {
 	}
 	
 	static InternalTreeNode parseNode(String node) {
-		String[] p = node.split(",");
+		System.out.println("node " + node);
+        String[] p = node.split(",");
 		String[] t = p[0].split(":");
 		return new InternalTreeNode(Integer.parseInt(t[0]),Double.parseDouble(t[1]),Integer.parseInt(p[1]));
 	}
