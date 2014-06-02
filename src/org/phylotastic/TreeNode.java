@@ -5,18 +5,24 @@ import java.io.DataOutput;
 import java.io.IOException;
 
 import org.apache.hadoop.io.WritableComparable;
+import org.apache.log4j.Logger;
 
 public class TreeNode implements WritableComparable<TreeNode> {
 	int mLabel;
 	double mLength;
-	
-	public TreeNode(int label,double length) {
+    static Logger logger = Logger.getLogger("org.phylotastic.TreeNode");
+
+
+    public TreeNode(int label,double length) {
 		mLabel = label;
 		mLength = length;
 	}
 	
 	static TreeNode parseNode(String node) {
+        logger.info("node " + node);
 		String[] parts = node.split(":");
+        logger.info("parts 0 " + Integer.parseInt(parts[0]));
+        logger.info("parts 1 " + Double.parseDouble(parts[1]));
 		return new TreeNode(Integer.parseInt(parts[0]),Double.parseDouble(parts[1]));
 	}
 	

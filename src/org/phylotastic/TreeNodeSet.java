@@ -1,20 +1,21 @@
 package org.phylotastic;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import org.apache.log4j.Logger;
 
 public class TreeNodeSet {
 	private Set<TreeNode> mTipSet = new HashSet<TreeNode>();
-	
-	public static TreeNodeSet parseTreeNodeSet (String tipSet) {
+    static Logger logger = Logger.getLogger("org.phylotastic.TreeNodeSet");
+
+    public static TreeNodeSet parseTreeNodeSet (String tipSet) {
 		String[] nodes = tipSet.split("\\|");
+        logger.info("nodes " + Arrays.toString(nodes));
 		TreeNodeSet result = new TreeNodeSet();
+        logger.info("results " + result);
 		for ( int i = 0; i < nodes.length; i++ ) {
 			result.addTip(TreeNode.parseNode(nodes[i]));
 		}
+        logger.info("result na vullen " + result);
 		return result;
 	}
 

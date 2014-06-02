@@ -2,12 +2,8 @@ package org.phylotastic;
 
 
 import java.io.*;
-//import java.io.FileNotFoundException;
-//import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
@@ -19,8 +15,6 @@ import java.util.Map;
 
 import jebl.evolution.graphs.Node;
 import jebl.evolution.taxa.Taxon;
-//import jebl.evolution.trees.RootedTree;
-//import jebl.evolution.trees.SimpleRootedTree;
 import jebl.evolution.trees.SimpleTree;
 import jebl.evolution.trees.Tree;
 
@@ -30,7 +24,15 @@ import org.apache.log4j.Logger;
 import org.ini4j.*;
 import org.ini4j.Ini.Section;
 
-public class Util {
+//import jebl.evolution.trees.RootedTree;
+//import jebl.evolution.trees.SimpleRootedTree;
+//import java.nio.file.FileSystems;
+//import java.nio.file.Files;
+//import java.io.FileNotFoundException;
+//import java.io.IOException;
+
+public class Util
+{
 	Ini ini = new Ini();
 	Logger logger = Logger.getLogger("org.phylotastic.Util");
 
@@ -41,10 +43,12 @@ public class Util {
 	 * This will expect to get conf/config.ini 
 	 */
 	
-	public Util() {
+	public Util()
+    {
 		new Util(new File(System.getenv("PHYLOTASTIC_MAPREDUCE_CONFIG")));		
 	}
-	public Util(File iniFile) {
+	public Util(File iniFile)
+    {
 		try {
 			Reader reader = new FileReader(iniFile); 
 			ini.load(reader);
@@ -62,9 +66,11 @@ public class Util {
 	 * @param taxon
 	 * @return
 	 */
-	String encodeTaxon(String taxon) {
+	String encodeTaxon(String taxon)
+    {
         MessageDigest md = null;
-		try {
+		try
+        {
 			md = MessageDigest.getInstance("MD5");
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
@@ -73,7 +79,8 @@ public class Util {
         md.update(taxon.getBytes());
         byte byteData[] = md.digest();
         StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < byteData.length; i++) {
+        for (int i = 0; i < byteData.length; i++)
+        {
         	sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
         }
         logger.info(sb.toString());
@@ -90,7 +97,8 @@ public class Util {
 	File getTaxonDir(URL treeURL,String taxon) {
 
         // first need to know the tree URL string
-		if ( null == treeURL ) {
+		if ( null == treeURL )
+        {
 			treeURL = getTree();
             System.out.println(treeURL);
 		}
@@ -116,7 +124,8 @@ public class Util {
 		logger.info("Will split hash to "+hashdepth+" levels");
 		
 		// make the path
-		for ( int i = 0; i <= hashdepth; i++ ) {
+		for ( int i = 0; i <= hashdepth; i++ )
+        {
 			sb.append(encodedTaxon.charAt(i)).append(slash);
 		}
 		logger.info("Path is "+ sb.toString());
@@ -129,7 +138,8 @@ public class Util {
 	 * Returns the tree URL from the environment
 	 * @return
 	 */
-	URL getTree() {
+	URL getTree()
+    {
 		URL treeURL = null;
 		try {
 			treeURL = new URL(System.getenv("PHYLOTASTIC_MAPREDUCE_TREE"));
@@ -144,7 +154,8 @@ public class Util {
 	 * Returns the value of the tmpdir variable in the ini file
 	 * @return
 	 */
-	Path getOutputPath() {
+	Path getOutputPath()
+    {
 		Section main = ini.get("_");
         Path tmpdir = new Path(main.get("tmpdir"));
 		logger.info("TMP dir is "+tmpdir);
@@ -156,10 +167,12 @@ public class Util {
 	 * @param taxonFile
 	 * @return
 	 */
-	List<TreeNode> readTaxonFile(File taxonFile) {
+	List<TreeNode> readTaxonFile(File taxonFile)
+    {
 		logger.info("taxonFile is " + taxonFile);
         String line = null;
-		try {
+		try
+        {
 			BufferedReader reader = new BufferedReader(new FileReader(taxonFile));
             logger.info("reader is " + reader);
 			line = reader.readLine();
@@ -171,36 +184,47 @@ public class Util {
         logger.info("result is "+result);
 	    String[] parts = line.split("\\|");
         logger.info("Parts = " + Arrays.toString(parts));
-	    for ( int i = 0; i < parts.length; i++ ) {
+	    for ( int i = 0; i < parts.length; i++ )
+        {
 	    	result.add(TreeNode.parseNode(parts[i]));
 	    }
         logger.info("result after is "+ result);
 	    return result;
 	}
 	
-	Tree readOutFile(File outputFile) {
+	Tree readOutFile(File outputFile)
+    {
 		SimpleTree tree = new SimpleTree();
-		try {
+		try
+        {
 			
 			// build list of all the ancestors for all nodes
 			BufferedReader reader = new BufferedReader(new FileReader(outputFile));
 			String line = reader.readLine();
+            logger.info("String line "+ line);
 			Map<Integer,List<InternalTreeNode>> ancListForTip = new HashMap<Integer,List<InternalTreeNode>>();
+//            logger.info("ancListForTip " + ancListForTip);
 			Map<Integer,TreeNode> tipForLabel = new HashMap<Integer,TreeNode>();
+//            logger.info("tipForLabel "+ tipForLabel);
 			
 			// iterate over lines
-			while( line != null ) {
+			while( line != null )
+            {
 				logger.info("reading: "+line);
 				
 				// split line into tipSet and ancestor
 				String[] tuple = line.split("\t");
 				logger.info("tuple" + Arrays.toString(tuple));
                 TreeNodeSet tipSet = TreeNodeSet.parseTreeNodeSet(tuple[0]);
+                logger.info("tipSet " +tipSet);
 				InternalTreeNode ancestor = InternalTreeNode.parseNode(tuple[1]);
+                logger.info("ancestor" + ancestor);
 				
 				// iterate over tips in focal line, init/extend list of ancestors for each tip
-				for ( TreeNode tip : tipSet.getTipSet() ) {
-					if ( null == ancListForTip.get(tip.getLabel()) ) {
+				for ( TreeNode tip : tipSet.getTipSet() )
+                {
+					if ( null == ancListForTip.get(tip.getLabel()) )
+                    {
 						logger.info("instantiating new list of ancestors for tip "+tip.getLabel());
 						ancListForTip.put(tip.getLabel(),new ArrayList<InternalTreeNode>());
 					}
@@ -208,23 +232,27 @@ public class Util {
 					logger.info("added ancestor "+ancestor.toString()+" to tip "+tip.getLabel());
 					
 					// cache mapping from label to node object
-					if ( tipForLabel.containsKey(tip.getLabel())) {
+					if ( tipForLabel.containsKey(tip.getLabel()))
+                    {
 						logger.info("already stored tip "+tip.getLabel());
 					}
-					else {
+					else
+                    {
 						logger.info("storing tip "+tip.getLabel());
 						tipForLabel.put(tip.getLabel(), tip);
 					}
 				}
 				line = reader.readLine();
 			}
+//            logger.info("reader before close: " + reader);
 			reader.close();
 			
 			// create mapping from our internal nodes to JEBL nodes
 			Map<InternalTreeNode,Node> jeblNode = new HashMap<InternalTreeNode,Node>();
 			
 			// iterate over tips
-			for ( Integer tipLabel : ancListForTip.keySet() ) {
+			for ( Integer tipLabel : ancListForTip.keySet() )
+            {
 				logger.info("processing tip "+tipLabel);
 				
 				// create JEBL tip for focal tip
@@ -235,18 +263,21 @@ public class Util {
 				List<InternalTreeNode> ancestorList = ancListForTip.get(tipLabel);
 				Collections.sort(ancestorList);
 				
-				for ( InternalTreeNode ancestor : ancestorList ) {
+				for ( InternalTreeNode ancestor : ancestorList )
+                {
 					Node jeblParent = jeblNode.get(ancestor);
 					
 					// already seen this node along another path, don't continue farther
-					if ( null != jeblParent ) {
+					if ( null != jeblParent )
+                    {
 						logger.info("already seen ancestor "+ancestor.getLabel());
 						tree.addEdge(jeblChild, jeblParent, (Double)jeblChild.getAttribute("length"));
 						break;
 					}
 					
 					// instantiate new internal node
-					else {
+					else
+                    {
 						logger.info("creating new ancestor "+ancestor.getLabel());
 						jeblParent = tree.createInternalNode(new ArrayList<Node>());
 						jeblNode.put(ancestor, jeblParent);

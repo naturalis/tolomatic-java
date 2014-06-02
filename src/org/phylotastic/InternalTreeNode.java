@@ -1,39 +1,53 @@
 package org.phylotastic;
 
-import org.w3c.dom.Text;
+import org.apache.log4j.Logger;
+import java.util.Arrays;
 
-public class InternalTreeNode extends TreeNode {
+//import org.w3c.dom.Text;
+
+public class InternalTreeNode extends TreeNode
+{
 	int mTipCount;
-	
-	public InternalTreeNode(int label, double length) {
+    static Logger logger = Logger.getLogger("org.phylotastic.InternalTreeNode");
+
+    public InternalTreeNode(int label, double length)
+    {
 		super(label, length);
 	}
 	
-	public InternalTreeNode(int label, double length, int tipCount) {
+	public InternalTreeNode(int label, double length, int tipCount)
+    {
 		super(label, length);
 		mTipCount = tipCount;		
 	}
 	
-	static InternalTreeNode parseNode(String node) {
-		System.out.println("node " + node);
-        String[] p = node.split(",");
-		String[] t = p[0].split(":");
-		return new InternalTreeNode(Integer.parseInt(t[0]),Double.parseDouble(t[1]),Integer.parseInt(p[1]));
+	static InternalTreeNode parseNode(String node)
+    {
+		logger.info("node " + node);
+        String[] p = node.split(":");
+        logger.info("String p " + Arrays.toString(p));
+//		String[] t = p[0].split(":");
+
+        return new InternalTreeNode(Integer.parseInt(p[0]),Double.parseDouble(p[1]));
 	}
 	
-	static InternalTreeNode parseNode(org.apache.hadoop.io.Text node) {
+	static InternalTreeNode parseNode(org.apache.hadoop.io.Text node)
+    {
 		return InternalTreeNode.parseNode(node.toString());
 	}
 	
-	public int getTipCount() {
+	public int getTipCount()
+    {
 		return mTipCount;
 	}
 	
-	public void setTipCount(int tipCount) {
+	public void setTipCount(int tipCount)
+    {
 		mTipCount = tipCount;
 	}
 	
-	public String toString () {
+	public String toString ()
+    {
 		return super.toString() + "," + mTipCount;
 	}
 

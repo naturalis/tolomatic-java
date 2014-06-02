@@ -1,17 +1,11 @@
 package org.phylotastic;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
-//import java.io.OutputStreamWriter;
-//import java.io.Writer;
 
 import jebl.evolution.trees.RootedTree;
 import jebl.evolution.trees.Tree;
 import jebl.evolution.trees.Utils;
-//import jebl.evolution.trees.SimpleTree;
-//import jebl.evolution.io.NewickExporter;
-//import jebl.evolution.trees.RootedFromUnrooted;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -20,11 +14,14 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.*;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
-
 import org.apache.log4j.Logger;
-//import org.w3c.dom.*;
-//import javax.naming.Context;
+
+import javax.naming.Context;
+import org.w3c.dom.*;
+import jebl.evolution.trees.SimpleTree;
+import jebl.evolution.trees.RootedFromUnrooted;
 //import org.apache.hadoop.mapred.*;
+//import jebl.evolution.io.NewickExporter;
 
 public class MapReducePruner {
 	static Util util;
@@ -33,7 +30,8 @@ public class MapReducePruner {
     static String slash = File.separator;
 //    logger.info("separator is " + slash);
 	
-	public static class Map extends Mapper<LongWritable, Text, Text, Text> {
+	public static class Map extends Mapper<LongWritable, Text, Text, Text>
+    {
 
 		/**
 		 * Given a single taxon name as argument, this method reads in a file whose name is 
@@ -55,34 +53,34 @@ public class MapReducePruner {
 		 * n1,A
 		 */
 		@Override
-		public void map(LongWritable key1, Text taxon, Context context) throws IOException, InterruptedException {
-//            logger.info("TestTest");
+		public void map(LongWritable key1, Text taxon, Context context) throws IOException, InterruptedException
+        {
+
+//            File outputMap = new File("/home/carla/IdeaProjects/tolomatic-java/MapOutput.txt");
+//            outputMap.createNewFile();
+//            FileWriter writer = new FileWriter(outputMap);
 
             File taxonDir = util.getTaxonDir(null, taxon.toString());
-            logger.info("taxonDir " + taxonDir);
-            if (taxonDir.exists() != true) {
-                logger.info("Error. Dir bestaat niet: " + taxonDir.toString());
-            }
 			String taxonCode = util.encodeTaxon(taxon.toString());
-            logger.info("taxonCode " +taxonCode);
+
             StringBuffer taxonPath = new StringBuffer(taxonDir.getPath()).append(slash).append(taxonCode);
-            logger.info("taxonPath. " + taxonPath);
             File taxonFile = new File(taxonPath.toString());
-            if (taxonFile.exists() != true) {
-                logger.info("Error. Bestand bestaat niet: " + taxonFile.toString());
-            }
-//			StringBuffer sb = new StringBuffer(taxonDir.getAbsolutePath());
+
+			StringBuffer sb = new StringBuffer(taxonDir.getAbsolutePath());
 			List<TreeNode> nodes = util.readTaxonFile(taxonFile);
-            logger.info("nodes is " + nodes);
+
 			TreeNode tip = nodes.get(0);
-			for ( int i = 1; i < nodes.size(); i++ ) {
+			for ( int i = 1; i < nodes.size(); i++ )
+            {
 				context.write(new Text(nodes.get(i).toString()), new Text(tip.toString())); // notice the key inversion here
-			}
-		}
+            }
+
+    	}
 	}
 	
 //	@SuppressWarnings("deprecation")
-	public static class Combine extends Reducer<Text, Text, Text, Text> {
+	public static class Combine extends Reducer<Text, Text, Text, Text>
+    {
 		
 		/**
 		 * Given a node ID (as described for "map") as a key, and all the tips that have
@@ -94,7 +92,8 @@ public class MapReducePruner {
 		 * A|B,n1,2
 		 */
 //		@Override
-		public void reduce(Text node, Iterator<Text> tips, Context context) throws IOException, InterruptedException {
+		public void reduce(Text node, Iterator<Text> tips, Context context) throws IOException, InterruptedException
+        {
 			
 			// this will become a sorted list of tips
 			TreeNodeSet tipSet = new TreeNodeSet();
@@ -106,10 +105,12 @@ public class MapReducePruner {
 			InternalTreeNode ancestor = new InternalTreeNode(n.getLabel(),n.getLength(),tipSet.getSize());			
 		    context.write(new Text(tipSet.toString()), new Text(ancestor.toString()));
 		}
+
 	}
 	
 //	@SuppressWarnings("deprecation")
-	public static class Reduce extends Reducer<Text, Text, Text, Text> {
+	public static class Reduce extends Reducer<Text, Text, Text, Text>
+    {
 
 		/**
 		 * Given a concatenated list of tips, a node ID and the number of tips it subtends,
@@ -121,11 +122,13 @@ public class MapReducePruner {
 		 * list is the MRCA.
 		 */
 //		@Override
-		public void reduce(Text concatTips, Iterator<Text> nodes, Context context) throws IOException, InterruptedException {
+		public void reduce(Text concatTips, Iterator<Text> nodes, Context context) throws IOException, InterruptedException
+        {
 			double accumulatedBranchLengths = 0;
 			int nearestNodeId = 0;
 			int tipCount = 0;
-			while( nodes.hasNext() ) {
+			while( nodes.hasNext() )
+            {
 				InternalTreeNode ancestor = InternalTreeNode.parseNode(nodes.next());
 				accumulatedBranchLengths += ancestor.getLength();
 				int myTipCount = ancestor.getTipCount();
@@ -144,7 +147,7 @@ public class MapReducePruner {
 				InternalTreeNode mrca = new InternalTreeNode(nearestNodeId,accumulatedBranchLengths,tipCount);
 				context.write(concatTips, new Text(mrca.toString()));
 			}
-		}	   
+		}
 	}
 	
 	/**
@@ -153,7 +156,8 @@ public class MapReducePruner {
 	 * @throws Exception
 	 */
 	@SuppressWarnings("deprecation")
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws Exception
+    {
 			util = new Util(new File(args[0]));
             logger.info("config file location is "+new File (args[0]));
             logger.info("output dir is "+new File (args[1]));
@@ -183,12 +187,20 @@ public class MapReducePruner {
 			
 		    //*
 		    String outFile = util.getOutputPath().toString() + "/part-r-00000";
-            logger.info("outFile " + outFile);
 		    Tree tree = util.readOutFile(new File(outFile));
 		    RootedTree rooted = Utils.rootTheTree(tree);
-		    String newick = Utils.toNewick(rooted);
+            logger.info("rooted: " + rooted);
+            logger.info("rooted tree: " + Utils.rootTheTree(tree));
+            String newick = Utils.toNewick(rooted);
+
+            logger.info("newick" + newick);
 		    System.out.println(newick+";");
 		    //*/
-	   }
+
+//            logger.info("outFile: " + outFile);
+//            logger.info("tree: " + tree);
+
+
+    }
 	
 }
