@@ -121,7 +121,8 @@ Now IntelliJ will download the sources and documentation of all the packages inc
 
 3. Now the Source Package files can be imported in the source folder of the project.
     
+    ```
     1. Right-click on the src folder. Choose 'New > Package' and enter *'org.phylotastic'* as name for the package.
     
     2. In this package create a package *'SourcePackages'* and copy paste the .java files in here. 
-    
+    ```
