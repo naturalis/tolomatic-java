@@ -93,7 +93,7 @@ the terminal;
 in the instructions below.
 
     Creating a new Java project:   
-    
+    '''
     1. Press 'File > New Project';
     
     2. First menu
@@ -111,13 +111,16 @@ in the instructions below.
          select that version. 
     
     5. Press finish
+    '''
 
 2. After creating the Java project, the pom.xml file should be imported in the root of the project. Simply copy paste the file 
 after downloading it from Github. Now right click on the pom.xml file and choose the option 'Add as Maven project'. 
 Now IntelliJ will download the sources and documentation of all the packages included in the pom file. 
 
 3. Now the Source Package files can be imported in the source folder of the project.
-
+    
+    '''
     1. Right-click on the src folder. Choose 'New > Package' and enter *'org.phylotastic'* as name for the package.
     
     2. In this package create a package *'SourcePackages'* and copy paste the .java files in here. 
+    '''
