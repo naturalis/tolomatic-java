@@ -22,6 +22,8 @@ The simplest way to use this program is to install the IntelliJ IDE, import the 
 program from within the IDE. These instructions are written on the assumption that the Linux operating 
 system are used. The installations will all be conducted by use of the terminal.    
 
+
+
 **Installation Oracle JDK**
 
 To install the Oracle JDK, first three commands have to be entered;
@@ -45,7 +47,8 @@ If this is not how the outcome returns, the following command can be tried;
     
     $ sudo update-java-alternatives -s java-7-oracle
 
-    
+
+
 
 **Installation IntelliJ IDEA**
 
