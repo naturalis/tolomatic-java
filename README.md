@@ -8,12 +8,12 @@ to extract subsets from arbitrary-size trees. This program uses the MapReduce al
 of the Apache Hadoop infrastructure to reduce the post-order traversal data of a tree, in order to extract the data
 of the subtree. Once the subset data has been saved in a Newick format file, it can be used for research purposes.
 
-Authors:
-- @grvosa           
-- @gaurav           
-- @eightysteele
-- @arlin
-- @CStegehuis
+Authors         |   
+----------------|-------------
+@grvosa         | @CStegehuis 
+@gaurav         | @arlin 
+@eightysteele   |
+
 
 Short installation instructions:
 -------------------------------
@@ -42,6 +42,7 @@ The outcome of this command should look something like this:
     Java HotSpot(TM) 64-Bit Server VM (build 23.6-b04, mixed mode)
 
 If this is not how the outcome returns, the following command can be tried;
+    
     $ sudo update-java-alternatives -s java-7-oracle
 
     
