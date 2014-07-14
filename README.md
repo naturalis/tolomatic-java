@@ -100,8 +100,8 @@ in the instructions below.
         * Enter the project name. 
         * The project location should be correct, but if not, change it to the
         wanted location. 
-        * The project SDK should be set to 1.7 (java version "1.7.0_51"), unless another version
-        of Java is used. 
+        * The project SDK should be set to *1.7 (java version "1.7.0_51")*. If another version of Java is used, 
+         select that version. 
     
     5. Press finish
 
@@ -111,6 +111,6 @@ Now IntelliJ will download the sources and documentation of all the packages inc
 
 3. Now the Source Package files can be imported in the source folder of the project.
 
-    1. Right-click on the src folder. Choose 'New > Package' and enter 'org.phylotastic' as name for the package.
+    1. Right-click on the src folder. Choose 'New > Package' and enter *'org.phylotastic'* as name for the package.
     
-    2. In the package create a package SourcePackages and copy paste the .java files in here. 
+    2. In this package create a package *'SourcePackages'* and copy paste the .java files in here. 
