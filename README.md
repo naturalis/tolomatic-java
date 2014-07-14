@@ -86,8 +86,8 @@ the terminal;
        
     
 **Installation Maven plugin**
-
-
+The Jetbrains company has a separate webpage for downloading plugins for IntelliJ. Here, the latest version of the 
+Maven 2 integration plugin can be downloaded(http://plugins.jetbrains.com/plugin/1166?pr=).   
 
 **Setting up the project**
 
@@ -108,7 +108,7 @@ in the instructions below.
     4. Third menu
         * Enter the project name. 
         * The project location should be correct, but if not, change it to the
-        wanted location. 
+          wanted location. 
         * The project SDK should be set to *1.7 (java version "1.7.0_51")*. If another version of Java is used, 
          select that version. 
     
