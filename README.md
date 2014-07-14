@@ -87,7 +87,7 @@ the terminal;
 1. To set up the project, first create a new Java project in IntelliJ. This can be done, by performing the steps
 in the instructions below.
 
-Creating a new Java project:   
+    Creating a new Java project:   
     
     1. Press 'File > New Project';
     
