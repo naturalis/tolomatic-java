@@ -16,6 +16,15 @@ Authors:
 - @CStegehuis
 
 
+###Dependencies
+
+**Software**
+1. Linux operating system
+2. IntelliJ IDEA, including Maven plugin
+
+**Hardware**
+1. 
+
 ###Short installation instructions:
 
 The simplest way to use this program is to install the IntelliJ IDE, import the Maven plugin and run the 
