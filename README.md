@@ -19,10 +19,11 @@ of the subtree. Once the subset data has been saved in a Newick format file, it 
 
 ###Dependencies
 
-**Software**    |   **Hardware**
-----------------|----------------
-Linux OS        | ...
-IntelliJ IDEA, including Maven plugin | ....
+**Software**  |  ppp 
+ppp | Linux OS
+ppp | IntelliJ IDEA, including Maven plugin
+**Hardware**    |   ppp
+ppp | Memory
 
 
 ###Installation instructions
