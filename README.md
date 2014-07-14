@@ -24,7 +24,6 @@ Linux OS        | ...
 IntelliJ IDEA, including Maven plugin | ....
 
 
-
 ###Installation instructions
 
 The simplest way to use this program is to install the IntelliJ IDE, import the Maven plugin and run the 
@@ -83,6 +82,27 @@ the terminal;
 
 
 
+**Setting up the project**
 
+To set up the project, first create a new Java project in IntelliJ. This can be done, by performing the steps
+in the instructions below.
+    
+    1. Press 'File > New Project';
+    
+    2. First menu
+        * Java should be selected in the options menu on the left. Presumably Java will be selected by default.
+        * Make sure that the Java EE version is set to Java EE 7. 
+    
+    3. Second menu
+        * It is not required, but if wanted the option 'create project from template' can be selected.
+        
+    4. Third menu
+        * Enter the project name. 
+        * The project location should be correct, but if not, change it to the
+        wanted location. 
+        * The project SDK should be set to 1.7 (java version "1.7.0_51"), unless another version
+        of Java is used. 
+    
+    5. Press finish
 
 
