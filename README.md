@@ -23,6 +23,7 @@ program from within the IDE. These instructions are written on the assumption th
 system are used. The installations will all be conducted by use of the terminal.    
 
 
+
 Installation Oracle JDK
 
 To install the Oracle JDK, first three commands have to be entered;
