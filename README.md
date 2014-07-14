@@ -14,6 +14,7 @@ Authors:
 - @arlin
 
 
+
 Short installation instructions:
 
 The simplest way to use this program is to install the IntelliJ IDE, import the Maven plugin and run the 
@@ -34,11 +35,11 @@ To install the Oracle JDK, first three commands have to be entered;
 Next, with the '$ java -version' command, it is possible to inspect whether the version is correct.
 The outcome of this command should look something like this:
 
-java version "1.7.0_11"
+    java version "1.7.0_11"
 
-Java(TM) SE Runtime Environment (build 1.7.0_11-b21)
+    Java(TM) SE Runtime Environment (build 1.7.0_11-b21)
 
-Java HotSpot(TM) 64-Bit Server VM (build 23.6-b04, mixed mode)
+    Java HotSpot(TM) 64-Bit Server VM (build 23.6-b04, mixed mode)
 
 If this is not how the outcome returns, the following command can be tried;
     $ sudo update-java-alternatives -s java-7-oracle
