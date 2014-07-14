@@ -23,7 +23,6 @@ program from within the IDE. These instructions are written on the assumption th
 system are used. The installations will all be conducted by use of the terminal.    
 
 
-
 **Installation Oracle JDK**
 
 To install the Oracle JDK, first three commands have to be entered;
@@ -48,16 +47,30 @@ If this is not how the outcome returns, the following command can be tried;
     $ sudo update-java-alternatives -s java-7-oracle
 
 
-
-
 **Installation IntelliJ IDEA**
 
 To install IntelliJ, first the program must be downloaded, from the Jetbrains 
-website; http://www.jetbrains.com/idea/download/. When 
-The file that is downloaded, is a .zip file. Extract this file and 
+website; http://www.jetbrains.com/idea/download/. When downloading the appropriate file, be sure to
+verify whether the OS is set to the one used on the computer or server. 
+The downloaded file is a .tar.gz file, which must be extracted. After which, open the containing folder, 
+then go to the bin folder and open the 'idea.sh' file with a text editor. After opening, add the following
+command on the first line of the file after the commends.
+    
+    export IDEA_JDK=/*path to java-7-oracle*/
 
+The path should be something like this;
+    
+    export IDEA_JDK=/usr/lib/jvm/java-7-oracle
 
+The installation is now completed and the program can be executed by typing the commands below in
+the terminal;
 
+    $ cd /<location to tar file, extracted folder>/idea-IU-135.690/bin/
+    
+    $ ./idea.sh
+    
+    
+    
 **Installation Maven plugin**
 
 
