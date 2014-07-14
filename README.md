@@ -45,9 +45,7 @@ Next, with the '$ java -version' command, it is possible to inspect whether the 
 The outcome of this command should look something like this:
 
     java version "1.7.0_11"
-
     Java(TM) SE Runtime Environment (build 1.7.0_11-b21)
-
     Java HotSpot(TM) 64-Bit Server VM (build 23.6-b04, mixed mode)
 
 If this is not how the outcome returns, the following command can be tried;
