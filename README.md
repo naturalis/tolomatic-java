@@ -16,8 +16,12 @@ Authors:
 - @CStegehuis
 
 
-Short installation instructions:
--------------------------------
+#Short
+
+##Short installation instructions:
+
+###Short
+
 
 The simplest way to use this program is to install the IntelliJ IDE, import the Maven plugin and run the 
 program from within the IDE. These instructions are written on the assumption that the Linux operating 
@@ -49,13 +53,16 @@ If this is not how the outcome returns, the following command can be tried;
     
 
 **Installation IntelliJ IDEA**
+
 To install IntelliJ, first the program must be downloaded, from the Jetbrains 
 website; http://www.jetbrains.com/idea/download/. When 
 The file that is downloaded, is a .zip file. Extract this file and 
 
 
 
-Installation Maven plugin
+**Installation Maven plugin**
+
+
 
 
 
