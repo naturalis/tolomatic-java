@@ -15,14 +15,12 @@ Authors:
 - @arlin
 - @CStegehuis
 
-
 Short installation instructions:
+================================
 
 The simplest way to use this program is to install the IntelliJ IDE, import the Maven plugin and run the 
 program from within the IDE. These instructions are written on the assumption that the Linux operating 
 system are used. The installations will all be conducted by use of the terminal.    
-
-
 
 Installation Oracle JDK
 
