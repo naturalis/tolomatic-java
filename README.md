@@ -1,6 +1,7 @@
 tolomatic-java
 ==============
 
+###Introduction
 Port of MapReduce pruner to Java/Hadoop
 
 To simplify the use of phylogenetic trees in scientific research, a program has been written
@@ -8,7 +9,7 @@ to extract subsets from arbitrary-size trees. This program uses the MapReduce al
 of the Apache Hadoop infrastructure to reduce the post-order traversal data of a tree, in order to extract the data
 of the subtree. Once the subset data has been saved in a Newick format file, it can be used for research purposes.
 
-Authors:
+**Authors:**
 - @grvosa           
 - @gaurav           
 - @eightysteele
