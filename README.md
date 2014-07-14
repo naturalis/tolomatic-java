@@ -57,5 +57,7 @@ The file that is downloaded, is a .zip file. Extract this file and
 
 Installation Maven plugin
 
+http://www.jetbrains.com/idea/download/
+
 
 
