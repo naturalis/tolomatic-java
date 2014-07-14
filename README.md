@@ -18,16 +18,12 @@ Authors:
 
 ###Dependencies
 
-**Software**
+**Software**    |   **Hardware**
+----------------|----------------
+Linux OS        | ...
+IntelliJ IDEA, including Maven plugin | ....
 
-1. Linux operating system
 
-2. IntelliJ IDEA, including Maven plugin
-
-
-**Hardware**
-
-1. 
 
 ###Short installation instructions
 
@@ -81,8 +77,7 @@ the terminal;
     $ cd /<location to tar file, extracted folder>/idea-IU-135.690/bin/
     
     $ ./idea.sh
-    
-    
+       
     
 **Installation Maven plugin**
 
