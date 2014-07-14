@@ -94,7 +94,8 @@ the terminal;
 1. To set up the project, first create a new Java project in IntelliJ. This can be done, by performing the steps
 in the instructions below.
 
-    Creating a new Java project:   
+    Creating a new Java project:
+    ```   
     1. Press 'File > New Project';
     
     2. First menu
@@ -112,6 +113,7 @@ in the instructions below.
          select that version. 
     
     5. Press finish
+    ```
 
 2. After creating the Java project, the pom.xml file should be imported in the root of the project. Simply copy paste the file 
 after downloading it from Github. Now right click on the pom.xml file and choose the option 'Add as Maven project'. 
