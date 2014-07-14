@@ -86,8 +86,14 @@ the terminal;
        
     
 **Installation Maven plugin**
-The Jetbrains company has a separate webpage for downloading plugins for IntelliJ. Here, the latest version of the 
-Maven 2 integration plugin can be downloaded(http://plugins.jetbrains.com/plugin/1166?pr=).   
+
+In the later versions of IntelliJ IDEA, it is not necessary to integrate a Maven plugin. For the convenience of
+the user, the latest version of Maven has been integrated into IntelliJ by default. 
+
+However, in case one wants to use an older version of Maven, it is possible to import the plugin by hand.
+The Jetbrains company has a separate webpage for downloading plugins for IntelliJ. Here, any version of the 
+Maven 2 integration plugin can be downloaded(http://plugins.jetbrains.com/plugin/1166?pr=). 
+
 
 **Setting up the project**
 
