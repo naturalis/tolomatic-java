@@ -25,7 +25,7 @@ IntelliJ IDEA, including Maven plugin | ....
 
 
 
-###Short installation instructions
+###Installation instructions
 
 The simplest way to use this program is to install the IntelliJ IDE, import the Maven plugin and run the 
 program from within the IDE. These instructions are written on the assumption that the Linux operating 
