@@ -9,10 +9,11 @@ of the Apache Hadoop infrastructure to reduce the post-order traversal data of a
 of the subtree. Once the subset data has been saved in a Newick format file, it can be used for research purposes.
 
 Authors:
-- @grvosa           - @CStegehuis
-- @gaurav           - @eightysteele
+- @grvosa           
+- @gaurav           
+- @eightysteele
 - @arlin
-
+- @CStegehuis
 
 
 Short installation instructions:
