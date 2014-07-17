@@ -45,7 +45,7 @@ public class MapReducePruner {
     static String slash = File.separator;
 
     /**
-     * Map class, as element of the MapReducePruner class
+     * Map class, as element of the MapReducePruner class. This class
      */
     public static class Map extends Mapper<LongWritable, Text, Text, Text>
     {
