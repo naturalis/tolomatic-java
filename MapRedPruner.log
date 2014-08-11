@@ -1,0 +1,54 @@
+0    [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - config file location is conf/conf.ini
+1    [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - var conf conf/conf.ini
+1    [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - output dir is data/File_Phylomatictree
+1    [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - input dir OutputData
+378  [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - input dir is data/File_Phylomatictree
+381  [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - output path is OutputData
+0    [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - config file location is conf/conf.ini
+1    [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - var conf conf/conf.ini
+1    [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - output dir is data/File_Phylomatictree
+2    [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - input dir OutputData
+373  [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - input dir is data/File_Phylomatictree
+376  [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - output path is OutputData
+0    [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - config file location is conf/conf.ini
+1    [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - var conf conf/conf.ini
+2    [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - output dir is data/File_Phylomatictree
+2    [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - input dir OutputData
+375  [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - input dir is data/File_Phylomatictree
+377  [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - output path is OutputData
+0    [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - config file location is conf/conf.ini
+2    [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - var conf conf/conf.ini
+2    [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - output dir is data/File_Phylomatictree
+2    [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - input dir OutputData
+385  [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - input dir is data/File_Phylomatictree
+388  [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - output path is OutputData
+0    [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - config file location is conf/conf.ini
+config file location is conf/conf.ini
+1    [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - var conf conf/conf.ini
+var conf conf/conf.ini
+1    [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - output dir is data/File_Phylomatictree
+output dir is data/File_Phylomatictree
+1    [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - input dir OutputData
+input dir OutputData
+389  [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - input dir is data/File_Phylomatictree
+input dir is data/File_Phylomatictree
+391  [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - output path is OutputData
+output path is OutputData
+0    [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - config file location is conf/conf.ini
+9    [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - var conf conf/conf.ini
+9    [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - output dir is data/File_Phylomatictree
+9    [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - input dir OutputData
+484  [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - lalala 1
+490  [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - lalala 2
+510  [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - lalala 3
+511  [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - lalala 4
+1834 [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - lalala 5
+0    [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - config file location is conf/conf.ini
+1    [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - var conf conf/conf.ini
+1    [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - output dir is data/File_Phylomatictree
+1    [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - input dir OutputData
+557  [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - lalala 1
+563  [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - lalala 2
+587  [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - lalala 3
+589  [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - lalala 4
+3097 [main] INFO  org.phylotastic.SourcePackages.MapReducePruner  - lalala 5

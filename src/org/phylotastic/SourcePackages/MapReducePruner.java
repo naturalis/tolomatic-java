@@ -16,7 +16,7 @@
  *  -b -config config.ini -r "c:\Users\Jan\Mijn netbeans\Mrp\"
  */
 
-package mapreducepruner;
+package org.phylotastic.SourcePackages;
 /**
  * Author(s); Rutger Vos, Carla Stegehuis
  * Contributed to:
@@ -50,7 +50,7 @@ public class MapReducePruner {
     private static final String environmentVarConfig = "PHYLOTASTIC_MAPREDUCE_CONFIG";
     private static final String environmentVarTree = "PHYLOTASTIC_MAPREDUCE_TREE";
     //
-    private static final Logger logger = Logger.getLogger("mapreducepruner.MapReducePruner");
+    private static final Logger logger = Logger.getLogger("org.phylotastic.SourcePackages.MapReducePruner");
 
     // class: Map
     // ------------------------------------------------------------------------
@@ -283,7 +283,6 @@ public class MapReducePruner {
         job.setMapperClass(TaxonMap.class);
         job.setCombinerClass(NodesCombine.class);
         job.setReducerClass(NodesReduce.class);
-        job.setNumReduceTasks(1);
         job.setInputFormatClass(TextInputFormat.class);
         job.setOutputFormatClass(TextOutputFormat.class);
         job.setOutputKeyClass(Text.class);

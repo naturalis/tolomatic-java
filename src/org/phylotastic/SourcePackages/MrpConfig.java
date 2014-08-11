@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package mapreducepruner;
+package org.phylotastic.SourcePackages;
 /**
  * Author(s); Rutger Vos, Carla Stegehuis
  * Contributed to:
@@ -38,7 +38,7 @@ public class MrpConfig {
     //
     private String logLevel;                            // log4j log level
     private final Map<String, Level> logLevels;
-    private final Logger logger = Logger.getLogger("mapreducepruner.MrpConfig");
+    private final Logger logger = Logger.getLogger("org.phylotastic.SourcePackages.MrpConfig");
     
     private Ini configIni;                              // ini4j Ini file object
     private File configFile;                            // path to config file

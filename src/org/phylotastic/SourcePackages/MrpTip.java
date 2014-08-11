@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package org.phylotastic;
+package org.phylotastic.SourcePackages;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package mapreducepruner;
+package org.phylotastic.SourcePackages;
 /**
  * Author(s); Rutger Vos, Carla Stegehuis
  * Contributed to:
