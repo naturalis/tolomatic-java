@@ -15,7 +15,7 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
-
+import static org.apache.commons.io.FileUtils.deleteDirectory;
 
 /**
  * This script is used for the preparations of the MapRed program. It uses the Nexus file as the
@@ -45,31 +45,37 @@ public class ReadFile {
     /**
      * Main method
      */
-    public static void main(String[] args) throws IOException {
-
-        /**
-         *
-         */
+    public static void main(String[] args) throws IOException
+    {
+        //String are created for making the files.
         File dir = new File(".");
         sourceFile = dir.getCanonicalPath() + File.separator + "./data/File_Phylomatictree.nex";
         destFile = dir.getCanonicalPath() + File.separator + "./OutputData/SpecieNumbers.txt";
         inputFile = dir.getCanonicalPath() + File.separator + "./InputData/InputFile2.txt";
 
+        //For both output files is checked if they already exist. If so, they are deleted.
+        File dest = new File(destFile);
+        if (dest.exists()) dest.delete();
+        File input = new File(inputFile);
+        if (input.exists()) dest.delete();
+
+        //Open textfile for reading
         File newFile = new File(sourceFile);
         FileInputStream fis = new FileInputStream(newFile);
         BufferedReader in = new BufferedReader(new InputStreamReader(fis));
 
-        FileWriter fstream = new FileWriter(destFile, true);
-        BufferedWriter outNumber = new BufferedWriter(fstream);
-        FileWriter inputStream = new FileWriter(inputFile, true);
-        BufferedWriter outName = new BufferedWriter(inputStream);
+        //Open text files for writing
+        FileWriter numberStream = new FileWriter(destFile, true);
+        BufferedWriter outNumber = new BufferedWriter(numberStream);
+        FileWriter nameStream = new FileWriter(inputFile, true);
+        BufferedWriter outName = new BufferedWriter(nameStream);
 
         boolean inTranslate = false;
         boolean inTree = false;
         String line = null;
 
         /**
-         * The while loop goes through evert line. By using inTranslate and inTree, the correct lines are
+         * The while loop goes through every line. By using inTranslate and inTree, the correct lines are
          * read and used. One file is created with all the specienames for use as input of the MapRed program
          * and one file with the corresponding numbers included, to translate the numbers to names for the
          * Newick tree.
