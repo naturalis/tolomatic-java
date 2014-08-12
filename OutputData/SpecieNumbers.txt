@@ -1,0 +1,1566 @@
+1	Ophioglossaceae
+2	Psilotaceae
+3	Equisetaceae
+4	Marattiaceae
+5	Osmundaceae
+6	Hymenophyllaceae
+7	Gleicheniaceae
+8	Dipteridaceae
+9	Matoniaceae
+10	Lygodiaceae
+11	Anemiaceae
+12	Schizaeaceae
+13	Marsileaceae
+14	Salviniaceae
+15	Thyrsopteridaceae
+16	Loxomataceae
+17	Culcitaceae
+18	Plagiogyriaceae
+19	Cibotiaceae
+20	Cyatheaceae
+21	Dicksoniaceae
+22	Metaxyaceae
+23	Lindsaeaceae
+24	Saccolomataceae
+25	Dennstaedtiaceae
+26	Pteridaceae
+27	Aspleniaceae
+28	Woodsiaceae
+29	Thelypteridaceae
+30	Blechnaceae
+31	Onocleaceae
+32	Dryopteridaceae
+33	Lomariopsidaceae
+34	Tectariaceae
+35	Oleandraceae
+36	Davalliaceae
+37	Polypodiaceae
+38	Cycadaceae
+39	Zamiaceae
+40	Ginkgoaceae
+41	Pinales
+42	Gnetum
+43	Ephedra
+44	Welwitschia
+45	Amborellaceae
+46	Hydatellaceae
+47	Cabombaceae
+48	Nymphaeaceae
+49	Austrobaileyaceae
+50	Trimeniaceae
+51	Schisandraceae
+52	Chloranthaceae
+53	Myristicaceae
+54	Magnoliaceae
+55	Degeneriaceae
+56	Himantandraceae
+57	Annonaceae
+58	Eupomatiaceae
+59	Calycanthaceae
+60	Siparunaceae
+61	Gomortegaceae
+62	Atherospermataceae
+63	Monimiaceae
+64	Hernandiaceae
+65	Lauraceae
+66	Canellaceae
+67	Winteraceae
+68	Hydnoraceae
+69	Lactoridaceae
+70	Aristolochiaceae
+71	Piperaceae
+72	Saururaceae
+73	Commelinaceae
+74	Hanguanaceae
+75	Philydraceae
+76	Haemodoraceae
+77	Pontederiaceae
+78	Musaceae
+79	Heliconiaceae
+80	Strelitziaceae
+81	Lowiaceae
+82	Marantaceae
+83	Cannaceae
+84	Zingiberaceae
+85	Costaceae
+86	Typhaceae
+87	Bromeliaceae
+88	Rapateaceae
+89	Xyridaceae
+90	Eriocaulaceae
+91	Mayacaceae
+92	Thurniaceae
+93	Cyperaceae
+94	Juncaceae
+95	Anarthriaceae
+96	Centrolepidaceae
+97	Restionaceae
+98	Flagellariaceae
+99	Joinvilleaceae
+100	Ecdeiocoleaceae
+101	Anomochloa
+102	Streptochaeta
+103	Pharus
+104	Guaduella
+105	Puelia
+106	Streptogyna
+107	Ehrharta
+108	Oryza
+109	Leersia
+110	Pseudosasa
+111	Chusquea
+112	Buergersiochloa
+113	Lithachne
+114	Olyra
+115	Eremitis
+116	Pariana
+117	Brachyelytrum
+118	Lygeum
+119	Nardus
+120	Melica
+121	Glyceria
+122	Diarrhena
+123	Brachypodium
+124	Avena
+125	Bromus
+126	Triticum
+127	Phaenosperma
+128	Anisopogon
+129	Ampelodesmos
+130	Piptatherum
+131	Stipa
+132	Nassella
+133	Micraira
+134	Chasmanthium
+135	Thysanolaena
+136	Zeugites
+137	Gynerium
+138	Danthoniopsis
+139	Miscanthus
+140	Zea
+141	Panicum
+142	Pennisetum
+143	Eriachne
+144	Aristida
+145	Stipagrostis
+146	Merxmuelleraa
+147	Danthonia
+148	Karoochloa
+149	Austrodanthonia
+150	Molinia
+151	Phragmites
+152	Amphiopogon
+153	Arundo
+154	Merxmuellerab
+155	Centropodia
+156	Pappophorum
+157	Eragrostis
+158	Uniola
+159	Distichlis
+160	Zoysia
+161	Spartina
+162	Sporobolus
+163	Arecaceae
+164	Dasypogonaceae
+165	Orchidaceae
+166	Boryaceae
+167	Blandfordiaceae
+168	Lanariaceae
+169	Asteliaceae
+170	Hypoxidaceae
+171	Ixioliriaceae
+172	Tecophilaeaceae
+173	Doryanthaceae
+174	Iridaceae
+175	Xeronemataceae
+176	Xanthorrhoeaceae
+177	Amaryllidaceae
+178	Asparagaceae
+179	Corsiaceae
+180	Campynemataceae
+181	Melanthiaceae
+182	Petermanniaceae
+183	Colchicaceae
+184	Alstroemeriaceae
+185	Rhipogonaceae
+186	Philesiaceae
+187	Smilacaceae
+188	Liliaceae
+189	Velloziaceae
+190	Triuridaceae
+191	Stemonaceae
+192	Pandanaceae
+193	Cyclanthaceae
+194	Nartheciaceae
+195	Burmanniaceae
+196	Dioscoreaceae
+197	Petrosaviaceae
+198	Araceae
+199	Tofieldiaceae
+200	Hydrocharitaceae
+201	Butomaceae
+202	Alismataceae
+203	Scheuchzeriaceae
+204	Aponogetonaceae
+205	Juncaginaceae
+206	Posidoniaceae
+207	Ruppiaceae
+208	Cymodoceaceae
+209	Zosteraceae
+210	Potamogetonaceae
+211	Acoraceae
+212	Ceratophyllaceae
+213	Eupteleaceae
+214	Lardizabalaceae
+215	Circaeasteraceae
+216	Menispermaceae
+217	Berberidaceae
+218	Ranunculaceae
+219	Papaveraceae
+220	Sabiaceae
+221	Nelumbonaceae
+222	Platanaceae
+223	Macadamia grandis
+224	Macadamia claudiensis
+225	Macadamia whelanii
+226	Orites megacarpus
+227	Panopsis
+228	Brabejum
+229	Macadamia integrifolia
+230	Macadamia tetraphylla
+231	Macadamia ternifolia
+232	Macadamia jansenii
+233	Malagasia
+234	Catalepidia
+235	Heliciopsis
+236	Athertonia
+237	Virotia
+238	Cardwellia
+239	Euplassa
+240	Sleumerodendron
+241	Turrillia
+242	Kermadecia
+243	Gevuina
+244	Bleasdalea
+245	Hicksbeachia
+246	Floydia
+247	Lambertia
+248	Roupala
+249	Orites diversifolius
+250	Banksia ilicifolia
+251	Banksia oligantha
+252	Banksia cuneata
+253	Banksia elegans
+254	Banksia attenuata
+255	Banksia candolleana
+256	Banksia menziesii
+257	Banksia burdetii
+258	Banksia victoriae
+259	Banksia hookeriana
+260	Banksia prionotes
+261	Banksia sceptrum
+262	Banksia ashbyi
+263	Banksia lindleyana
+264	Dryandra sessilis
+265	Dryandra serratuloides
+266	Dryandra foliosissima
+267	Dryandra calophylla
+268	Dryandra speciosa
+269	Banksia baxteri
+270	Banksia speciosa
+271	Banksia coccinea
+272	Banksia lemanniana
+273	Banksia caleyi
+274	Banksia aculeata
+275	Banksia elderiana
+276	Banksia baueri
+277	Banksia lullfitzii
+278	Banksia repens
+279	Banksia chamaephyton
+280	Banksia blechnifolia
+281	Banksia goodii
+282	Banksia hiemalis
+283	Banksia petiolaris
+284	Banksia brevidentata
+285	Banksia benthamiana
+286	Banksia audax
+287	Banksia laevigata
+288	Banksia ornata
+289	Banksia serrata
+290	Banksia aemula
+291	Banksia pilostylis
+292	Banksia media
+293	Banksia epica
+294	Banksia praemorsa
+295	Banksia dentata
+296	Banksia oblongifolia
+297	Banksia robur
+298	Banksia plagiocarpa
+299	Banksia integrifolia aquilonia
+300	Banksia integrifolia integrifolia
+301	Banksia integrifolia monticola
+302	Banksia integrifolia compar
+303	Banksia marginata
+304	Banksia saxicola
+305	Banksia paludosa
+306	Banksia canei
+307	Banksia spinulosa spinulosa
+308	Banksia spinulosa collina
+309	Banksia spinulosa neoanglica
+310	Banksia spinulosa cunninghamii
+311	Banksia ericifolia ericifolia
+312	Banksia occidentalis
+313	Banksia littoralis
+314	Banksia brownii
+315	Banksia verticillata
+316	Banksia nutans nutans
+317	Banksia nutans cernuella
+318	Banksia quercifolia
+319	Banksia oreophila
+320	Banksia telmatiaea
+321	Banksia scabrella
+322	Banksia leptophylla melletica
+323	Banksia leptophylla leptophylla
+324	Banksia lanata
+325	Banksia grossa
+326	Banksia micrantha
+327	Banksia sphaerocarpa sphaerocarpa
+328	Banksia sphaerocarpa caesia
+329	Banksia dolichostyla
+330	Banksia violacea
+331	Banksia laricina
+332	Banksia incana
+333	Banksia tricuspis
+334	Banksia pulchella
+335	Banksia meisneri cendens
+336	Banksia dryandroides
+337	Banksia grandis
+338	Banksia solandri
+339	Carnarvonia
+340	Grevillea
+341	Buxaceae
+342	Haptanthaceae
+343	Trochodendraceae
+344	Gunneraceae
+345	Myrothamnaceae
+346	Anisophylleaceae
+347	Coriariaceae
+348	Corynocarpaceae
+349	Cucurbitaceae
+350	Tetramelaceae
+351	Begoniaceae
+352	Datiscaceae
+353	Nothofagaceae
+354	Fagaceae
+355	Myricaceae
+356	Juglandaceae
+357	Casuarinaceae
+358	Ticodendraceae
+359	Ostrya rehderiana
+360	Ostrya virginiana
+361	Carpinus putoensis
+362	Carpinus hupeana
+363	Carpinus polyneura
+364	Carpinus turczaninowii
+365	Carpinus cordata
+366	Ostryopsis davidiana
+367	Corylus heterophylla
+368	Corylus chinensis
+369	Betula alleghaniensis
+370	Betula glandulosa
+371	Betula pendula
+372	Alnus glutinosa
+373	Alnus incana
+374	Alnus crispa
+375	Alnus maritima
+376	Adenostoma
+377	Chamaebatiaria
+378	Sorbaria
+379	Spiraeanthus
+380	Amelanchier
+381	Peraphyllum
+382	Malacomeles
+383	Crataegus
+384	Mespilus
+385	Aria
+386	Aronia
+387	Chaenomeles
+388	Osteomeles
+389	Chamaemeles
+390	Malus
+391	Cotoneaster
+392	Chamaemespilus
+393	Torminalis
+394	Cormus
+395	Cydonia
+396	Photinia
+397	Pseudocydonia
+398	Dichotomanthes
+399	Docyniopsis
+400	Eriobotrya
+401	Rhaphiolepis
+402	Heteromeles
+403	Pyrus
+404	Stranvaesia
+405	Eriolobus
+406	Pyracantha
+407	Sorbus
+408	Vauquelinia
+409	Kageneckia
+410	Lindleya
+411	Gillenia
+412	Aruncus
+413	Luetkea
+414	Holodiscus
+415	Kelseya
+416	Petrophyton
+417	Spiraea
+418	Coleogyne
+419	Kerria
+420	Neviusia
+421	Rhodotypos
+422	Exochorda
+423	Oemleria
+424	Prinsepia
+425	Maddenia
+426	Prunus
+427	Pygeum
+428	Neillia
+429	Physocarpus
+430	Lyonothamnus
+431	Cercocarpus
+432	Chamaebatia
+433	Cowania
+434	Purshia
+435	Dryas
+436	Barbeyaceae
+437	Dirachmaceae
+438	Sageretia
+439	Scutia
+440	Rhamnus
+441	Frangula
+442	Rhamnella
+443	Krugiodendron
+444	Rhamnidium
+445	Karwinskia
+446	Condalia
+447	Reynosia
+448	Berchemia
+449	Maesopsis
+450	Ventilago
+451	Bathiorhamnus
+452	Ampeloziziphus
+453	Doerpfeldia
+454	Hovenia
+455	Paliurus
+456	Ziziphus
+457	Ceanothus
+458	Spyridium
+459	Trymalium
+460	Pomaderris
+461	Siegfriedia
+462	Cryptandra
+463	Phylica
+464	Nesiota
+465	Noltea
+466	Schistocarpaea
+467	Discaria
+468	Adolphia
+469	Trevoa
+470	Colletia
+471	Colubrina
+472	Alphitonia
+473	Emmenosperma
+474	Lasiodiscus
+475	Gouania
+476	Helinus
+477	Reissekia
+478	Crumenaria
+479	Pleuranthodes
+480	Elaeagnaceae
+481	Ulmaceae
+482	Cannabaceae
+483	Antiaris toxicaria
+484	Mesogyne insignis
+485	Castilla elastica
+486	Castilla ulei
+487	Helicostylis pedunculata
+488	Helicostylis tomentosa
+489	Perebea angustifolia
+490	Perebea humilis
+491	Perebea longepedunculata
+492	Perebea rubra
+493	Perebea xanthochyma
+494	Maquira costaricana
+495	Pseudolmedia laevigata
+496	Pseudolmedia laevis
+497	Pseudolmedia macrophylla
+498	Pseudolmedia spuria
+499	Naucleopsis caloneura
+500	Naucleopsis ternstroemiifolia
+501	Naucleopsis guianensis
+502	Naucleopsis krukovii
+503	Naucleopsis ulei
+504	Naucleopsis naga
+505	Poulsenia armata
+506	Antiaropsis decipiens
+507	Sparratosyce dioca
+508	Ficus asperula
+509	Ficus copiosa
+510	Ficus wassa
+511	Ficus racemosa
+512	Ficus variegata
+513	Ficus virens
+514	Ficus edelfeltii
+515	Ficus habrophylla
+516	Ficus insipida
+517	Bleekrodea madagascariensis
+518	Streblus elongatus
+519	Brosimum alicastrum
+520	Brosimum utile
+521	Brosimum guianense
+522	Brosimum rubescens
+523	Helianthostylis sprucei
+524	Trymatococcus amazonicus
+525	Trymatococcus oligandrus
+526	Brosimum lactescens
+527	Dorstenia bahiensis
+528	Dorstenia choconiana
+529	Utsetela neglecta
+530	Brousonettia papyrifera
+531	Trophis scandens
+532	Fatoua pilosa
+533	Maclura amboinensis
+534	Maclura tricuspidata
+535	Maclura pomifera
+536	Artocarpus altilis
+537	Artocarpus heterophyllus
+538	Artocarpus vrieseanus
+539	Parartocarpus venenosus
+540	Prainea limpato
+541	Prainea papuana
+542	Batocarpus amazonicus
+543	Batocarpus costaricensis
+544	Clarisia biflora
+545	Clarisia ilicifolia
+546	Bagassa guianensis
+547	Milicia excelsa
+548	Streblus glaber
+549	Streblus pendulinus
+550	Streblus smithii
+551	Morus alba
+552	Morus nigra
+553	Trophis involucrata
+554	Trophis racemosa
+555	Sorocea affinis
+556	Sorocea pubivena
+557	Sorocea briquetii
+558	Sorocea bonplandii
+559	Urticaceae
+560	Quillajaceae
+561	Bauhinia
+562	Cercis
+563	Berlinia
+564	Brachystegia
+565	Oddoniodendron
+566	Brownea
+567	Cynometra
+568	Amherstia
+569	Hymenaea
+570	Guibourtia
+571	Peltogyne
+572	Tessmannia
+573	Barnebydendron
+574	Goniorrhachis
+575	Schotia
+576	Colophospermum
+577	Prioria
+578	Dialium
+579	Martiodendron
+580	Petalostylis
+581	Apuleia
+582	Poeppigia
+583	Arcoa
+584	Ceratonia
+585	Gymnocladus
+586	Gleditsia
+587	Diptychandra
+588	Chamaecrista
+589	Cassia
+590	Senna
+591	Hoffmannseggia
+592	Zuccagnia
+593	Caesalpinia
+594	Cenostigma
+595	Pomaria
+596	Poincianella
+597	Guilandia
+598	Stuhlmannia
+599	Haematoxylum
+600	Erythrostemon
+601	Pterogyne
+602	Tachigali
+603	Conzattia
+604	Parkinsonia
+605	Peltophorum
+606	Mora
+607	Dimorphandra
+608	Erythrophleum
+609	Dinizia
+610	Pentaclethra
+611	Mimozyganthus
+612	Amblygonocarpus
+613	Adenanthera
+614	Tetrapleura
+615	Xylia
+616	Pseudoprosopis
+617	Calpocalyx
+618	Piptadeniastrum
+619	Entada
+620	Plathymenia
+621	Neptunia
+622	Prosopis
+623	Prosopidastrum
+624	Desmanthus
+625	Leucaena
+626	Dichrostachys
+627	Gagnebina
+628	Parkia
+629	Microlobius
+630	Parapiptadenia
+631	Stryphnodendron
+632	Anadenanthera
+633	Pseudopiptadenia
+634	Adenopodia
+635	Piptadenia
+636	Mimosa
+637	Acacia
+638	Faidherbia
+639	Zapoteca
+640	Lysiloma
+641	Enterolobium
+642	Albizia
+643	Chloroleucon
+644	Leucochloron
+645	Blanchetiodendron
+646	Abarema
+647	Pararchidendron
+648	Samanea
+649	Pseudosamanea
+650	Havardia
+651	Ebenopsis
+652	Pithecellobium
+653	Calliandra
+654	Cojoba
+655	Zygia
+656	Macrosamanea
+657	Cedrelinga
+658	Archidendron
+659	Inga
+660	Bobgunnia
+661	Bocoa
+662	Candolleodendron
+663	Swartzia
+664	Ateleia
+665	Cyathostegia
+666	Trischidium
+667	Myrocarpus
+668	Myroxylon
+669	Myrospermum
+670	Dussia
+671	Amburana
+672	Dipteryx
+673	Pterodon
+674	Taralea
+675	Angylocalyx
+676	Styphnolobium
+677	Pickeringia
+678	Cladrastis
+679	Uribea
+680	Calia
+681	Holocalyx
+682	Lecointea
+683	Zollernia
+684	Luetzelburgia
+685	Sweetia
+686	Arachis
+687	Stylosanthes
+688	Chapmannia
+689	Fiebrigiella
+690	Brya
+691	Cranocarpus
+692	Platymiscium
+693	Grazielodendron
+694	Cascaronia
+695	Geoffroea
+696	Centrolobium
+697	Ramorinoa
+698	Inocarpus
+699	Tipuana
+700	Maraniona
+701	Pterocarpus
+702	Platypodium
+703	Discolobium
+704	Riedeliella
+705	Aeschynomene
+706	Machaerium
+707	Dalbergia
+708	Kotschya
+709	Diphysa
+710	Ormocarpopsis
+711	Ormocarpum
+712	Zygocarpum
+713	Pictetia
+714	Weberbauerella
+715	Adesmia
+716	Chaetocalyx
+717	Nissolia
+718	Poiretia
+719	Amicia
+720	Zornia
+721	Marina
+722	Dalea
+723	Psorothamnus
+724	Apoplanesia
+725	Amorpha
+726	Parryella
+727	Eysenhardtia
+728	Errazurizia
+729	Andira
+730	Hymenolobium
+731	Vatairea
+732	Vataireopsis
+733	Genista
+734	Ulex
+735	Spartium
+736	Cytisus
+737	Lupinus
+738	Anarthrophyllum
+739	Dichilus
+740	Crotalaria
+741	Lebeckia
+742	Calpurnia
+743	Piptanthus
+744	Baptisia
+745	Thermopsis
+746	Templetonia
+747	Hovea
+748	Lamprolobium
+749	Plagiocarpus
+750	Brongniartia
+751	Harpalyce
+752	Cyclolobium
+753	Poecilanthe
+754	Bolusanthus
+755	Dicraeopetalum
+756	Sophora
+757	Ammodendron
+758	Maackia
+759	Diplotropis
+760	Bowdichia
+761	Acosmium
+762	Clathrotropis
+763	Ormosia
+764	Baphia
+765	Aotus
+766	Gastrolobium
+767	Isotropis
+768	Gompholobium
+769	Daviesia
+770	Bossiaea
+771	Hypocalyptus
+772	Macroptilium
+773	Mysanthus
+774	Strophostyles
+775	Dolichopsis
+776	Oxyrhynchus
+777	Ramirezella
+778	Phaseolus
+779	Vigna
+780	Physostigma
+781	Dipogon
+782	Lablab
+783	Spathionema
+784	Vatovaea
+785	Dolichos
+786	Nesphostylis
+787	Macrotyloma
+788	Sphenostylis
+789	Wajira
+790	Cologania
+791	Pseudovigna
+792	Neorautanenia
+793	Pueraria
+794	Amphicarpaea
+795	Ophrestia
+796	Glycine
+797	Otholobium
+798	Psoralea
+799	Rupertia
+800	Psoralidium
+801	Pediomelum
+802	Erythrina
+803	Psophocarpus
+804	Butea
+805	Campylotropis
+806	Desmodium
+807	Apios
+808	Abrus
+809	Galactia
+810	Philenoptera
+811	Piscidia
+812	Lonchocarpus
+813	Dahlstedtia
+814	Deguelia
+815	Behaimia
+816	Bergeronia
+817	Apurimacia
+818	Mundulea
+819	Tephrosia
+820	Derris
+821	Paraderris
+822	Neodunnia
+823	Brachypterum
+824	Millettia
+825	Pongamiopsis
+826	Fordia
+827	Austrosteenisia
+828	Dalbergiella
+829	Xeroderris
+830	Platycyamus
+831	Phylloxylon
+832	Indigofera
+833	Cyamopsis
+834	Microcharis
+835	Anthyllis
+836	Hammatolobium
+837	Lotus
+838	Ornithopus
+839	Coronilla
+840	Hippocrepis
+841	Genistidium
+842	Peteria
+843	Coursetia
+844	Olneya
+845	Poissonia
+846	Sphinctospermum
+847	Robinia
+848	Poitea
+849	Gliricidia
+850	Hebestigma
+851	Lennea
+852	Sesbania
+853	Glottidium
+854	Daubentonia
+855	Wisteria
+856	Callerya
+857	Glycyrrhiza
+858	Caragana
+859	Halimodendron
+860	Alhagi
+861	Hedysarum
+862	Onobrychis
+863	Oxytropis
+864	Astragalus
+865	Sphaerophysa
+866	Colutea
+867	Lessertia
+868	Sutherlandia
+869	Swainsona
+870	Carmichaelia
+871	Clianthus
+872	Parochetus
+873	Galega
+874	Cicer
+875	Melilotus
+876	Trigonella
+877	Medicago
+878	Ononis
+879	Trifolium
+880	Vicia
+881	Lens
+882	Pisum
+883	Lathyrus
+884	Surianaceae
+885	Polygalaceae
+886	Lepidobotryaceae
+887	Celastraceae
+888	Huaceae
+889	Connaraceae
+890	Oxalidaceae
+891	Weinmannia
+892	Cunonia
+893	Pancheria
+894	Vesselowskya
+895	Callicoma
+896	Codia
+897	Pullea
+898	Ackama
+899	Spiraeopsis
+900	Opocunonia
+901	Caldcluvia
+902	Geissois
+903	Pseudoweinmannia
+904	Lamanonia
+905	Acrophyllum
+906	Gillbeea
+907	Aistopetalum
+908	Eucryphia
+909	Bauera
+910	Anodopetalum
+911	Platylophus
+912	Ceratopetalum
+913	Schizomeria
+914	Davidsonia
+915	Acsmithia
+916	Spiraeanthemum
+917	Brunelliaceae
+918	Cephalotaceae
+919	Elaeocarpaceae
+920	Achariaceae
+921	Goupiaceae
+922	Violaceae
+923	Passifloraceae
+924	Lacistemataceae
+925	Salicaceae
+926	Centroplacaceae
+927	Caryocaraceae
+928	Rafflesiaceae
+929	Euphorbiaceae
+930	Humiriaceae
+931	Irvingiaceae
+932	Ixonanthaceae
+933	Linaceae
+934	Putranjivaceae
+935	Lophopyxidaceae
+936	Pandaceae
+937	Phyllanthaceae
+938	Picrodendraceae
+939	Ctenolophonaceae
+940	Erythroxylaceae
+941	Rhizophoraceae
+942	Bonnetiaceae
+943	Clusiaceae
+944	Calophyllaceae
+945	Hypericaceae
+946	Podostemaceae
+947	Malpighiaceae
+948	Elatinaceae
+949	Ochnaceae
+950	Balanopaceae
+951	Trigoniaceae
+952	Dichapetalaceae
+953	Chrysobalanaceae
+954	Euphroniaceae
+955	Zygophyllaceae
+956	Krameriaceae
+957	Neuradaceae
+958	Thymelaeaceae
+959	Sphaerosepalaceae
+960	Bixaceae
+961	Cistaceae
+962	Sarcolaenaceae
+963	Dipterocarpaceae
+964	Cytinaceae
+965	Muntingiaceae
+966	Malvaceae
+967	Akaniaceae
+968	Tropaeolaceae
+969	Caricaceae
+970	Moringaceae
+971	Setchellanthaceae
+972	Limnanthaceae
+973	Koeberliniaceae
+974	Bataceae
+975	Salvadoraceae
+976	Emblingiaceae
+977	Pentadiplandraceae
+978	Gyrostemonaceae
+979	Resedaceae
+980	Tovariaceae
+981	Capparaceae
+982	Cleomaceae
+983	Brassicaceae
+984	Gerrardinaceae
+985	Dipentodontaceae
+986	Tapisciaceae
+987	Biebersteiniaceae
+988	Nitrariaceae
+989	Kirkiaceae
+990	Anacardiaceae
+991	Burseraceae
+992	Sapindaceae
+993	Simaroubaceae
+994	Aglaia
+995	Aphanamixis
+996	Lansium
+997	Dysoxylum
+998	Guarea
+999	Heckeldora
+1000	Ruagea
+1001	Synoum
+1002	Calodecaryia
+1003	Turraea
+1004	Nymania
+1005	Munronia
+1006	Cipadessa
+1007	Malleastrum
+1008	Trichilia
+1009	Walsura
+1010	Ekebergia
+1011	Quivisianthe
+1012	Azadirachta
+1013	Melia
+1014	Capuronianthus
+1015	Lovoa
+1016	Carapa
+1017	Khaya
+1018	Swietenia
+1019	Cedrela
+1020	Toona
+1021	Neobeguea
+1022	Chukrasia
+1023	Schmardaea
+1024	Rutaceae
+1025	Picramniaceae
+1026	Staphyleaceae
+1027	Guamatelaceae
+1028	Stachyuraceae
+1029	Crossosomataceae
+1030	Aphloiaceae
+1031	Geissolomataceae
+1032	Strasburgeriaceae
+1033	Combretaceae
+1034	Onagraceae
+1035	Lythraceae
+1036	Acmena
+1037	Syzygium
+1038	Anetholea
+1039	Osbornia
+1040	Backhousia
+1041	Choricarpia
+1042	Archirodomyrtus
+1043	Pilidiostigma
+1044	Rhodamnia
+1045	Calyptranthes
+1046	Eugenia
+1047	Xanthomyrtus
+1048	Metrosideros
+1049	Tepualia
+1050	Thaleropia
+1051	Tristania
+1052	Agonis
+1053	Kunzea
+1054	Baeckea
+1055	Darwinia
+1056	Lindsayomyrtus
+1057	Lysicarpus
+1058	Ristantia
+1059	Tristaniopsis
+1060	Angophora
+1061	Corymbia
+1062	Arillastrum
+1063	Eucalyptopsis
+1064	Eucalyptus
+1065	Callistemon
+1066	Melaleuca
+1067	Syncarpia
+1068	Kjellbergiodendron
+1069	Whiteodendron
+1070	Lophostemon
+1071	Xanthostemon
+1072	Heteropyxis
+1073	Psiloxylon
+1074	Vochysiaceae
+1075	Melastomataceae
+1076	Crypteroniaceae
+1077	Alzateaceae
+1078	Penaeaceae
+1079	Geraniaceae
+1080	Melianthaceae
+1081	Vivianiaceae
+1082	Vitaceae
+1083	Peridiscaceae
+1084	Paeoniaceae
+1085	Altingiaceae
+1086	Hamamelidaceae
+1087	Cercidiphyllaceae
+1088	Daphniphyllaceae
+1089	Crassulaceae
+1090	Aphanopetalaceae
+1091	Tetracarpaeaceae
+1092	Penthoraceae
+1093	Haloragaceae
+1094	Iteaceae
+1095	Grossulariaceae
+1096	Saxifragaceae
+1097	Dilleniaceae
+1098	Aextoxicaceae
+1099	Berberidopsidaceae
+1100	Balanophoraceae
+1101	Olacaceae
+1102	Misodendraceae
+1103	Schoepfiaceae
+1104	Loranthaceae
+1105	Opiliaceae
+1106	Santalaceae
+1107	Droseraceae
+1108	Nepenthaceae
+1109	Drosophyllaceae
+1110	Ancistrocladaceae
+1111	Dioncophyllaceae
+1112	Tamaricaceae
+1113	Frankeniaceae
+1114	Polygonaceae
+1115	Plumbaginaceae
+1116	Rhabdodendraceae
+1117	Simmondsiaceae
+1118	Asteropeiaceae
+1119	Physenaceae
+1120	Amaranthaceae
+1121	Achatocarpaceae
+1122	Caryophyllaceae
+1123	Stegnospermataceae
+1124	Limeaceae
+1125	Lophiocarpaceae
+1126	Barbeuiaceae
+1127	Aizoaceae
+1128	Nyctaginaceae
+1129	Gisekiaceae
+1130	Sarcobataceae
+1131	Phytolaccaceae
+1132	Molluginaceae
+1133	Anacampserotaceae
+1134	Cactaceae
+1135	Portulacaceae
+1136	Talinaceae
+1137	Halophytaceae
+1138	Didiereaceae
+1139	Montiaceae
+1140	Basellaceae
+1141	Hydrostachyaceae
+1142	Loasaceae
+1143	Hydrangeaceae
+1144	Cornaceae
+1145	Curtisiaceae
+1146	Grubbiaceae
+1147	Balsaminaceae
+1148	Marcgraviaceae
+1149	Tetrameristaceae
+1150	Polemonioideae
+1151	Cobaeoideae
+1152	Acanthogilioideae
+1153	Fouquieriaceae
+1154	Lecythidaceae
+1155	Sladeniaceae
+1156	Pentaphylacaceae
+1157	Sapotaceae
+1158	Ebenaceae
+1159	Primulaceae
+1160	Mitrastemonaceae
+1161	Theaceae
+1162	Symplocaceae
+1163	Styracaceae
+1164	Diapensiaceae
+1165	Actinidiaceae
+1166	Roridulaceae
+1167	Sarraceniaceae
+1168	Clethraceae
+1169	Cyrillaceae
+1170	Enkianthoideae
+1171	Monotropoideae
+1172	Arbutoideae
+1173	Cassiopoideae
+1174	Ericoideae
+1175	Harrimanelloideae
+1176	Styphelioideae
+1177	Vaccinioideae
+1178	Icacinaceae
+1179	Metteniusaceae
+1180	Oncothecaceae
+1181	Garryaceae
+1182	Eucommiaceae
+1183	Pauridiantha
+1184	Amphidasya
+1185	Ophiorrhiza
+1186	Hindsia
+1187	Coussarea
+1188	Faramea
+1189	Schradera
+1190	Psychotria
+1191	Palicourea
+1192	Morinda
+1193	Pentanisia
+1194	Serissa
+1195	Paederia
+1196	Hedyotis
+1197	Theligonum
+1198	Rubia
+1199	Mycetia
+1200	Nertera
+1201	Luculia
+1202	Bathysa veraguensis
+1203	Bathysa
+1204	Condaminea
+1205	Dioicodendron
+1206	Elaeagia
+1207	Emmenopterys
+1208	Hippotis
+1209	Macbrideina
+1210	Parachimarrhis
+1211	Pentagonia
+1212	Picardaea
+1213	Pinckneya
+1214	Pogonopus
+1215	Rustia
+1216	Simira
+1217	Sommera
+1218	Wittmackanthus
+1219	Chimarrhis hookeri
+1220	Chimarrhis glabriflora
+1221	Chimarrhis turbinata
+1222	Chimarrhis microcarpa
+1223	Capirona
+1224	Dolicodelphys
+1225	Warszewiczia
+1226	Calycophyllum
+1227	Alseis
+1228	Mussaenda
+1229	Pseudomussaenda
+1230	Retiniphyllum
+1231	Vangueria
+1232	Keetia
+1233	Psydrax
+1234	Greenea
+1235	Aleisanthiopsis
+1236	Aleisanthia
+1237	Ixora
+1238	Wendlandia
+1239	Augusta rivalis
+1240	Augusta longifolia
+1241	Randia
+1242	Genipa
+1243	Gardenia
+1244	Duroia
+1245	Tarenna
+1246	Pavetta
+1247	Tricalysia
+1248	Coffea
+1249	Bertiera
+1250	Didymosalpinx
+1251	Paragenipa
+1252	Maguireothamnus
+1253	Sipanea biflora
+1254	Sipanea stahelii
+1255	Sipanea pratensis
+1256	Sipaneopsis
+1257	Neobertiera
+1258	Posoqueria
+1259	Molopanthera
+1260	Gleasonia
+1261	Ladenbergia
+1262	Cinchona
+1263	Hoffmannia
+1264	Hamelia
+1265	Cosmibuena
+1266	Chione
+1267	Isertia hypoleuca
+1268	Isertia coccinea
+1269	Uncaria
+1270	Sarcocephalus
+1271	Cephalanthus
+1272	Coutaportia ghiesbreghtiana
+1273	Coutaportia guatemalensis
+1274	Hintonia
+1275	Exostema lineatum
+1276	Exostema purpureum
+1277	Erithalis
+1278	Coutarea andrei
+1279	Coutarea hexandra
+1280	Cubanola
+1281	Portlandia
+1282	Isidorea pedicellaris
+1283	Isidorea pungens
+1284	Catesbaea parviflora
+1285	Catesbaea spinosa
+1286	Phyllacanthus
+1287	Bikkia
+1288	Badusa
+1289	Siemensia
+1290	Schimidtottia
+1291	Phialanthus
+1292	Ceratopyxis
+1293	Scolosanthus
+1294	Chiococca
+1295	Asemnantha
+1296	Strumpfia
+1297	Rogiera amoena
+1298	Rogiera cordata
+1299	Neoblakea
+1300	Machaonea
+1301	Allenanthus
+1302	Guettarda speciosa
+1303	Guettarda ferruginea
+1304	Timonius
+1305	Antirhea
+1306	Guettarda crispiflora
+1307	Chomelia
+1308	Guettarda boliviana
+1309	Guettarda odorata
+1310	Javorkaea
+1311	Gonzalagunea veraguensis
+1312	Arachnothryx laniflora
+1313	Arachnothryx fosbergii
+1314	Arachnothryx leucophylla
+1315	Gonzalagunia dicocca
+1316	Gonzalagunia rosea
+1317	Gonzalagunia kallunkii
+1318	Blepharidium
+1319	Suberanthus stellatus
+1320	Suberanthus neriifolius
+1321	Acrosynanthus
+1322	Roigella
+1323	Rachicallis
+1324	Phyllomelia
+1325	Mazaea phialanthoides
+1326	Mazaea shaferi
+1327	Rondeletia sp1
+1328	Rondeletia alaternoides
+1329	Rondeletia odorata
+1330	Rondeletia intermixta
+1331	Rondeletia portoricensis
+1332	Rondeletia pilosa
+1333	Rondeletia inermis
+1334	Gentianaceae
+1335	Loganiaceae
+1336	Gelsemiaceae
+1337	Alstonia scholaris
+1338	Kopsia fruticosa
+1339	Rauvolfia mannii
+1340	Molongum laxum
+1341	Tabernaemontana divaricata
+1342	Chilocarpus suaveolens
+1343	Picralima nitida
+1344	Thevetia peruviana
+1345	Allamanda cathartica
+1346	Plumeria rubra
+1347	Acokanthera oblongifolia
+1348	Nerium oleander
+1349	Strophanthus divaricatus
+1350	Beaumontia grandiflora
+1351	Apocynum androsaemifolium
+1352	Raphionacme welwitschii
+1353	Schlechterella abyssinica
+1354	Hemidesmus indicus
+1355	Cryptostegia grandiflora
+1356	Periploca graeca
+1357	Camptocarpus mauritianus
+1358	Secamone bosseri
+1359	Secamone cristata
+1360	Secamone buxifolia
+1361	Secamone sparsiflora
+1362	Secamone uncinata
+1363	Secamone falcata
+1364	Secamone elliottii
+1365	Secamone parvifolia
+1366	Secamone geayii
+1367	Secamone minutifolia
+1368	Secamone ecoronata
+1369	Pervillaea venenata
+1370	Pervillaea phillipsonii
+1371	Secamonopsis microphylla
+1372	Secamonopsis madagascariensis
+1373	Secamone volubilis
+1374	Fockea capensis
+1375	Riocreuxia burchellii
+1376	Dregea sinensis
+1377	Pergularia daemia
+1378	Pentarrhinum insipidum
+1379	Vincetoxicum nigrum
+1380	Tylophora indica
+1381	Araujia sericifera
+1382	Gonolobus xanthotricus
+1383	Matelea quirosii
+1384	Plocospermataceae
+1385	Oleaceae
+1386	Carlemanniaceae
+1387	Tetrachondraceae
+1388	Calceolariaceae
+1389	Gesneriaceae
+1390	Plantaginaceae
+1391	Scrophulariaceae
+1392	Stilbaceae
+1393	Salvia africana caerulea
+1394	Salvia aurita
+1395	Salvia brachyantha
+1396	Salvia nilotica
+1397	Salvia taraxicifolia
+1398	Salvia verticillata
+1399	Salvia henryi
+1400	Salvia summa
+1401	Salvia roemeriana
+1402	Salvia aethiopis
+1403	Salvia argentea
+1404	Salvia indica
+1405	Salvia bucharica
+1406	Salvia canariensis
+1407	Salvia cadmica
+1408	Salvia candidissima
+1409	Salvia penstemonoides
+1410	Salvia texana
+1411	Salvia amplexicaulis
+1412	Salvia candelabrum
+1413	Salvia disermis
+1414	Salvia verbenaca
+1415	Salvia lavandulifolia
+1416	Salvia lyrata
+1417	Salvia officinalis
+1418	Salvia palestina
+1419	Salvia pratensis
+1420	Salvia ringens
+1421	Salvia sclarea
+1422	Salvia sylvestris
+1423	Salvia staminea
+1424	Salvia viridis
+1425	Salvia viscosa
+1426	Monarda didyma
+1427	Monarda fistulosa
+1428	Monarda menthaefolia
+1429	Origanum laevigatum
+1430	Origanum vulgare
+1431	Thymus alsinoides
+1432	Thymus vulgaris
+1433	Majorana hortensis
+1434	Mentha longifolia
+1435	Mentha rotundifolia
+1436	Rosmarinus officinalis
+1437	Perovskia abrotanoides
+1438	Perovskia atriplicifolia
+1439	Salvia fruticosa
+1440	Salvia glutinosa
+1441	Salvia nubicola
+1442	Salvia digitaloides
+1443	Salvia barrelieri
+1444	Salvia hians
+1445	Salvia polystachya
+1446	Salvia tiliifoilia
+1447	Salvia farinacea
+1448	Salvia coccinea
+1449	Salvia hirsuta
+1450	Salvia cedrocensis
+1451	Salvia involucrata
+1452	Salvia amarissima
+1453	Salvia lycioides
+1454	Salvia microphylla
+1455	Salvia chamaedryoides
+1456	Salvia divinorum
+1457	Salvia greggii
+1458	Salvia guaranitica
+1459	Salvia misella
+1460	Salvia section biflorae
+1461	Salvia elegans
+1462	Salvia uliginosa
+1463	Salvia corrugata
+1464	Salvia subincisa
+1465	Salvia ballotiflora
+1466	Salvia cf.sagittata
+1467	Salvia brandegei
+1468	Salvia dorrii
+1469	Salvia pachyphylla
+1470	Salvia spathacea
+1471	Salvia chionopeplica
+1472	Salvia clevelandii
+1473	Salvia eremostachya
+1474	Salvia columbariae
+1475	Salvia californica
+1476	Salvia greatai
+1477	Dorystaechas hastata
+1478	Dracocephalum grandiflorum
+1479	Dracocephalum moldavica
+1480	Dracocephalum ruyschiana
+1481	Satureja hortensis
+1482	Satureja montana
+1483	Agastache foeniculum
+1484	Agastache mexicana
+1485	Agastache rugosa
+1486	Glechoma hederacea
+1487	Nepeta cataria
+1488	Nepeta tuberosa
+1489	Nepeta faassenii
+1490	Horminum pyrenaicum
+1491	Prunella grandiflora
+1492	Prunella hyssopifolia
+1493	Prunella vulgaris
+1494	Lepechinia chamaedryoides
+1495	Lepechinia calycina
+1496	Lepechinia fragrans
+1497	Melissa officinalis
+1498	Ocimum basilicum
+1499	Lavandula angustifolia
+1500	Lavandula stoechas
+1501	Lavandula latifolia
+1502	Lavandula lanata
+1503	Plectranthus barbatus
+1504	Collinsonia canadensis
+1505	Marrubium incanum
+1506	Marrubium peregrinum
+1507	Marrubium vulgare
+1508	Lamium amplexicaule
+1509	Lamium garganicum
+1510	Lamium album
+1511	Lamium galeobdolon
+1512	Lamium maculatum
+1513	Lamium purpureum
+1514	Stachys lavandulaefolia
+1515	Caryopteris bicolor
+1516	Trichostema dichotomum
+1517	Vitex agnuscastus
+1518	Westringia rosmariniformis
+1519	Phrymaceae
+1520	Orobanchaceae
+1521	Paulowniaceae
+1522	Thomandersiaceae
+1523	Verbenaceae
+1524	Acanthaceae
+1525	Bignoniaceae
+1526	Byblidaceae
+1527	Linderniaceae
+1528	Lentibulariaceae
+1529	Martyniaceae
+1530	Pedaliaceae
+1531	Schlegeliaceae
+1532	Montiniaceae
+1533	Hydroleaceae
+1534	Sphenocleaceae
+1535	Convolvulaceae
+1536	Solanaceae
+1537	Boraginaceae
+1538	Stemonuraceae
+1539	Cardiopteridaceae
+1540	Phyllonomaceae
+1541	Helwingiaceae
+1542	Aquifoliaceae
+1543	Escalloniaceae
+1544	Rousseaceae
+1545	Campanulaceae
+1546	Pentaphragmataceae
+1547	Argophyllaceae
+1548	Phellinaceae
+1549	Alseuosmiaceae
+1550	Stylidiaceae
+1551	Menyanthaceae
+1552	Goodeniaceae
+1553	Calyceraceae
+1554	Asteraceae
+1555	Adoxaceae
+1556	Caprifoliaceae
+1557	Paracryphiaceae
+1558	Pennantiaceae
+1559	Torricelliaceae
+1560	Griseliniaceae
+1561	Pittosporaceae
+1562	Araliaceae
+1563	Myodocarpaceae
+1564	Apiaceae
+1565	Bruniaceae
+1566	Columelliaceae
