@@ -17,6 +17,7 @@
  */
 
 package org.phylotastic.SourcePackages;
+
 /**
  * Author(s); Rutger Vos, Carla Stegehuis
  * Contributed to:
@@ -27,12 +28,12 @@ package org.phylotastic.SourcePackages;
 import java.io.*;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
+import java.util.logging.Level;
 
 import jebl.evolution.trees.RootedTree;
 import jebl.evolution.trees.Tree;
 import jebl.evolution.trees.Utils;
 import org.apache.commons.cli.*;
-import static org.apache.commons.io.FileUtils.deleteDirectory;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.*;
@@ -50,7 +51,7 @@ public class MapReducePruner {
     private static final String environmentVarConfig = "PHYLOTASTIC_MAPREDUCE_CONFIG";
     private static final String environmentVarTree = "PHYLOTASTIC_MAPREDUCE_TREE";
     //
-    private static final Logger logger = Logger.getLogger("org.phylotastic.SourcePackages.MapReducePruner");
+    private static final Logger logger = Logger.getLogger("mapreducepruner.MapReducePruner");
 
     // class: Map
     // ------------------------------------------------------------------------
@@ -183,10 +184,8 @@ public class MapReducePruner {
             double accumulatedBranchLengths = 0;
             int nearestNodeId = 0;
             int tipCount = 0;
-            int nodeCount = 0;
             for(Text node : nodes)
             {
-                nodeCount++;
                 String nodeText = node.toString();
                 traceUtil.recordReduceInput(tipText, nodeText);
                 InternalTreeNode ancestor = InternalTreeNode.parseNode(nodeText);
@@ -208,7 +207,6 @@ public class MapReducePruner {
                 traceUtil.recordReduceOutput(tipText, mrca.toString());
                 context.write(concatTips, new Text(mrca.toString()));
             }
-            System.out.println("seen "+nodeCount+" nodes for tip key "+concatTips);
         }
     }
 
@@ -260,9 +258,7 @@ public class MapReducePruner {
             logger.setLevel(config.getLoggingLevel());
             // process the command line and config.ini configuration options
             config.setOptions(cmdLine);
-            File tempDir = config.getTempDir();
-            if (tempDir.exists())
-                deleteDirectory(tempDir);
+            config.checkOptions();
         }
         catch( ParseException exp ) {
             System.out.println( "MrpMain: Command line error: " + exp.getMessage() );
@@ -295,8 +291,8 @@ public class MapReducePruner {
         try {
             job.waitForCompletion(true);
             logger.info("MRP: end of Hadoop job");
-        } catch ( Exception e ) {
-            e.printStackTrace();
+        } catch ( IOException | InterruptedException | ClassNotFoundException e ) {
+            throw e;
         } finally {
             //*/
             traceUtil.printMapResults();
@@ -308,15 +304,18 @@ public class MapReducePruner {
         String resultFileName = config.getPathTempDir() + "part-r-00000";
         File resultFile = new File(resultFileName);
         // let op, zit ook een Map<> class in Hadoop!!!
-        java.util.Map<Integer, MrpTip> resultMap = treeUtil.readMrpFile(resultFile);
+        java.util.Map<Integer, MrpTip> resultMap = null;
+        try {
+            resultMap = treeUtil.tempSolveTipList(resultFile);
+            //resultMap = treeUtil.makeTipList(resultFile);
+        } catch (IOException e) {
+            throw e;
+        }
         traceUtil.printTipList(resultMap);
-        Tree jebleTree = treeUtil.getJebleTree(resultMap);
+        Tree jebleTree = treeUtil.makeJebleTree(resultMap);
         RootedTree rootedJebleTree = Utils.rootTheTree(jebleTree);
         // logger.info("MRP: start creating newick result");
         String newickTree = Utils.toNewick(rootedJebleTree);
-        // Tree tree = treeUtil.readOutFile(new File(outFileName));
-        // RootedTree rooted = Utils.rootTheTree(tree);
-        // String newick = Utils.toNewick(rooted);
         // logger.info("MRP: run completed; result = " + newickTree + ";");
         System.out.println(newickTree + ";");
         //*/

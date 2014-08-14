@@ -5,13 +5,13 @@
  */
 
 package org.phylotastic.SourcePackages;
+
 /**
  * Author(s); Rutger Vos, Carla Stegehuis
  * Contributed to:
  * Date:
  * Version: 0.1
  */
-
 
 import java.io.*;
 import java.net.MalformedURLException;
@@ -23,6 +23,7 @@ import java.util.Map;
 import java.util.HashMap;
 import org.apache.commons.cli.*;
 import org.apache.commons.cli.Options;                  // brcause ini4j also has getOptions method
+import static org.apache.commons.io.FileUtils.deleteDirectory;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.*;
 import org.apache.log4j.Logger;
@@ -38,7 +39,7 @@ public class MrpConfig {
     //
     private String logLevel;                            // log4j log level
     private final Map<String, Level> logLevels;
-    private final Logger logger = Logger.getLogger("org.phylotastic.SourcePackages.MrpConfig");
+    private final Logger logger = Logger.getLogger("mapreducepruner.MrpConfig");
     
     private Ini configIni;                              // ini4j Ini file object
     private File configFile;                            // path to config file
@@ -210,6 +211,21 @@ public class MrpConfig {
         logger.info("MrpConfig: -----------------------------------");
         }
     
+    // checkOptions
+    // ------------------------------------------------------------------------
+    /** check for missing or faulty options
+     * @throws java.io.IOException
+    */
+    public void checkOptions() throws IOException {
+        this.checkInputFile();
+        this.checkTempDir();
+        
+        // ==> aanvullen met tests voor DataDir
+        // en andere belangrijke opties.
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        
+    }
+    
     // configFile
     // ------------------------------------------------------------------------
     /** set het config File object
@@ -244,12 +260,18 @@ public class MrpConfig {
     */
     private void readConfigFile() throws IOException {
         this.configIni = new Ini(this.configFile);
-        this.setDataRoot(this.configIni.get("Main", "dataRoot"));
-//        this.setInputFile(this.configIni.get("Main", "input"));
-        this.setTempDir(this.configIni.get("Main", "tempDir"));
-        this.setHashDepth(this.configIni.get("Main", "hashDepth"));
-        this.setTreeUrl(this.configIni.get("Tree", "default"));
-        this.setDataDir(this.configIni.get("Tree", "dataDir"));
+        String item = this.configIni.get("Main", "dataRoot");
+        if (item != null) this.setDataRoot(item);
+        item = this.configIni.get("Main", "input");
+        if (item != null) this.setInputFile(item);
+        item = this.configIni.get("Main", "tempDir");
+        if (item != null) this.setTempDir(item);
+        item = this.configIni.get("Main", "hashDepth");
+        if (item != null) this.setHashDepth(item);
+        item = this.configIni.get("Tree", "default");
+        if (item != null) this.setTreeUrl(item);
+        item = this.configIni.get("Tree", "dataDir");
+        if (item != null) this.setDataDir(item);
     }
     
     // logLevel
@@ -337,6 +359,15 @@ public class MrpConfig {
         return this.inputFilePath;
     }
     
+    /** check if input file was specified
+    */
+    public void checkInputFile() {
+        if (this.inputFile == null)
+            throw new IllegalArgumentException("No input file has been specified");
+        else {
+        }
+    }
+    
     // dataRoot directory
     // ------------------------------------------------------------------------
     /** set the dataRoot directory value
@@ -387,6 +418,18 @@ public class MrpConfig {
     */
     public String getPathTempDir() {
         return this.tempDirPath;
+    }
+    
+    /** check if input file was specified
+     * @throws java.io.IOException
+    */
+    public void checkTempDir() throws IOException {
+        if (this.tempDir == null)
+            throw new IllegalArgumentException("No temp directory has been specified");
+        else {          
+            if (this.tempDir.exists())
+                deleteDirectory(this.tempDir);
+        }
     }
 
     // hashDepth
@@ -510,7 +553,6 @@ public class MrpConfig {
         // make the taxon part of the path
         String safeString = StringUtils.capitalize(taxon);
         safeString = this.makeSafeString(safeString);
-        //safeString = StringUtils.capitalize(safeString);
         logger.info("MrpConfig: taxon encoded = " + safeString );
         StringBuilder taxonPath = new StringBuilder(this.getPathDataDir());
         for ( int i = 0; i <= this.hashDepth; i++ )
