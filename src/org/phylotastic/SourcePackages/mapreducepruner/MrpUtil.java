@@ -1,17 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-package org.phylotastic.SourcePackages;
-
 /**
  * Author(s); Rutger Vos, Carla Stegehuis
  * Contributed to:
  * Date:
  * Version: 0.1
  */
+
+package org.phylotastic.SourcePackages.mapreducepruner;
 
 import java.io.*;
 
@@ -21,19 +15,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import jebl.evolution.graphs.Node;
-import jebl.evolution.taxa.Taxon;
-import jebl.evolution.trees.Tree;
-import jebl.evolution.trees.SimpleTree;
-//import jebl.evolution.trees.RootedTree;
+import org.phylotastic.SourcePackages.mrppath.*;
+import org.phylotastic.SourcePackages.mrptree.*;
 
-public class MrpTree {
+public class MrpUtil {
 
     // constructor
     // ------------------------------------------------------------------------
     /** Construct a util object
     */
-    public MrpTree() {
+    public MrpUtil() {
     }
 
     /**
@@ -42,10 +33,10 @@ public class MrpTree {
      * @return line
      * @throws java.io.IOException
      */
-    public String readTaxonPath(File taxonFile) throws IOException
+    public String readTaxonPath(File pathFile) throws IOException
     {
         String line = null;
-        try (BufferedReader reader = new BufferedReader(new FileReader(taxonFile))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(pathFile))) {
             line = reader.readLine();
         } catch ( IOException e ) {
             throw e;
@@ -58,12 +49,12 @@ public class MrpTree {
      * @param taxonPath
      * @return nodeList
      */
-    public List<TreeNode> getTaxonNodes(String taxonPath)
+    public List<PathNode> getTaxonNodes(String taxonPath)
     {
-        List<TreeNode> nodeList = new ArrayList<>();
+        List<PathNode> nodeList = new ArrayList<>();
         String[] parts = taxonPath.split("\\|");
         for (String part : parts) {
-            nodeList.add(TreeNode.parseNode(part));
+            nodeList.add(PathNode.parseNode(part));
         }
         // System.out.println("nodeList =" + nodeList);
         return nodeList;
@@ -80,24 +71,24 @@ public class MrpTree {
      * add new example!!
      * 
      * first all records are read in stored into tipList
-     * a 2-dimensional array (HashMap), like below:
-     * 
-     *          MrpTip
-     * tip      TreeNode    ancestors
-     * ----     -----------------------------------------------
-     * 1000     1000        { 1001:11.0, 1002:11.0 }
-     * 1003     1003        { 1004:11.0 }
-     * 1005     1004        { 1007:11.0, 1006:11.0 }
-     * 1009     1009        { 1014:13.0, 1011:13.0, 1012:13.0 }
-     * 1010     1010        { 1012:13.0, 1011:13.0 }
-     * 
-     * TreeNode and ancestorlist are stored in the helper class MrpTip
+ a 2-dimensional array (HashMap), like below:
+ 
+          PathTip
+ tip      PathNode    ancestors
+ ----     -----------------------------------------------
+ 1000     1000        { 1001:11.0, 1002:11.0 }
+ 1003     1003        { 1004:11.0 }
+ 1005     1004        { 1007:11.0, 1006:11.0 }
+ 1009     1009        { 1014:13.0, 1011:13.0, 1012:13.0 }
+ 1010     1010        { 1012:13.0, 1011:13.0 }
+ 
+ PathNode and ancestorlist are stored in the helper class PathTip
      * 
      * @param mrpFile
      * @return 
      */
-    public Map<Integer, MrpTip> makeTipList(File mrpFile) throws Exception{
-        Map<Integer, MrpTip> tipList = new HashMap<>();
+    public Map<Integer, PathTip> makeTipList(File mrpFile) throws Exception{
+        Map<Integer, PathTip> tipList = new HashMap<>();
         try {
             // build list of all the ancestors for all nodes
             BufferedReader reader = new BufferedReader(new FileReader(mrpFile));
@@ -107,16 +98,16 @@ public class MrpTree {
             while( line != null ) {
                 // split line into tipSet and ancestor
                 String[] tuple = line.split("\t");
-                TreeNodeSet tipSet = TreeNodeSet.parseTreeNodeSet(tuple[0]);
-                InternalTreeNode ancestor = InternalTreeNode.parseNode(tuple[1]);
+                PathNodeSet tipSet = PathNodeSet.parseTreeNodeSet(tuple[0]);
+                PathNodeInternal ancestor = PathNodeInternal.parseNode(tuple[1]);
 
                 // iterate over tips in focal line, init/extend list of ancestors for each tip
-                for ( TreeNode tip : tipSet.getTipSet() )
+                for ( PathNode tip : tipSet.getTipSet() )
                 {
                     int tipLabel = tip.getLabel();
-                    MrpTip tipNode = tipList.get(tipLabel);
+                    PathTip tipNode = tipList.get(tipLabel);
                     if (tipNode == null) {
-                        tipNode = new MrpTip(tip);
+                        tipNode = new PathTip(tip);
                         tipList.put(tipLabel, tipNode);
                     }
                     tipNode.ancestors.add(ancestor);
@@ -148,8 +139,8 @@ public class MrpTree {
      * @return 
      * @throws java.io.IOException 
      */
-    public Map<Integer, MrpTip> tempSolveTipList(File mrpFile) throws IOException{
-        Map<String, InternalTreeNode> inputLines = new HashMap<>();
+    public Map<Integer, PathTip> tempSolveTipList(File mrpFile) throws IOException{
+        Map<String, PathNodeInternal> inputLines = new HashMap<>();
         try {
             // build list of all the ancestors for all nodes
             BufferedReader reader = new BufferedReader(new FileReader(mrpFile));
@@ -160,12 +151,12 @@ public class MrpTree {
                 // split line into tipSet and ancestor
                 String[] tuple = line.split("\t");
                 String tipSet = tuple[0];
-                InternalTreeNode thisAncestor = InternalTreeNode.parseNode(tuple[1]);
+                PathNodeInternal thisAncestor = PathNodeInternal.parseNode(tuple[1]);
                 if (!inputLines.containsKey(tipSet)) {
                     inputLines.put(tipSet, thisAncestor);
                 }
                 else {
-                    InternalTreeNode thatAncestor = inputLines.get(tipSet);
+                    PathNodeInternal thatAncestor = inputLines.get(tipSet);
                     if (thatAncestor.getLabel() > thisAncestor.getLabel())
                         thatAncestor.setLength(thisAncestor.getLength() + thatAncestor.getLength());
                     else {
@@ -179,16 +170,16 @@ public class MrpTree {
         } catch ( IOException e ) {
             throw e;
         }
-        Map<Integer, MrpTip> tipList = new HashMap<>();
+        Map<Integer, PathTip> tipList = new HashMap<>();
         for (String key : inputLines.keySet()) 
         {                    
-            TreeNodeSet tipSet = TreeNodeSet.parseTreeNodeSet(key);
+            PathNodeSet tipSet = PathNodeSet.parseTreeNodeSet(key);
             // iterate over tips in focal line, init/extend list of ancestors for each tip
-            for ( TreeNode tip : tipSet.getTipSet() ) {
+            for ( PathNode tip : tipSet.getTipSet() ) {
                 int tipLabel = tip.getLabel();
-                MrpTip tipNode = tipList.get(tipLabel);
+                PathTip tipNode = tipList.get(tipLabel);
                 if (tipNode == null) {
-                    tipNode = new MrpTip(tip);
+                    tipNode = new PathTip(tip);
                     tipList.put(tipLabel, tipNode);
                 }
                 tipNode.ancestors.add(inputLines.get(key));
@@ -205,57 +196,49 @@ public class MrpTree {
      */
 
     /**
-     * method getJebleTree
-     * ----------------------------------------------------------
-     * the second part of the method loops through the given MrpTip list
-     * and converts it's contents into a jebl simpleTree structure,
-     * that shóuld contain the exact tree that we are after.
+     * method makeTree
+ ----------------------------------------------------------
+ the second part of the method loops through the given PathTip list
+ and converts it's contents into a jebl simpleTree structure,
+ that shóuld contain the exact tree that we are after.
      * 
      * @param tipList
      * @return 
      */
-    public Tree makeJebleTree(Map<Integer, MrpTip> tipList) {
-        SimpleTree jebleTree = new SimpleTree();
+    public Tree makeTree(Map<Integer, PathTip> tipList) {
+        Tree tree = new Tree();
         
-            // create mapping from our internal nodes to JEBL nodes
-            Map<InternalTreeNode,Node> processedAncestorNodes = new HashMap<>();
-            Double childLength = 0.0;
-            Double parentLength = 0.0;    
+            // create mapping from our pathnodes to treenodes
             // iterate over tips
             for ( Integer tipLabel : tipList.keySet() )
             {
-                MrpTip tipNode = tipList.get(tipLabel);
-                // create JEBL tip for focal tip
-                Taxon tipTaxon = Taxon.getTaxon(tipNode.stringLabel);
-                Node jeblChild = jebleTree.createExternalNode(tipTaxon);
-                childLength = tipNode.tip.getLength();
-
-                // fetch sorted list of ancestors, from young to old
+                PathTip tipNode = tipList.get(tipLabel);
+                // create node for focal tip
+                TreeNode child = tree.addNode(tipNode.tip.getLabel(), "", tipNode.tip.getLength());
+                // iterate over ancestors, sorted from young to old
                 Collections.sort(tipNode.ancestors);
-                for ( InternalTreeNode ancestor : tipNode.ancestors )
+                for ( PathNodeInternal ancestor : tipNode.ancestors )
                 {
-                    Node jeblParent = processedAncestorNodes.get(ancestor);
-                    if ( jeblParent != null ) {
-                        // already seen this node along another path, don't continue farther
-                        // processing youngest first, so thís parents' ancestors 
-                        // should already have been done.
-                        jebleTree.addEdge(jeblParent, jeblChild, childLength);
+                    int ancestorID = ancestor.getLabel();
+                    if (tree.hasNode(ancestorID)) {
+                        // already seen this node along another path
+                        TreeNode parent = tree.getNode(ancestorID);
+                        tree.setChild(parent, child);
+                        // don't continue farther, processing youngest first, 
+                        // so thís parents' ancestors should already have been done.
                         break;
                     }
                     else {
-                        // not yet seen;
-                        // instantiate new internal (ancestor) node
-                        jeblParent = jebleTree.createInternalNode(new ArrayList<Node>());
-                        parentLength = ancestor.getLength();
-                        processedAncestorNodes.put(ancestor, jeblParent);
-                        jebleTree.addEdge(jeblParent, jeblChild, childLength);
+                        // not yet seen this ancestor;
+                        // instantiate new ancestor node
+                        TreeNode parent = tree.addNode(ancestorID, "", ancestor.getLength());
+                        tree.setChild(parent, child);
                         // continue processing this (younger) ancestors' possible own (older) ancestor
                         // so this ancestor becomes the current child and the loop continues
-                        jeblChild = jeblParent;
-                        childLength = parentLength;
+                        child = parent;
                     }
                 }
             }
-        return jebleTree;
+        return tree;
     }
 }

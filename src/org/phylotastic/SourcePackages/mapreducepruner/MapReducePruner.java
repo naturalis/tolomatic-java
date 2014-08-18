@@ -1,4 +1,30 @@
-/*
+/**
+ * Author(s); Rutger Vos, Carla Stegehuis
+ * Contributed to:
+ * Date:
+ * Version: 0.1
+ */
+package org.phylotastic.SourcePackages.mapreducepruner;
+
+import java.io.*;
+import java.security.NoSuchAlgorithmException;
+import java.util.*;
+import java.util.logging.Level;
+
+import org.apache.commons.cli.*;
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.*;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.*;
+import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
+import org.apache.log4j.Logger;
+
+import org.phylotastic.SourcePackages.mrppath.*;
+import org.phylotastic.SourcePackages.mrptree.*;
+
+/**
  * Example of how to use org.apache.commons.cli to parse
  * command line arguments
  *
@@ -16,36 +42,9 @@
  *  -b -config config.ini -r "c:\Users\Jan\Mijn netbeans\Mrp\"
  */
 
-package org.phylotastic.SourcePackages;
-
-/**
- * Author(s); Rutger Vos, Carla Stegehuis
- * Contributed to:
- * Date:
- * Version: 0.1
- */
-
-import java.io.*;
-import java.security.NoSuchAlgorithmException;
-import java.util.*;
-import java.util.logging.Level;
-
-import jebl.evolution.trees.RootedTree;
-import jebl.evolution.trees.Tree;
-import jebl.evolution.trees.Utils;
-import org.apache.commons.cli.*;
-import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.*;
-import org.apache.hadoop.io.Text;
-import org.apache.hadoop.mapreduce.*;
-import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
-import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
-import org.apache.log4j.Logger;
-
 public class MapReducePruner {
     private static MrpConfig config;
-    private static MrpTree treeUtil;
+    private static MrpUtil treeUtil;
     private static MrpTrace traceUtil;
     private static final String defaultConfigName = "Config.ini";
     private static final String environmentVarConfig = "PHYLOTASTIC_MAPREDUCE_CONFIG";
@@ -99,8 +98,8 @@ public class MapReducePruner {
             traceUtil.recordTaxonFile(taxonName, taxonFile);
             String taxonPath = treeUtil.readTaxonPath(taxonFile);
             traceUtil.recordTaxonPath(taxonName, taxonPath);
-            List<TreeNode> taxonNodes = treeUtil.getTaxonNodes(taxonPath);
-            TreeNode taxonTip = taxonNodes.get(0);
+            List<PathNode> taxonNodes = treeUtil.getTaxonNodes(taxonPath);
+            PathNode taxonTip = taxonNodes.get(0);
             for ( int i = 1; i < taxonNodes.size(); i++ ) {
                 traceUtil.recordMapOutput(taxonName, taxonNodes.get(i).toString(), taxonTip.toString());
                 context.write(new Text(taxonNodes.get(i).toString()), new Text(taxonTip.toString())); // notice the key inversion here
@@ -136,16 +135,15 @@ public class MapReducePruner {
         public void reduce(Text node, Iterable<Text> nodeTips, Context context) throws IOException, InterruptedException
         {
             String nodeString = node.toString();
-//            traceUtil.recordCombineInput(nodeString, "dummy");
             // this will become a sorted list of tips
-            TreeNodeSet tipSet = new TreeNodeSet();
+            PathNodeSet tipSet = new PathNodeSet();
             for (Text nodeTip : nodeTips) {
                 String tipText = nodeTip.toString();
-                tipSet.addTip(TreeNode.parseNode(tipText));
+                tipSet.addTip(PathNode.parseNode(tipText));
                 traceUtil.recordCombineInput(nodeString, tipText);
             }
-            TreeNode n = TreeNode.parseNode(node.toString());
-            InternalTreeNode ancestor = new InternalTreeNode(n.getLabel(),n.getLength(),tipSet.getSize());
+            PathNode n = PathNode.parseNode(node.toString());
+            PathNodeInternal ancestor = new PathNodeInternal(n.getLabel(),n.getLength(),tipSet.getSize());
             traceUtil.recordCombineOutput(nodeString, tipSet.toString(), ancestor.toString());
             context.write(new Text(tipSet.toString()), new Text(ancestor.toString()));
         }
@@ -188,7 +186,7 @@ public class MapReducePruner {
             {
                 String nodeText = node.toString();
                 traceUtil.recordReduceInput(tipText, nodeText);
-                InternalTreeNode ancestor = InternalTreeNode.parseNode(nodeText);
+                PathNodeInternal ancestor = PathNodeInternal.parseNode(nodeText);
                 accumulatedBranchLengths += ancestor.getLength();
                 int myTipCount = ancestor.getTipCount();
 
@@ -203,7 +201,7 @@ public class MapReducePruner {
                 }
             }
             if ( nearestNodeId > 0 ) {
-                InternalTreeNode mrca = new InternalTreeNode(nearestNodeId,accumulatedBranchLengths,tipCount);
+                PathNodeInternal mrca = new PathNodeInternal(nearestNodeId,accumulatedBranchLengths,tipCount);
                 traceUtil.recordReduceOutput(tipText, mrca.toString());
                 context.write(concatTips, new Text(mrca.toString()));
             }
@@ -225,7 +223,7 @@ public class MapReducePruner {
         config = new MrpConfig( defaultConfigName,
                                 environmentVarConfig,
                                 environmentVarTree);
-        treeUtil = new MrpTree();
+        treeUtil = new MrpUtil();
         traceUtil = new MrpTrace();
         
         // comand line options
@@ -304,7 +302,7 @@ public class MapReducePruner {
         String resultFileName = config.getPathTempDir() + "part-r-00000";
         File resultFile = new File(resultFileName);
         // let op, zit ook een Map<> class in Hadoop!!!
-        java.util.Map<Integer, MrpTip> resultMap = null;
+        java.util.Map<Integer, PathTip> resultMap = null;
         try {
             resultMap = treeUtil.tempSolveTipList(resultFile);
             //resultMap = treeUtil.makeTipList(resultFile);
@@ -312,10 +310,10 @@ public class MapReducePruner {
             throw e;
         }
         traceUtil.printTipList(resultMap);
-        Tree jebleTree = treeUtil.makeJebleTree(resultMap);
-        RootedTree rootedJebleTree = Utils.rootTheTree(jebleTree);
+        Tree tree = treeUtil.makeTree(resultMap);
+        tree.rootTheTree();
         // logger.info("MRP: start creating newick result");
-        String newickTree = Utils.toNewick(rootedJebleTree);
+        String newickTree = tree.toNewick();
         // logger.info("MRP: run completed; result = " + newickTree + ";");
         System.out.println(newickTree + ";");
         //*/

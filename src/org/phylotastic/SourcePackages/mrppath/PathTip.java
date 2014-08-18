@@ -1,14 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-package org.phylotastic.SourcePackages;
-
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Author(s); Rutger Vos, Carla Stegehuis
  * Contributed to:
@@ -16,18 +5,23 @@ import java.util.List;
  * Version: 0.1
  */
 
-public class MrpTip {
+package org.phylotastic.SourcePackages.mrppath;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class PathTip {
     public int label;
     public String stringLabel;
-    public TreeNode tip;
-    public List<InternalTreeNode> ancestors;
+    public PathNode tip;
+    public List<PathNodeInternal> ancestors;
     
 
     // constructor
     // ------------------------------------------------------------------------
     /** Construct a config object
     */
-    public MrpTip() {
+    public PathTip() {
         this.label = 0;
         this.stringLabel = String.valueOf(label);
         this.tip = null;
@@ -40,7 +34,7 @@ public class MrpTip {
     /** Construct a config object
      * @param _tip
     */
-    public MrpTip(TreeNode _tip) {
+    public PathTip(PathNode _tip) {
         this.label = _tip.getLabel();
         this.stringLabel = String.valueOf(label);
         this.tip = _tip;

@@ -8,8 +8,8 @@
 //import org.phylotastic.SourcePackages.MapReducePruner;
 //
 ///**
-// * Created by carla on 6-6-14.
-// */
+//* Created by carla on 6-6-14.
+//*/
 //public class MapReducePrunerTest extends Suite{
 //
 //    //Constructor

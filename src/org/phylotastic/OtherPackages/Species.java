@@ -1,4 +1,4 @@
-/**
+package org.phylotastic.OtherPackages; /**
  * Created by carla on 13-5-14.
  */
 
@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.FileInputStream;
 import java.util.Scanner;
 
-public class Soorten {
+public class Species {
     static ArrayList<String> lijst = new ArrayList<String>();
 
     public static void main(String[] args)  throws IOException {
@@ -22,7 +22,7 @@ public class Soorten {
          * - in every taxon name that includes an underscore, this has been changed to a space
          */
 
-        String fileName = "data/Soorten.txt";
+        String fileName = "data/Species.txt";
         File file = new File(fileName);
         Scanner inFile = new Scanner(file);
         StringBuffer sb = new StringBuffer();
@@ -42,7 +42,7 @@ public class Soorten {
 
         try {
             PrintStream out = new PrintStream(new FileOutputStream(
-                    "data/OutFileSoorten.txt"));
+                    "data/OutFileSpecies.txt"));
             for (String Soort: lijst){
                 out.println(Soort);
             }

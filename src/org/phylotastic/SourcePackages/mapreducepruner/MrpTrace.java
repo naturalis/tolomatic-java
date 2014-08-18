@@ -1,22 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-package org.phylotastic.SourcePackages;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Map;
-
 /**
  * Author(s); Rutger Vos, Carla Stegehuis
  * Contributed to:
  * Date:
  * Version: 0.1
  */
+
+package org.phylotastic.SourcePackages.mapreducepruner;
+
+import org.phylotastic.SourcePackages.mrppath.PathTip;
+import org.phylotastic.SourcePackages.mrppath.PathNodeInternal;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Map;
 
 public class MrpTrace {
     private final ArrayList<String> mapResults = new ArrayList<>();
@@ -109,15 +105,15 @@ public class MrpTrace {
     
     // resultMap
     // ------------------------------------------------------------------------
-    public void printTipList(Map<Integer, MrpTip> tipList) {
+    public void printTipList(Map<Integer, PathTip> tipList) {
         System.out.println();
         System.out.println("Tip list");
         System.out.println("------------------------------");
         for (int tipLabel : tipList.keySet()) {
-            MrpTip tip = tipList.get(tipLabel);
+            PathTip tip = tipList.get(tipLabel);
             StringBuilder tipTekst = new StringBuilder(tip.stringLabel + " : " + String.valueOf(tip.tip.getLength()) + " :");
             Collections.sort(tip.ancestors);
-            for (InternalTreeNode ancestor : tip.ancestors) {
+            for (PathNodeInternal ancestor : tip.ancestors) {
                 tipTekst.append(" => ");
                 tipTekst.append(ancestor.toString());
             }
