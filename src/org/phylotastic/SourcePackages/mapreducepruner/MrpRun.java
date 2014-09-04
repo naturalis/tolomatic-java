@@ -1,18 +1,72 @@
+ /** 
+ * -----------------------------------------------------------------------------
+ * This proces extracts a subset from an existing tree and removes any superfluous
+ * internal nodes. For instance taking the subset A, C, D from the imaginary tree:
+ *
+ *  A    B   C   D   E
+ *   \  /   /   /   /
+ *   (n4)  /   /   /
+ *     \  /   /   /
+ *     (n3)  /   /
+ *       \  /   /
+ *       (n2)  /
+ *         \  /
+ *         (n1)
+ *
+ * step 1 (map-1/reduce-1) results in the tree:
+ *
+ *  A        C   D
+ *   \      /   /
+ *   (n4)  /   /
+ *     \  /   /
+ *     (n3)  /
+ *       \  /
+ *       (n2)
+ *         \
+ *         (n1)
+ *
+ * with superfluous nodes like (n1) and (n4). In two further steps 
+ * these nodes are removed, resulting in the tree:
+ *
+ *  A        C   D
+ *   \      /   /
+ *    \    /   /	
+ *     \  /   /
+ *     (n3)  / 
+ *       \  /
+ *       (n2)
+ *
+ * Step 2 (map-2/reduce-2) removes any unbranched internal nodes like (n1)
+ * Step 3 (map-3/reduce-3) removes any remaining internal nodes that subtend
+ * only 1 tip like (n4).
+ *
+ * The names of the extracted taxons are carried all the way to reduce-3,
+ * where they are re-attached to the concerning (external) node, giving:
+ *
+ *  A:Agoracea
+ *   \
+ *    \    C:Catonacea
+ *     \  /
+ *     (n3)  D:Draconacea	
+ *       \  /
+ *       (n2)
+ * 
+ * -----------------------------------------------------------------------------
+ */	
+
 package org.phylotastic.SourcePackages.mapreducepruner;
 
 import java.io.File;
 import java.io.IOException;
-
 import org.phylotastic.SourcePackages.mrpconfig.MrpConfig;
-
 import org.apache.log4j.Logger;
-
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.*;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
+import org.apache.hadoop.mapreduce.lib.input.KeyValueTextInputFormat;
 
 public class MrpRun {
     // configuration data like paths to files, etc.
@@ -112,7 +166,7 @@ public class MrpRun {
         jobPass2.setJarByClass(MrpPass2.class);
         jobPass2.setMapperClass(MrpPass2.Pass2Map.class);
         jobPass2.setReducerClass(MrpPass2.Pass2Reduce.class);
-        jobPass2.setInputFormatClass(TextInputFormat.class);
+        jobPass2.setInputFormatClass(KeyValueTextInputFormat.class);
         jobPass2.setOutputFormatClass(TextOutputFormat.class);
         jobPass2.setOutputKeyClass(Text.class);
         jobPass2.setOutputValueClass(Text.class);
@@ -138,7 +192,7 @@ public class MrpRun {
         jobPass3.setJarByClass(MrpPass3.class);
         jobPass3.setMapperClass(MrpPass3.Pass3Map.class);
         jobPass3.setReducerClass(MrpPass3.Pass3Reduce.class);
-        jobPass3.setInputFormatClass(TextInputFormat.class);
+        jobPass3.setInputFormatClass(KeyValueTextInputFormat.class);
         jobPass3.setOutputFormatClass(TextOutputFormat.class);
         jobPass3.setOutputKeyClass(Text.class);
         jobPass3.setOutputValueClass(Text.class);
@@ -153,5 +207,5 @@ public class MrpRun {
             throw e;
         } finally {
         }
-    }    
+    }
 }
