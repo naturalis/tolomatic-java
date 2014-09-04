@@ -1,10 +1,10 @@
+package org.phylotastic.SourcePackages.mrppath;
 /**
  * Author(s); Rutger Vos, Carla Stegehuis
  * Contributed to:
  * Date:
  * Version: 0.1
  */
-package org.phylotastic.SourcePackages.mrppath;
 
 import java.io.DataInput;
 import java.io.DataOutput;
@@ -15,48 +15,156 @@ import org.apache.log4j.Logger;
 
 /**
  * PathNode class
- ----description----
+ * The Pathnode class is a helper class for the 
+ * map/reduce/pruner program.
+ * Pathnode objects help to store and convert
+ * nodes in the paths from the taxcons to their
+ * roots.
+ * 
  */
-public class PathNode implements WritableComparable<PathNode> {
+public class PathNode implements Comparable<PathNode>, WritableComparable<PathNode> {
+    // this
     int mLabel;
     double mLength;
-    static Logger logger = Logger.getLogger("org.phylotastic.SourcePackages.PathNode");
+    String mName;
+    
+    // static
+    static Logger logger;
 
-
+    /**
+     * Constructor
+     *
+     * @param label
+     * @param length
+     */
     public PathNode(int label,double length) {
         mLabel = label;
         mLength = length;
+        mName = "";
     }
 
+    /**
+     * Constructor
+     *
+     * @param label
+     * @param length
+     * @param name
+     */
+    public PathNode(int label,double length, String name) {
+        mLabel = label;
+        mLength = length;
+        mName = name;
+    }
+
+    /**
+     * Static method to create a pathnode from
+     * it's string representation
+     *
+     * @param node
+     * @return
+     */
     public static PathNode parseNode(String node) {
-//        logger.info("node " + node);
         String[] parts = node.split(":");
-//        logger.info("parts 0 " + Integer.parseInt(parts[0]));
-//        logger.info("parts 1 " + Double.parseDouble(parts[1]));
-        return new PathNode(Integer.parseInt(parts[0]),Double.parseDouble(parts[1]));
+        if (parts.length == (int)2)
+            return new PathNode(Integer.parseInt(parts[0]),Double.parseDouble(parts[1]));
+        else if (parts.length == (int)3)
+            return new PathNode(Integer.parseInt(parts[0]),Double.parseDouble(parts[1]), parts[2]);
+            else
+                return null;
     }
 
+    /**
+     * Returns the string representation
+     * of this pathnode
+     */
     @Override
     public String toString () {
-        return mLabel + ":" + mLength;
+        if (mName.isEmpty())
+            return mLabel + ":" + mLength;
+        else
+            return mLabel + ":" + mLength + ":" + mName;
     }
 
+    /**
+     * set this node's label (ID)
+     *
+     * @param label
+     */
     public void setLabel (int label) {
         mLabel = label;
     }
 
+    /**
+     * Get this node's label
+     *
+     * @return
+     */
     public int getLabel () {
         return mLabel;
     }
 
+    /**
+     * Set this node's length
+     * i.e. the length between it and its parent's node
+     *
+     * @param length
+     */
     public void setLength (double length) {
         mLength = length;
     }
 
+    /**
+     * Get this node's legth
+     *
+     * @return
+     */
     public double getLength () {
         return mLength;
     }
 
+    /**
+     * Set this (external) node's name
+     *
+     * @param name
+     */
+    public void setName (String name) {
+        mName = name;
+    }
+
+    /**
+     * Return this (external) node's name
+     *
+     * @return
+     */
+    public String getName () {
+        return mName;
+    }
+
+    /**
+     * compareTo implements (part of) the Comparable<> interface
+     * compareTo implements (part of) the WritableComparable interface
+     * 
+     * returns:
+     *          -1 if that node's label is < this node's label
+     *           0 if that node's label is = this node's label
+     *          +1 if that node's label is > this node's label
+     * 
+     * @param that
+     * @return 
+     */
+    @Override
+    public int compareTo(PathNode that) {
+        int thisValue = this.getLabel();
+        int thatValue = that.getLabel();
+        return (thatValue < thisValue ? -1 : (thatValue > thisValue ? 1 : 0));
+    }
+
+    /**
+     * readFields implements (part of) the WritableComparable interface
+     * 
+     * @param in
+     * @throws java.io.IOException
+     */
     @Override
     public void readFields(DataInput in) throws IOException {
         this.setLabel(in.readInt());
@@ -64,19 +172,17 @@ public class PathNode implements WritableComparable<PathNode> {
         this.setLength(in.readDouble());
     }
 
+    /**
+     * write implements (part of) the WritableComparable interface
+     * 
+     * @param out
+     * @throws java.io.IOException
+     */
     @Override
     public void write(DataOutput out) throws IOException {
         out.writeInt(this.getLabel());
         out.writeChar(':');
         out.writeDouble(this.getLength());
-    }
-
-    @Override
-    public int compareTo(PathNode other) {
-        int thisValue = this.getLabel();
-        int thatValue = other.getLabel();
-        return (thisValue > thatValue ? -1 : (thisValue==thatValue ? 0 : 1));
-
     }
 
     @Override
@@ -89,4 +195,10 @@ public class PathNode implements WritableComparable<PathNode> {
         }
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + this.mLabel;
+        return hash;
+    }
 }

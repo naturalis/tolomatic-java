@@ -1,59 +1,91 @@
-/**
- * Author(s); Rutger Vos, Carla Stegehuis
- * Contributed to:
- * Date:
- * Version: 0.1
- */
 package org.phylotastic.SourcePackages.mrppath;
 
-import java.util.*;
-import org.apache.log4j.Logger;
+import java.util.TreeSet;
 
-/**
- *PathNodeSet class
- ----description----
- */
 public class PathNodeSet {
-    private Set<PathNode> mTipSet = new HashSet<>();
-    static Logger logger = Logger.getLogger("org.phylotastic.SourcePackages.TreeNodeSet");
+    private TreeSet<PathNode> mTipSet;
+    /**
+    * This class maintains a set of PathNodes in a TreeSet 
+    * and contains some helper methods for it.
+    * 
+    * A java.util.TreeSet is used instead of a HashSet, because TreeSet 
+    * implements the SortedSet<> interface; each pathNode added is inserted 
+    * in it's correct place in the following order, according to it's (int)
+    * label. In order for this to work PathNode must implement the Comparable
+    * interface and so have an implemented compareTo() method.
+    */
 
-    public static PathNodeSet parseTreeNodeSet (String tipSet) {
-        String[] nodes = tipSet.split("\\|");
-//        logger.info("nodes " + Arrays.toString(nodes));
+    /**
+     * Constructor
+     * Creates an empty PathNode set
+     */
+    public PathNodeSet() {
+        super();
+        mTipSet = new TreeSet<>();
+    }
+
+    /**
+     * Static method to create a filled pathnodeset from
+     * it's string representation
+     *
+     * @param nodeList
+     * @return
+     */
+    public static PathNodeSet parsePathNodeSet (String nodeList) {
+        String[] nodes = nodeList.split("\\|");
         PathNodeSet result = new PathNodeSet();
         for (String node : nodes) {
-            result.addTip(PathNode.parseNode(node));
+            result.addNode(PathNode.parseNode(node));
         }
-//        logger.info("result na vullen " + result);
         return result;
     }
 
-    public void addTip(PathNode node) {
+    /**
+     * Add a node to this set
+     *
+     * @param node
+     */
+    public void addNode(PathNode node) {
         mTipSet.add(node);
     }
 
+    /**
+     * Return the number of nodes in this set
+     *
+     * @return
+     */
     public int getSize() {
         return mTipSet.size();
     }
 
-    public Set<PathNode> getTipSet() {
-        return mTipSet;
+    /**
+     * Return the (adress of the) TreeSet that 
+     * contains the pathnodeset
+     *
+     * @return
+     */
+    public TreeSet<PathNode> getSet() {
+        return mTipSet;    
     }
 
+    /**
+     * Return a string representation
+     * of the pathnodeset in whitch
+     * the nodes are seperated by 
+     * the "|" character
+     * 
+     * @return 
+     */
     @Override
     public String toString() {
-        List<PathNode> tips = new ArrayList<>();
-        tips.addAll(mTipSet);
-        Collections.sort(tips);
         StringBuilder result = new StringBuilder();
-        int i = 0;
-        for ( PathNode tip : tips ) {
-            i++;
-            result.append(tip.toString());
-            if ( i < tips.size() ) {
-                result.append('|');
-            }
+        String separator = "";
+        for ( PathNode node : mTipSet ) {
+            result.append(separator);
+            result.append(node.toString());
+            if ( separator.isEmpty() )
+                separator = "|";
         }
         return result.toString();
-    }
+    }    
 }
