@@ -13,7 +13,7 @@
  *  d, datadir dirname      name of data directory
  *
  * Voorbeeld:
- *  -b -config config.ini -r "c:\Users\Jan\Mijn netbeans\Mrp\"
+ *  -b -config config.ini -r "c:\user\carla\IdeaProjects\tolomatic-java\"
  */
 
 package org.phylotastic.SourcePackages.mapreducepruner;
