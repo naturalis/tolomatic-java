@@ -1,5 +1,4 @@
 package org.phylotastic.mrptree;
-//package org.phylotastic.SourcePackages.mrptree;
 
 import java.util.Map;
 import java.util.TreeMap;
@@ -7,16 +6,16 @@ import java.util.TreeMap;
 import org.phylotastic.mrppath.*;
 
 /**
+ * Class Tree
+ * 
+ * Constructs a tree structure that can be used to construct
+ * a newick tree from
  *
  * @author ...
  */
 public class Tree {
-    /**
-     * Constructs a tree that can be used to construct
-     * a newick tree from
-     */
-    private TreeNode root;
-    private final Map<Integer, TreeNode> nodes;
+    private TreeNode root;                          // the root node
+    private final Map<Integer, TreeNode> nodes;     // list of added nodes
 
     // constructor
     // ------------------------------------------------------------------------

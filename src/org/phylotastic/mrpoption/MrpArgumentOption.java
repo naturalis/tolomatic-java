@@ -1,35 +1,46 @@
 package org.phylotastic.mrpoption;
-//package org.phylotastic.SourcePackages.mrpoption;
 
-import org.ini4j.*;
 import org.apache.commons.cli.*;
+import org.ini4j.*;
 
 /**
+ * Class MrpArgumentOption
+ * 
+ * This class extends the MrpOption class with the posibilitie
+ * to implement cli options with arguments like the path of an inputfile:
+ * "-input inputdir\input.txt"
+ * 
+ * Within that scope it also extends that class with the possibility to
+ * implement ini file options; since those by default are argument
+ * options like: 
+ * "[Main]"
+ * "input = inputdir\input.txt"
+ * 
+ * Not all cli options need to have counterparts in the ini file
  *
  * @author ...
  */
 public class MrpArgumentOption extends MrpOption {
+
     /**
-     * This class extends the MrpOption class
-     * with the posibilitie to implement cli options
-     * with arguments like the path of an inputfile:
-     * "-input inputdir\input.txt"
-     * 
-     * Within that scope it also extends that class
-     * with the possibility to implement ini file
-     * options; since those by default are
-     * argument options like: 
-     * "[Main]"
-     * "input = inputdir\input.txt"
-     * 
-     * Not all cli options need to have counterparts
-     * in the ini file
-     * 
+     * the cli name for the argument
      */
-    protected String argumentName;              // the cli name for the argument
-    protected Boolean hasIniVersion;            // has a config.ini implementation?
-    protected String iniSection;                // the options section name in the ini file
-    protected String iniName;                   // the options ini name of the argument
+    protected String argumentName;
+
+    /**
+     * indicator: option has yes/no a config.ini implementation
+     */
+    protected Boolean hasIniVersion;
+
+    /**
+     * the section name for the option in the ini file
+     */
+    protected String iniSection;
+
+    /**
+     * the name (key) for the option in the ini file
+     */
+    protected String iniName;
     
     /**
      * default constructor
@@ -50,16 +61,14 @@ public class MrpArgumentOption extends MrpOption {
      * @param _shortOption      cli: short option (name)
      * @param _longOption       cli: long option (name)
      * @param _argumentName     cli: argument name
-     * @param _hasIniVersion    indicator if option value can be specified in config.ini file
      * @param _iniSection       ini: the section name for the value in he ini file
      * @param _iniName          ini: the key for the value in the ini file
      */
     public MrpArgumentOption(String _description, String _shortOption, String _longOption,
-                        String _argumentName,
-                        Boolean _hasIniVersion, String _iniSection, String _iniName) {
+                        String _argumentName, String _iniSection, String _iniName) {
         super(_description, _shortOption, _longOption);
         this.argumentName = _argumentName;
-        this.hasIniVersion = _hasIniVersion;
+        this.hasIniVersion = !(_iniSection.isEmpty());
         this.iniSection = _iniSection;
         this.iniName = _iniName;
     }
@@ -117,7 +126,7 @@ public class MrpArgumentOption extends MrpOption {
      * create and return an org.apache.commons.cli Option object
      * for this config value
      *
-     * @returns     a org.apache.commons.cli Option object for this.option
+     * @return     a org.apache.commons.cli Option object for this.option
      */
     @Override
     public Option getOption() {
@@ -158,9 +167,9 @@ public class MrpArgumentOption extends MrpOption {
     
     /**
      * Set the value ot this config value by
-     * reading it both from
-     * a specified ini file and
-     * a specified cli command line parser
+     * reading it both from:
+     * - a specified ini file and
+     * - a specified cli command line parser
      * 
      * If both ini file and command line specify
      * a value for the same option, the cli
@@ -209,5 +218,34 @@ public class MrpArgumentOption extends MrpOption {
     @Override
     public String getValue() {
         return this.value;
+    }
+
+    /**
+     * Returns the string representation of this pathnode
+     * 
+     * @return      this.Option as a string, like: 
+     *      "Option: -i, -input / [main]input: file path; path to input file"
+     */
+    @Override
+    public String toString () {
+        String result = "Option: ";
+        String separator = "";
+        if (!this.shortOption.isEmpty()) {
+            result += "-" + shortOption;
+            separator = ", -";
+        }
+        if (!this.longOption.isEmpty())
+            result += separator + longOption;
+        if (this.hasIniVersion)
+            result += " / [" + this.iniSection + "]" + this.iniName;
+        if (!this.argumentName.isEmpty())
+            result += ": " + this.argumentName;
+        else
+            result += ": not specified";
+        if (!this.description.isEmpty())
+            result += "; " + this.description;
+        else
+            result += "; not specified";
+        return result;
     }
 }

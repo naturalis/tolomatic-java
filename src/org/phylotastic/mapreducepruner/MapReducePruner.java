@@ -3,21 +3,22 @@
  * command line arguments
  *
  * Possible arguments:
- *  n, environmentvar       boolean option: don't use environment variables yes/no
+ *  e, environmentvar       boolean option: use environment variables
  *  c, config filename      path to config file
  *  i, input fileName       path to taxon input file
+ *  h, hashDepth            hasDepth for encoding taxon names to their
+                            corresponding filenames in the "taxon database"
+ *  r, dataroot dirname     path to root directory for "taxon database"
+ *  u, treeurl url          path url to treedata
+ *  d, datadir dirname      name of data directory for actual "taxon database"
  *  t, tempdir dirname      path to temp directory
  *  o, output fileName      path to newick output file
- *  r, dataroot dirname     path to dataroot directory
- *  u, treeurl url          path url to treedata
- *  d, datadir dirname      name of data directory
  *
- * Voorbeeld:
+ * Example:
  *  -n -config config.ini -r "c:\Users\Default\Mijn netbeans\Mrp\"
  */
 
 package org.phylotastic.mapreducepruner;
-//package org.phylotastic.SourcePackages.mapreducepruner;
 
 import java.io.*;
 import java.net.URL;
@@ -31,15 +32,31 @@ import org.apache.hadoop.util.ToolRunner;		// sara 23-09-2014
  * @author ...
  */
 public class MapReducePruner {
-    //private static MrpConfig config;
-    private static Logger logger;
-    private static Logger debugger;
-    // default name for the configuration file
-    private static final String defaultConfigName = "config.ini";
-    // environment variable that specifies the name of the config file
-    private static final String environmentVarConfig = "PHYLOTASTIC_MAPREDUCE_CONFIG";
-    // environment variable that specifies the name of the tree url
-    private static final String environmentVarTree = "PHYLOTASTIC_MAPREDUCE_TREE";
+
+    /**
+     * default name for the configuration file
+     */
+    protected static String defaultConfigName = "config.ini";
+
+    /**
+     * default number of tasks to split the mappers/reducers over
+     */
+    protected static int defaultNumTasks = 10;
+    
+    /**
+     * environment variable that specifies the name of the config file
+     */
+    protected static String environmentVarConfig = "PHYLOTASTIC_MAPREDUCE_CONFIG";
+    
+    /**
+     * environment variable that specifies the name of the tree url
+     */
+    protected static String environmentVarTree = "PHYLOTASTIC_MAPREDUCE_TREE";
+    
+    /**
+     * default logger
+     */
+    protected static Logger logger;
 
     /**
      * @param args the command line arguments passed through to main()
@@ -51,7 +68,6 @@ public class MapReducePruner {
         // ---------------------------------------------------------------------
         // create a logger for reporting purposes
         logger = Logger.getLogger(MapReducePruner.class.getName());
-        debugger = Logger.getLogger("debugLogger");
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         URL resource = classLoader.getResource("log4j.properties");
         PropertyConfigurator.configure(resource);
@@ -59,6 +75,7 @@ public class MapReducePruner {
         
         // proces configuration options from command line and config.ini
         MrpConfig config = new MrpConfig( defaultConfigName,
+                                defaultNumTasks,
                                 environmentVarConfig,
                                 environmentVarTree);
         
@@ -81,9 +98,6 @@ public class MapReducePruner {
         
         // configuration options correctly processed
         // execute the mapreduce run
-        // MrpRun mapReduce = new MrpRun(config);
-        // mapReduce.run();
-        // sara 23-09-2014 (replaced 2 lines)
         ToolRunner.run(new Configuration(), new MrpRun(config), args);		// sara 23-09-2014
     }
 }

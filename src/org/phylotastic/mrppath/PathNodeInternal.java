@@ -1,8 +1,8 @@
 package org.phylotastic.mrppath;
-//package org.phylotastic.SourcePackages.mrppath;
 
 /**
- * PathNodeInternal class
+ * Class PathNodeInternal
+ * 
  * The PathNodeInternal class extends the
  * PathNode class with the interger TipCount
  * This count expresses how many (external) tip nodes
@@ -20,19 +20,20 @@ public class PathNodeInternal extends PathNode {
     // none
     
     /**
-     * Static method: parseNode()
+     * Static method: fromString()
      * 
      * To create a pathnode from it's string representation
      *
-     * @param nodeString    the string representation of the node, like: 625:1,3
+     * @param nodeString    the string representation of the node, like: 625:0.1,3
      * @return              the PathNodeInternal created from the string
      */
-    public static PathNodeInternal parseNode(String nodeString) {
+    public static PathNodeInternal fromString(String nodeString) {
 	String[] p = nodeString.split(",");     // extracts the tipcount
         if (p.length == (int)2) {
             String[] t = p[0].split(":");       // extracts label and length
             if (t.length == (int)2)
-                return new PathNodeInternal(Integer.parseInt(t[0]),Double.parseDouble(t[1]),Integer.parseInt(p[1]));
+                return new PathNodeInternal(Integer.parseInt(t[0]),
+                        Double.parseDouble(t[1]),Integer.parseInt(p[1]));
             else
                 return null;
         } else
@@ -40,17 +41,17 @@ public class PathNodeInternal extends PathNode {
     }
 
     /**
-     * Static method: parseNode()
+     * Static method: fromText()
      * 
      * To create an internal pathnode from an
      * org.apache.hadoop.io.Text representation
      *
-     * @param nodeText      the Text representation of the node, like: 625:1,3
+     * @param nodeText      the Text representation of the node, like: 625:1.0,3
      * @return              the PathNodeInternal created from the string
      */
-    static PathNodeInternal parseNode(org.apache.hadoop.io.Text nodeText)
+    static PathNodeInternal fromText(org.apache.hadoop.io.Text nodeText)
     {
-        return PathNodeInternal.parseNode(nodeText.toString());
+        return PathNodeInternal.fromString(nodeText.toString());
     }
     
     /**
@@ -79,6 +80,18 @@ public class PathNodeInternal extends PathNode {
     public PathNodeInternal(int label, double length, int tipCount)
     {
         super(label, length);
+        mTipCount = tipCount;
+    }
+
+    /**
+     * Constructor
+     *
+     * @param node            the pathnode containing the label and the length
+     * @param tipCount        the number of tip nodes this.PathNode is the external node for
+     */
+    public PathNodeInternal(PathNode node, int tipCount)
+    {
+        super(node.getLabel(), node.getLength());
         mTipCount = tipCount;
     }
 

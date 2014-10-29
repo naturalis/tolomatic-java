@@ -1,11 +1,7 @@
 package org.phylotastic.mapreducepruner;
-//package org.phylotastic.SourcePackages.mapreducepruner;
  
 import java.io.FileNotFoundException;
 import java.io.IOException;
-
-import org.apache.log4j.Logger;
-
 import org.apache.hadoop.fs.*;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.util.Tool;				// sara 23-09-2014
@@ -15,6 +11,7 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.mapreduce.lib.input.KeyValueTextInputFormat;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -23,7 +20,6 @@ import org.apache.hadoop.mapreduce.lib.input.KeyValueTextInputFormat;
 public class MrpRun extends Configured implements Tool {
     // configuration data like paths to files, etc.
     private static Logger logger;
-    private static Logger debugger;
     private final MrpConfig userConfig;     // MrpConfig object holding the configuration options
     private MrpResult mrpResult;            // MrpResult object to process the result
     private Configuration hadoopConfig;     // hadoop configuration
@@ -38,7 +34,6 @@ public class MrpRun extends Configured implements Tool {
         super();
         userConfig    = _config;
         logger        = Logger.getLogger(MrpRun.class.getName());
-        debugger      = Logger.getLogger("debugLogger");
     }
     
     /** Method Run
@@ -108,10 +103,10 @@ public class MrpRun extends Configured implements Tool {
         this.hadoopFS       = FileSystem.get(hadoopConfig);     // a Hadoop filesystem
         this.hfsSeparator   = Path.SEPARATOR;                   // the Hadoop path separator
         // remove the parent outputdirectory (tempDir) and all it's files and subDirs
-        String runTemp       = this.userConfig.tempDir.getValue();
+        String runTemp      = this.userConfig.tempDir.getValue();
         if (!runTemp.endsWith(this.hfsSeparator)) 
             runTemp += this.hfsSeparator;
-        Path pathTemp        = new Path(runTemp);               // Hadoop file path
+        Path pathTemp       = new Path(runTemp);                // Hadoop file path
         Boolean result      = hadoopFS.delete(pathTemp, true);
         
         // configure MapReduce job for pass 1
@@ -152,10 +147,9 @@ public class MrpRun extends Configured implements Tool {
         if (!taxonDir.endsWith(this.hfsSeparator)) 
             taxonDir += this.hfsSeparator;
         this.userConfig.dataPath.setValue(taxonDir);
-        //MrpPass1.setEnviron(taxonDir, this.userConfig.hashDepth.getIntValue(), hadoopFS);	// sara 23-09-2014 (delete)
 
-        hadoopConfig.setInt("my.hashdepth", this.userConfig.hashDepth.getIntValue());		// sara 23-09-2014
-        hadoopConfig.set("my.taxondir", taxonDir);						// sara 23-09-2014					// new
+        hadoopConfig.set("my.taxondir", taxonDir);						// sara 23-09-2014
+        hadoopConfig.setInt("my.hashdepth", this.userConfig.hashDepth.getIntValue());		// sara 23-09-2014					// new
         hadoopConfig.setInt("mapreduce.input.fileinputformat.split.maxsize", 2000);		// sara 23-09-2014
         
         String path1Out = runTemp + "pass1" + this.hfsSeparator;
@@ -164,14 +158,13 @@ public class MrpRun extends Configured implements Tool {
         Job jobPass1 = Job.getInstance(hadoopConfig);
         TextInputFormat.setInputPaths(jobPass1, path1Input);
         TextOutputFormat.setOutputPath(jobPass1, path1Output);
-        jobPass1.setJarByClass(MrpPass1.class);
-        jobPass1.setMapperClass(MrpPass1.Pass1Map.class);
-        jobPass1.setReducerClass(MrpPass1.Pass1Reduce.class);
+        jobPass1.setJarByClass(MrpRun.class);
+        jobPass1.setMapperClass(MrpPass1Mapper.class);
+        jobPass1.setReducerClass(MrpPass1Reducer.class);
         jobPass1.setInputFormatClass(TextInputFormat.class);
         jobPass1.setOutputFormatClass(TextOutputFormat.class);
         jobPass1.setOutputKeyClass(Text.class);
-        //jobPass1.setOutputValueClass(Text.class);		// sara 23-09-2014 (delete)
-        jobPass1.setNumReduceTasks(10);				// sara 23-09-2014
+        jobPass1.setNumReduceTasks(this.userConfig.numTasks.getIntValue());
         
         // configure MapReduce job for pass 2
         // ---------------------------------------------------------------------
@@ -182,15 +175,14 @@ public class MrpRun extends Configured implements Tool {
         Job jobPass2 = Job.getInstance(hadoopConfig);
         TextInputFormat.setInputPaths(jobPass2, path1Output);
         TextOutputFormat.setOutputPath(jobPass2, path2Output);
-        jobPass2.setJarByClass(MrpPass2.class);
-        jobPass2.setMapperClass(MrpPass2.Pass2Map.class);
-        jobPass2.setReducerClass(MrpPass2.Pass2Reduce.class);
+        jobPass2.setJarByClass(MrpRun.class);
+        jobPass2.setMapperClass(MrpPass2Mapper.class);
+        jobPass2.setReducerClass(MrpPass2Reducer.class);
         jobPass2.setInputFormatClass(KeyValueTextInputFormat.class);
         jobPass2.setOutputFormatClass(TextOutputFormat.class);
         jobPass2.setOutputKeyClass(Text.class);
         jobPass2.setOutputValueClass(Text.class);
-        jobPass2.setNumReduceTasks(10);				// sara 23-09-2014
-        MrpPass2.setEnviron();
+        jobPass2.setNumReduceTasks(this.userConfig.numTasks.getIntValue());
         
         // configure MapReduce job for pass 3
         // ---------------------------------------------------------------------
@@ -201,15 +193,14 @@ public class MrpRun extends Configured implements Tool {
         Job jobPass3 = Job.getInstance(hadoopConfig);
         TextInputFormat.setInputPaths(jobPass3, path2Output);
         TextOutputFormat.setOutputPath(jobPass3, path3Output);
-        jobPass3.setJarByClass(MrpPass3.class);
-        jobPass3.setMapperClass(MrpPass3.Pass3Map.class);
-        jobPass3.setReducerClass(MrpPass3.Pass3Reduce.class);
+        jobPass3.setJarByClass(MrpRun.class);
+        jobPass3.setMapperClass(MrpPass3Mapper.class);
+        jobPass3.setReducerClass(MrpPass3Reducer.class);
         jobPass3.setInputFormatClass(KeyValueTextInputFormat.class);
         jobPass3.setOutputFormatClass(TextOutputFormat.class);
         jobPass3.setOutputKeyClass(Text.class);
         jobPass3.setOutputValueClass(Text.class);
-        jobPass2.setNumReduceTasks(10);				// sara 23-09-2014
-        MrpPass3.setEnviron();
+        jobPass2.setNumReduceTasks(this.userConfig.numTasks.getIntValue());
         
         // configure local job to process the MapReduce result
         // ---------------------------------------------------------------------
@@ -261,6 +252,6 @@ public class MrpRun extends Configured implements Tool {
             throw e;
         }
         logger.info("MRP: mapreduce run finished");
-        return 0;						// sara 23-09-2014										// new
+        return 0;									// new
     }
 }

@@ -1,39 +1,46 @@
 package org.phylotastic.mrpoption;
-//package org.phylotastic.SourcePackages.mrpoption;
 
 import java.io.*;
 
 /**
+ * Class MrpFileOption
+ * 
+ * An implementation of the MrpArgumentOption class
+ * specialised in file name options. The constructor
+ * requires to indicate if it is mandatory that the
+ * specified file exist and also íf a file that exists
+ * should be removed. The first mostly is the case for
+ * input files and the latter can be the case for
+ * certain test and/or output files.
+ * 
+ * The class can only be used for local file system locations,
+ * not for Hadoop filesystem paths
+ * 
+ * The class addds 2 boolean values to the constructor:
+ * mustExist and mustRemove. MustExist indicates that the
+ * file must exist; mustRemove indicates that the file
+ * should be deleted might it exists.
+ * 
+ * The class itself  does not make any assumptions as to where
+ * the folder might exist. If the user does not specify the
+ * full path for the folder, the class depends on java.io and 
+ * the local file system to complete the folder path to it's full
+ * length. This allows the user to specify folder names/paths that
+ * are somehow relative to the current work directory (user.dir)
  *
  * @author ...
  */
 public class MrpFileOption extends MrpArgumentOption {
+    
     /**
-     * An implementation of the MrpArgumentOption class
-     * specialised in file name options. The constructor
-     * requires to indicate if it is mandatory that the
-     * specified file exist and also íf a file that exists
-     * should be removed. The first mostly is the case for
-     * input files and the latter can be the case for
-     * certain test and/or output files.
-     * 
-     * The class can only be used for local file system locations,
-     * not for Hadoop filesystem paths
-     * 
-     * The class addds 2 boolean values to the constructor:
-     * mustExist and mustRemove. MustExist indicates that the
-     * file must exist; mustRemove indicates that the file
-     * should be deleted might it exists.
-     * 
-     * The class itself  does not make any assumptions as to where
-     * the folder might exist. If the user does not specify the
-     * full path for the folder, the class depends on java.io and 
-     * the local file system to complete the folder path to it's full
-     * length. This allows the user to specify folder names/paths that
-     * are somehow relative to the current work directory (user.dir)
+     * indicator if the file must exist
      */
-    protected Boolean mustExist;                // the indicator if the file must exist
-    protected Boolean mustRemove;               // the indicator: remove if exists
+    protected Boolean mustExist;
+
+    /**
+     * indicator if file must be removed if it exists
+     */
+    protected Boolean mustRemove;
     
     /**
      * Constructor
@@ -55,7 +62,7 @@ public class MrpFileOption extends MrpArgumentOption {
      */
     @Override
     public void setValue(String _name) {
-        MrpOption.debugLogger.debug("MrpFileOption: setting file: " + this.description + " = " + _name );
+        //MrpOption.debugLogger.debug("MrpFileOption: setting file: " + this.description + " = " + _name );
         this.value = _name;
     }
     
@@ -107,13 +114,12 @@ public class MrpFileOption extends MrpArgumentOption {
     }
     
     /**
-     * Return the full (canonical) path of the file
+     * Return the full (absolute) path of the file
      *
-     * @return  the full (canonical) path of the file
-     * @throws IOException
+     * @return  the full (absolute) path of the file
      */
-    public String getPath() throws IOException {
+    public String getPath() {
         File file = new File(this.value);
-        return file.getCanonicalPath();
+        return file.getAbsolutePath();
     }
 }

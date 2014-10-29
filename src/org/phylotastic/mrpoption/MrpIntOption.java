@@ -1,15 +1,14 @@
 package org.phylotastic.mrpoption;
-//package org.phylotastic.SourcePackages.mrpoption;
 
 /**
+ * Class MrpIntOption
+ * 
+ * An implementation of the MrpArgumentOption class
+ * for integer values.
  *
  * @author ...
  */
 public class MrpIntOption extends MrpArgumentOption {
-    /**
-     * An implementation of the MrpArgumentOption class
-     * for integer values.
-     */
     
     /**
      * default constructor
@@ -26,15 +25,13 @@ public class MrpIntOption extends MrpArgumentOption {
      * @param _shortOption      cli: short option (name)
      * @param _longOption       cli: long option (name)
      * @param _argumentName     cli: argument name
-     * @param _hasIniVersion    indicator if option value can be specified in config.ini file
      * @param _iniSection       ini: the section name for the value in he ini file
      * @param _iniName          ini: the key for the value in the ini file
      */
     public MrpIntOption(String _description, String _shortOption, String _longOption,
-                        String _argumentName,
-                        Boolean _hasIniVersion, String _iniSection, String _iniName) {
+                        String _argumentName, String _iniSection, String _iniName) {
         super(_description, _shortOption, _longOption, _argumentName,
-                        _hasIniVersion, _iniSection, _iniName);
+                        _iniSection, _iniName);
     }
     
     /**
@@ -46,6 +43,16 @@ public class MrpIntOption extends MrpArgumentOption {
     @Override
     public void setValue(String _value) {
         this.value = _value;
+    }
+    
+    /**
+     * This is the method that sets the actual attribute
+     * value for a specific config value (option)
+     *
+     * @param _value
+     */
+    public void setValue(int _value) {
+        this.value = Integer.toString(_value);
     }
     
     /** 
@@ -75,6 +82,9 @@ public class MrpIntOption extends MrpArgumentOption {
      * @return  this.option value as an integer
      */
     public int getIntValue() {
-        return Integer.parseInt(this.value);
+        if (this.value.isEmpty())
+            return (int)0;
+        else
+            return Integer.parseInt(this.value);
     }
 }

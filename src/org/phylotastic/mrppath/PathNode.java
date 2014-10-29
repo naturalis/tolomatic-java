@@ -1,13 +1,6 @@
 package org.phylotastic.mrppath;
-//package org.phylotastic.SourcePackages.mrppath;
 
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
 import java.util.Objects;
-
-import org.apache.hadoop.io.WritableComparable;
-import org.apache.log4j.Logger;
 
 /**
  * Class: PathNode
@@ -21,21 +14,21 @@ import org.apache.log4j.Logger;
  * Date:
  * Version: 0.1
  */
-public class PathNode implements Comparable<PathNode>, WritableComparable<PathNode> {
+public class PathNode implements Comparable<PathNode> {
     /**
      * Static variables:
-     */ 
-    static Logger logger;
+     */
+    // none
     
     /**
-     * Static method: parseNode()
+     * Static method: fromString()
      * 
      * To create a pathnode from it's string representation
      *
      * @param node      the string representation of the node, like: 625:1 or 628:18:parkia
      * @return          the PathNode created from the string
      */
-    public static PathNode parseNode(String node) {
+    public static PathNode fromString(String node) {
         String[] parts = node.split(":");
         if (parts.length == (int)2)
             return new PathNode(Integer.parseInt(parts[0]),Double.parseDouble(parts[1]));
@@ -51,6 +44,31 @@ public class PathNode implements Comparable<PathNode>, WritableComparable<PathNo
     int mLabel;
     double mLength;
     String mName;
+
+    /**
+     * Constructor
+     *
+     * @param _string         a string representation of the pathnode
+     */
+    public PathNode(String _string) {
+        String[] parts = _string.split(":");
+        if (parts.length == (int)2) {
+            // only label and length are given
+            mLabel  = Integer.parseInt(parts[0]);
+            mLength = Double.parseDouble(parts[1]);
+            mName   = "";
+        } else if (parts.length == (int)3) {
+            // also name is given
+            mLabel  = Integer.parseInt(parts[0]);
+            mLength = Double.parseDouble(parts[1]);
+            mName   = parts[2];
+        } else {
+            // invalid number of fields is given
+            mLabel = (int)0;
+            mLength = (Double)0.0;
+            mName = "";
+        }
+    }
 
     /**
      * Constructor
@@ -99,14 +117,15 @@ public class PathNode implements Comparable<PathNode>, WritableComparable<PathNo
      * Set this node's length
      * i.e. the length between it and its parent's node
      *
-     * @param length          the distance to the node's parent node
+     * @param length          the distance to the node's parentnode
      */
     public void setLength (double length) {
         mLength = length;
     }
 
     /**
-     * Get the distance to this node's parent node
+     * Get this node's length
+     * i.e. the length between it and its parent's node
      *
      * @return          the distance to the node's parentnode
      */
@@ -147,7 +166,6 @@ public class PathNode implements Comparable<PathNode>, WritableComparable<PathNo
 
     /**
      * compareTo implements (part of) the Coparable interface
-     * compareTo implements (part of) the WritableComparable interface
      * 
      * Beware!
      * This compareTo is implemented "the wrong way around".
@@ -167,32 +185,6 @@ public class PathNode implements Comparable<PathNode>, WritableComparable<PathNo
         int thisValue = this.getLabel();
         int thatValue = that.getLabel();
         return (thisValue > thatValue ? -1 : (thisValue < thatValue ? 1 : 0));
-    }
-
-    /**
-     * readFields implements (part of) the WritableComparable interface
-     * 
-     * @param in    DataInput
-     * @throws java.io.IOException
-     */
-    @Override
-    public void readFields(DataInput in) throws IOException {
-        this.setLabel(in.readInt());
-        char semiColon = in.readChar();
-        this.setLength(in.readDouble());
-    }
-
-    /**
-     * write implements (part of) the WritableComparable interface
-     * 
-     * @param out   DataOutput
-     * @throws java.io.IOException
-     */
-    @Override
-    public void write(DataOutput out) throws IOException {
-        out.writeInt(this.getLabel());
-        out.writeChar(':');
-        out.writeDouble(this.getLength());
     }
     
     /**

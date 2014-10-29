@@ -1,10 +1,4 @@
 package org.phylotastic.mapreducepruner;
-//package org.phylotastic.SourcePackages.mapreducepruner;
-
-import org.phylotastic.mrppath.*;
-import org.phylotastic.mrptree.*;
-//import org.phylotastic.SourcePackages.mrppath.*;
-//import org.phylotastic.SourcePackages.mrptree.*;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -12,13 +6,15 @@ import java.util.List;
 import org.apache.hadoop.fs.*;
 import org.apache.log4j.*;
 
+import org.phylotastic.mrppath.*;
+import org.phylotastic.mrptree.*;
+
 /**
  *
  * @author ...
  */
 public class MrpResult {
-    private static Logger loggerRs;
-    private static Logger debuggerRs;
+    private static Logger logger;
     private FileSystem hadoopFS;                    // hadoop file system
     private String hfsSeparator;                    // hadoop file separator => "/"
     
@@ -27,8 +23,7 @@ public class MrpResult {
      */
     public MrpResult() {
         super();
-        loggerRs = Logger.getLogger(MrpResult.class.getName());
-        debuggerRs = Logger.getLogger("debugLogger");
+        logger = Logger.getLogger(MrpResult.class.getName());
     }
     
     /** method: setEnviron
@@ -59,11 +54,11 @@ public class MrpResult {
         // these are all files with no extension, that start with: "part-r-0"
         List<Path> pathList = this.getFilePaths(inputDir, "part-r-0*");
         int count = 0;
-        loggerRs.info("Start processing result (part) files");
+        logger.info("Start processing result (part) files");
         for (Path file : pathList) {
             String fileName = file.getName();
             count++;
-            loggerRs.info("File " + count + " = " + fileName);
+            logger.info("File " + count + " = " + fileName);
             this.addFile(tree, file);
         }
         // Roots the tree on the node with the lowest label value
@@ -72,8 +67,8 @@ public class MrpResult {
         String newickTree = tree.toNewick();
         // Write the Newick string to the file
         this.writeResult(newickTree, outputFile);
-        loggerRs.info("Done processing result");
-        loggerRs.info("Newick Tree written to file: " + outputFile.toString());      
+        logger.info("Done processing result");
+        logger.info("Newick Tree written to file: " + outputFile.toString());      
     }
     
     /** method: addFile
@@ -94,8 +89,8 @@ public class MrpResult {
             while( line != null ) {
                 // split line into tip and ancestorlist on tab character
                 String[] tuple = line.split("\t");
-                PathNode tipNode = PathNode.parseNode(tuple[0]);
-                PathNodeSet ancestors = PathNodeSet.parsePathNodeSet(tuple[1]);
+                PathNode tipNode = PathNode.fromString(tuple[0]);
+                PathNodeSet ancestors = PathNodeSet.fromString(tuple[1]);
                 // create node for focal tip
                 TreeNode child = tree.addNode(tipNode);
                 // iterate over ancestors (are sorted from young to old)
@@ -141,11 +136,11 @@ public class MrpResult {
      */
     public void writeResult(String newick, Path outputFile) throws IOException {
         // Create a file name(path) for the newick string
-        Path outputDir = outputFile.getParent();
+//        Path outputDir = outputFile.getParent();
         try {
-            if (!hadoopFS.exists(outputDir))
-                // folder is not there, make a new one
-                hadoopFS.mkdirs(outputDir);
+//            if (!hadoopFS.exists(outputDir))
+//                // folder is not there, make a new one
+//                hadoopFS.mkdirs(outputDir);
             OutputStreamWriter stream = new OutputStreamWriter(hadoopFS.create(outputFile,true));
             BufferedWriter writer = new BufferedWriter(stream);
             writer.write(newick);
@@ -159,7 +154,7 @@ public class MrpResult {
     
     /**
      * Returns a list of File's in a given directory
-     * taking into acount a filename filter
+     * taking into account a filename filter
      *
      * @param directory     the directory to list the file from
      * @param filter        the filter to apply

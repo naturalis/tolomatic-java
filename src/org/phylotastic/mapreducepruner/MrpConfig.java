@@ -1,8 +1,4 @@
 package org.phylotastic.mapreducepruner;
-//package org.phylotastic.SourcePackages.mapreducepruner;
-
-import org.phylotastic.mrpoption.*;
-//import org.phylotastic.SourcePackages.mrpoption.*;
 
 import java.io.*;
 
@@ -11,57 +7,133 @@ import org.apache.commons.cli.Options; // because ini4j also has getOptions meth
 import org.apache.log4j.*;
 import org.ini4j.*;
 
+import org.phylotastic.mrpoption.*;
+
 /**
+ * Class MrpConfig
+ *  
+ * This class forms the central repository for all the 
+ * configuration variables for the MapReducePruner proces.
+ * Within that framework it also is responsible for the
+ * specification and acceptance of the command line options
+ * as well as the config.ini options.
+ * 
+ * Options specified on the command line take precedence
+ * over any values that might be specified in the 
+ * environment variables or in the config file. So if both
+ * command line and config file specify a value for the
+ * input file, like:
+ *   cli: -input inputDir\input2.tree
+ *   ini: input = inputDir\input1.tree
+ * the one from the commend line will be used. So in this
+ * case: inputDir\input2.tree
+ * 
+ * For most command line options two versions are available,
+ * with either a long or a short option name. E.g. for the
+ * input file both:
+ *  -i path-to-input-file 
+ * and
+ *  -input path-to-input-file
+ * are valid options.
  *
  * @author ...
  */
 public class MrpConfig {
+
     /**
-     * This class forms the central repository for all the 
-     * configuration variables for the MapReducePruner proces.
-     * Within that framework it also is responsible for the
-     * specification and acceptance of the command line options
-     * as well as the config.ini options.
-     * 
-     * Options specified on the command line take precedence
-     * over any values that might be specified in the 
-     * environment variables or in the config file. So if both
-     * command line and config file specify a value for the
-     * input file, like:
-     *   cli: -input inputDir\input2.tree
-     *   ini: input = inputDir\input1.tree
-     * the one from the commend line will be used. So in this
-     * case: inputDir\input2.tree
-     * 
-     * For most command line options two versions are available,
-     * with either a long or a short option name. E.g. for the
-     * input file both:
-     *  -i path-to-input-file 
-     * and
-     *  -input path-to-input-file
-     * are valid options.
-     * 
+     * default name for config file
      */
-    protected final String defaultNameConfig;                     // default name for config file
-    protected final String environmentVarConfig;                  // name environment var for config file
-    protected final String environmentVarTree;                    // name environment var for tree url
+    protected final String defaultNameConfig;
+
+    /**
+     * default number of tasks
+     */
+    protected final int defaultNumTasks;
+
+    /**
+     * name of the environment variable for the config file
+     */
+    protected final String environmentVarConfig;
+
+    /**
+     * name of the environment variable for the tree url
+     */
+    protected final String environmentVarTree;
     
-    protected Ini configIni;                                      // ini4j Ini file object
-    private static Logger logger;                                 // log4j logger object
-    private static Logger debugLogger;
+    /**
+     * the ini4j object for the Ini file
+     */
+    protected Ini configIni;
     
-    public MrpOption environmentVars = new MrpOption();                     // use environment variables
-    public MrpOption pathSeparator = new MrpOption();                       // file system path separator
-    public MrpIntOption hashDepth = new MrpIntOption();                     // value of hashDepth option
-    public MrpUrlOption treeUrl = new MrpUrlOption();                       // tree URL as a string
-    public MrpFileOption configFile = new MrpFileOption(true, false);       // path to config file
-    public MrpFolderOption workDir = new MrpFolderOption(false, false);     // path to work dir
-    public MrpPathOption inputFile = new MrpPathOption();                   // path to input file
-    public MrpPathOption outputFile = new MrpPathOption();                  // path to output file
-    public MrpArgumentOption tempDir = new MrpArgumentOption();             // path to temp dir
-    public MrpArgumentOption dataRootDir = new MrpArgumentOption();         // path to data root dir
-    public MrpArgumentOption dataDir = new MrpArgumentOption();             // name of data dir
-    public MrpArgumentOption dataPath = new MrpArgumentOption();            // path to temp dir
+    /**
+     * log4j logger object
+     */
+    private static Logger logger;
+
+    /**
+     * program value: file system path separator
+     */
+    public MrpOption pathSeparator = new MrpOption();
+    
+    /**
+     * program option: use environment variables
+     */
+    public MrpOption environmentVars = new MrpOption();
+
+    /**
+     * program option: number of tasks to split the processes over
+     */
+    public MrpIntOption numTasks = new MrpIntOption();
+
+    /**
+     * program option: value of the hashDepth for the "taxon database"
+     */
+    public MrpIntOption hashDepth = new MrpIntOption();
+
+    /**
+     * program option: the url for the "taxon database"
+     */
+    public MrpUrlOption treeUrl = new MrpUrlOption();
+
+    /**
+     * program option: path to config file
+     */
+    public MrpFileOption configFile = new MrpFileOption(true, false);
+
+    /**
+     * program option: path to work dir (user.dir)
+     */
+    public MrpFolderOption workDir = new MrpFolderOption(false, false);
+
+    /**
+     * program option: path to input file
+     */
+    public MrpPathOption inputFile = new MrpPathOption();
+
+    /**
+     * program option: path to output file
+     */
+    public MrpPathOption outputFile = new MrpPathOption();
+
+    /**
+     * program option: path to temp dir
+     */
+    public MrpArgumentOption tempDir = new MrpArgumentOption();
+
+    /**
+     * program option: path to data root dir
+     */
+    public MrpArgumentOption dataRootDir = new MrpArgumentOption();
+
+    /**
+     * program option: name of data dir
+     */
+    public MrpArgumentOption dataDir = new MrpArgumentOption();
+
+    /**
+     * program option: path to data root/data dir
+     */
+    public MrpArgumentOption dataPath = new MrpArgumentOption();
 
     // constructor
     // ------------------------------------------------------------------------
@@ -89,6 +161,7 @@ public class MrpConfig {
      * 
      * - Use environment vars
      *   cli: -n
+     *        -noenv
      *   Indicates that no environment variables should
      *   be used. Mostly the case when testing locally
      *   (i.e. not on a server)
@@ -102,6 +175,11 @@ public class MrpConfig {
      *   cli: -h {integer value}
      *        -hashdepth {integer value}
      *   ini: [Main] hashDepth = {integer value}
+     * 
+     * - The the number of hadoop tasks to use for the processes
+     *   cli: -n {integer value}
+     *        -numTasks {integer value}
+     *   ini: [Main] numTasks = {integer value}
      * 
      * - The url for the tree to be used
      *   cli: -u {url}
@@ -132,17 +210,19 @@ public class MrpConfig {
      *        -temp {path to temp directory}
      *   ini: [Main] temp = {path to temp directory}
      * 
-     * @param nameConfig    the default name for thre configuration file
-     * @param envConfig     the name of the environment variable that holds the name of the config file
-     * @param envTree       the name of the environment variable that holds the url of the tree to be used
+     * @param _nameConfig    the default name for thre configuration file
+     * @param _numTasks      the default number of tasks for the mr procsses
+     * @param _envConfig     the name of the environment variable that holds the name of the config file
+     * @param _envTree       the name of the environment variable that holds the url of the tree to be used
      * @throws java.io.IOException
     */
-    public MrpConfig(String nameConfig, String envConfig, String envTree) throws IOException, Exception {
-        this.defaultNameConfig = nameConfig;
-        this.environmentVarConfig = envConfig;
-        this.environmentVarTree = envTree;
+    public MrpConfig(String _nameConfig, int _numTasks, 
+            String _envConfig, String _envTree) throws IOException, Exception {
+        this.defaultNameConfig = _nameConfig;
+        this.defaultNumTasks = _numTasks;
+        this.environmentVarConfig = _envConfig;
+        this.environmentVarTree = _envTree;
         logger = Logger.getLogger(MrpConfig.class.getName());
-        debugLogger = Logger.getLogger("debugLogger");
         
         this.pathSeparator.setValue(File.separator);
         
@@ -150,6 +230,7 @@ public class MrpConfig {
         // will be overwritten if there are any values in the
         // ini file or on the command line
         this.workDir.setValue(System.getProperty("user.dir"));
+        this.numTasks.setValue(this.defaultNumTasks);
         this.inputFile.setValue("input.txt");
         this.outputFile.setValue("output.txt");
         
@@ -157,10 +238,12 @@ public class MrpConfig {
          * These properties also serve as the cli and ini4j
          * option properties
          */
-        this.environmentVars.setProperties("do nót use environment variables", 
-                "n", "environment");                                            // use of environment variables
+        this.environmentVars.setProperties("use environment variables", 
+                "e", "env");                                                    // use of environment variables
         this.configFile.setProperties("path to config.ini", 
-                "c", "config", "file path");                                    // path to config file
+                "c", "config", "file path");                                    // path to config file                               // path to config file
+        this.numTasks.setProperties("number of concurrent tasks", 
+                "n", "numtasks" , "integer", "Main", "numTasks");               // value of numTasks option
         this.hashDepth.setProperties("hashdepth for decoding taxonname", 
                 "h", "hashdepth" , "integer", "Main", "hashDepth");             // value of hashDepth option
         this.treeUrl.setProperties("treeURL", 
@@ -195,6 +278,7 @@ public class MrpConfig {
         // variables:
         options.addOption(this.environmentVars.getOption());
         options.addOption(this.configFile.getOption());
+        options.addOption(this.numTasks.getOption());
         options.addOption(this.hashDepth.getOption());
         options.addOption(this.inputFile.getOption());
         options.addOption(this.tempDir.getOption());
@@ -224,13 +308,13 @@ public class MrpConfig {
      * @throws java.lang.Exception
      */
     public void setOptions(CommandLine cmdLine) throws FileNotFoundException, IOException, Exception {
-        boolean environment = true;
+        boolean environment = false;
         // check the environment variables option
         this.environmentVars.setOption(cmdLine);
         if (this.environmentVars.hasValue()) {
-            // then do not use environment variables for config file or tree
-            environment = false;
-            logger.info("MrpConfig: not using environment variables = true");
+            // then use environment variables for config file or tree
+            environment = true;
+            logger.info("MrpConfig: using environment variables = true");
         }
         logger.info("MrpConfig: Config file: determining cofiguration file");
         // See if the command line specifies a configuration file
@@ -271,6 +355,7 @@ public class MrpConfig {
         // read the various options from ini file and command line
         // overwriting ini.values with command line values for
         // the same option when both are specfied
+        this.numTasks.setOption(configIni, cmdLine);
         this.hashDepth.setOption(configIni, cmdLine);
         this.inputFile.setOption(configIni, cmdLine);
         this.tempDir.setOption(configIni, cmdLine);
@@ -337,18 +422,20 @@ public class MrpConfig {
         logger.info("MrpConfig: Config object ");
         logger.info("MrpConfig: -----------------------------------");
         logger.info("MrpConfig: Work dir    = " + this.workDir.getPath());
+        logger.info("MrpConfig: Num tasks   = " + this.numTasks.getValue());
         logger.info("MrpConfig: Input file  = " + this.inputFile.getPath());
-        logger.info("MrpConfig: Temp dir    = " + this.tempDir.getValue());
-        logger.info("MrpConfig: Output file = " + this.outputFile.getPath());
         logger.info("MrpConfig: Hashdepth   = " + this.hashDepth.getValue());
         logger.info("MrpConfig: Tree url    = " + this.treeUrl.getValue());
         logger.info("MrpConfig: Data root   = " + this.dataRootDir.getValue());
         logger.info("MrpConfig: Data dir    = " + this.dataDir.getValue());
         logger.info("MrpConfig: Data path   = " + this.dataPath.getValue());
+        logger.info("MrpConfig: Temp dir    = " + this.tempDir.getValue());
+        logger.info("MrpConfig: Output file = " + this.outputFile.getPath());
         logger.info("MrpConfig: -----------------------------------");
         
         // check the various options for correctness, etc.
         // throw exeption if not usable
+        this.numTasks.checkValue();
         this.hashDepth.checkValue();
         this.inputFile.checkValue();
         this.tempDir.checkValue();

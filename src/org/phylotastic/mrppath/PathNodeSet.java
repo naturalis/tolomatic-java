@@ -1,31 +1,33 @@
 package org.phylotastic.mrppath;
-//package org.phylotastic.SourcePackages.mrppath;
 
 import java.util.TreeSet;
 
 /**
+ * Class PathNodeSet
+ * 
+ * This class maintains a set of PathNodes in a (jave.util.)TreeSet 
+ * and contains some helper methods for it.
+ * 
+ * A java.util.TreeSet is used instead of a HashSet, because TreeSet 
+ * implements the SortedSet<> interface; each pathNode added is inserted 
+ * in it's correct place in the following order, according to it's (int)
+ * label. In order for this to work PathNode must implement the Comparable
+ * interface and so have an implemented compareTo() method.
+ * 
+ * PathNodeSets however need to be sorted in descending order and
+ * therefore PathNode implements a "wrong-way-around" compareTo()
+ * method.
  *
  * @author ...
  */
 public class PathNodeSet {
-    /**
-    * This class maintains a set of PathNodes in a (jave.util.)TreeSet 
-    * and contains some helper methods for it.
-    * 
-    * A java.util.TreeSet is used instead of a HashSet, because TreeSet 
-    * implements the SortedSet<> interface; each pathNode added is inserted 
-    * in it's correct place in the following order, according to it's (int)
-    * label. In order for this to work PathNode must implement the Comparable
-    * interface and so have an implemented compareTo() method.
-    */
-    
     /**
      * Static variables:
      */ 
     // none
     
     /**
-     * Static method: parsePathNodeSet
+     * Static method: fromString
      *        
      * to create a filled PathNodeSet from a string representation, like:
      * 628:18|625:1|624:1|623:1|622:1|621:1|581:1|513:1|505:1| ..... |5:1|4:1|3:1|2:1|1:1
@@ -33,11 +35,11 @@ public class PathNodeSet {
      * @param listString    the string version of the node list
      * @return              the created PathNodeSet
      */
-    public static PathNodeSet parsePathNodeSet (String listString) {
+    public static PathNodeSet fromString (String listString) {
         String[] nodes = listString.split("\\|");
         PathNodeSet result = new PathNodeSet();
         for (String node : nodes) {
-            result.addNode(PathNode.parseNode(node));
+            result.addNode(PathNode.fromString(node));
         }
         return result;
     }
@@ -45,7 +47,7 @@ public class PathNodeSet {
     /**
      * Object variables:
      */ 
-    private TreeSet<PathNode> mTipSet;
+    protected TreeSet<PathNode> mTipSet;
 
     /**
      * Constructor

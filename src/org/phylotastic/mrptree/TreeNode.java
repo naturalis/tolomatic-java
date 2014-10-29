@@ -1,5 +1,4 @@
 package org.phylotastic.mrptree;
-//package org.phylotastic.SourcePackages.mrptree;
 
 import java.util.TreeSet;
 import java.util.Locale;
@@ -8,6 +7,10 @@ import java.text.DecimalFormat;
 import java.util.Objects;
 
 /**
+ * Class TreeNode
+ * 
+ * Used in combination with the Tree class to Construct
+ * a tree structure that can be used to construct a newick tree from
  *
  * @author ...
  */
@@ -25,7 +28,7 @@ public class TreeNode implements Comparable<TreeNode> {
     /**
      * Static method: formatLength()
      * 
-     * Return a Double formatted so that toNewick outputs
+     * Return a Double formatted such that toNewick outputs
      * a period as the decimal separator for length in
      * spite of the current "locale".
      * eg in NL the separator would be a comma, which would
@@ -103,21 +106,6 @@ public class TreeNode implements Comparable<TreeNode> {
         this.parent = null;
         this.children = new TreeSet<>();
         this.isRoot = false;
-        //this.setNumberFormat();
-    }
-    
-    /**
-     * Create a Number format so that toNewick outputs
-     * a period as the decimal separator for length in
-     * spite of the current "locale".
-     * eg in NL the separator would be a comma, which would
-     * conflict with the use of the comma in newick as the
-     * node separator.
-     */
-    private void setNumberFormat() {
-        NumberFormat nf = NumberFormat.getNumberInstance(new Locale("en", "US"));
-        lengthFormatter = (DecimalFormat)nf;
-        lengthFormatter.applyPattern("##0.0#");
     }
     
     /**
@@ -263,12 +251,11 @@ public class TreeNode implements Comparable<TreeNode> {
 
     /**
      * compareTo implements (part of) the Coparable interface
-     * compareTo implements (part of) the WritableComparable interface
      * 
      * returns:
-     *          -1 if that node's label is larger then this node's label
-     *           0 if that node's label is equal to this node's label
-     *          +1 if that node's label is less then this node's label
+     *          -1 if this node's label is less then that node's label
+     *           0 if this node's label is equal to that node's label
+     *          +1 if this node's label is larger then that node's label
      * 
      * @param that  the TreeNode to compare this.node with
      * @return  -1, 0 or +1 depending on the result
@@ -304,7 +291,7 @@ public class TreeNode implements Comparable<TreeNode> {
      * Return this node's hashCode.
      * (algorithm = auto generated)
      * 
-     * (When overriding "Equals" also
+     * (NB When overriding "Equals" also
      * hashCode has to be overridden)
      * 
      * @return      the TreeNode's hashcode
@@ -327,7 +314,6 @@ public class TreeNode implements Comparable<TreeNode> {
     @Override
     public String toString() {
         return String.format("%d:%s:%s", this.ID, this.name, TreeNode.formatLength(this.length));
-        //return String.format("%d:%s:%s", this.ID, this.name, lengthFormatter.format(this.length));
     }
     
     /**
@@ -341,7 +327,7 @@ public class TreeNode implements Comparable<TreeNode> {
         if (this.hasChildren()) {
             // it is an internal node that will have children of it's own
             // it's representation includes that of it's children.
-            // open a child group for this node (the "(" character)
+            // open a child group for this node (i.e. the "(" character)
             newickString.append("(");
             String separator = "";
             // process this node's children
@@ -355,7 +341,7 @@ public class TreeNode implements Comparable<TreeNode> {
             // add this node's data (name and length)
             newickString.append(String.format("%s:%s", this.getNodeName(), TreeNode.formatLength(this.length)));
             if (this.isRoot)
-                // then it is the end of the process
+                // then it is the end of the proces
                 // the newick string should now be complete
                 // close the newick string with a semicolon ";"
                 newickString.append(";");
