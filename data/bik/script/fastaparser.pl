@@ -3,20 +3,22 @@ use strict;
 use warnings;
 use Getopt::Long;
 
-# this script is used to parse the FASTA file 'data/bik/raw/seqs_rep_set_failures.fasta'
+# this script is used to parse a FASTA file 
 # in order to get lists of names that actually occur in the megatrees, split by:
 # 1. primer set (determines the tree)
 # 2. pre/post deepwater horizon
 # 3. geographical location
 # this script then checks the previous names lists, which were parsed out of the QIIME
 # table, to clean out all the names that failed to align (and are therefore missing
-# from the trees)
+# from the trees), or, when using the --flip argument, to retain those names that occur
+# in the FASTA file and omit all the others
 
 # process command line arguments
-my ( $infile, $outdir );
+my ( $infile, $outdir, $flip );
 GetOptions(
 	'infile=s' => \$infile,
 	'outdir=s' => \$outdir,
+	'flip'     => \$flip, # flip the intersection
 );
 
 # maps from primer to primer set
@@ -35,7 +37,7 @@ my %delete;
 		chomp;
 		
 		# parse FASTA defline, e.g. >40846 PreBayfrontPark.R22_665863 RC1..213
-		if ( />(\d+) (Pre|Post)([a-zA-Z]+)\.([^_]+)_\d+ RC:\d+\.\.\d+$/ ) {
+		if ( /^>(\d+) (Pre|Post)([a-zA-Z]+)\.([^_]+)_\d+/ ) {
 			my ( $otu, $prepost, $location, $primer ) = ( $1, $2, $3, $4 );
 		
 			# create path to names list
@@ -59,7 +61,12 @@ while( my ( $path, $skip ) = each %delete ) {
 		open my $fh, '<', $path or die $!;
 		while(<$fh>) {
 			chomp;
-			push @keep, $_ unless $skip->{$_};
+			if ( $flip ) {
+				push @keep, $_ if $skip->{$_};
+			}
+			else {
+				push @keep, $_ unless $skip->{$_};
+			}
 		}
 	}	
 	
