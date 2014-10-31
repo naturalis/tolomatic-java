@@ -95,6 +95,7 @@ to download the entire repository as a zip file.
 in the instructions below.
 
     Creating a new Java project:
+    
     ```   
     1. Press 'File > New Project';
     
