@@ -181,7 +181,7 @@
         <version>2.7.1</version>
     </dependency>
     
-	<!--Ini4j is used for... -->
+	<!--Ini4j is used for for... -->
 	<dependency>
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-lang3</artifactId>
