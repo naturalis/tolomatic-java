@@ -1,17 +1,20 @@
 package org.phylotastic.mrpoption;
 
 /**
- * Class MrpIntOption
+ *     Class MrpIntOption
  * 
- * An implementation of the MrpArgumentOption class
- * for integer values.
+ *     An implementation of the MrpArgumentOption class
+ *     for integer values.
  *
- * @author ...
+ *     @author(s); Carla Stegehuis, Rutger Vos
+ *     Contributed to:
+ *     Date: 3/11/'14
+ *     Version: V2.0
  */
 public class MrpIntOption extends MrpArgumentOption {
     
     /**
-     * default constructor
+     *     default constructor
      *
      */
     public MrpIntOption() {
@@ -19,7 +22,7 @@ public class MrpIntOption extends MrpArgumentOption {
     }
     
     /**
-     * full constructor
+     *     full constructor
      *
      * @param _description      cli: option description
      * @param _shortOption      cli: short option (name)
@@ -35,8 +38,8 @@ public class MrpIntOption extends MrpArgumentOption {
     }
     
     /**
-     * This is the method that sets the actual attribute
-     * value for a specific config value (option)
+     *     This is the method that sets the actual attribute
+     *     value for a specific config value (option)
      *
      * @param _value
      */
@@ -46,8 +49,8 @@ public class MrpIntOption extends MrpArgumentOption {
     }
     
     /**
-     * This is the method that sets the actual attribute
-     * value for a specific config value (option)
+     *     This is the method that sets the actual attribute
+     *     value for a specific config value (option)
      *
      * @param _value
      */
@@ -56,8 +59,8 @@ public class MrpIntOption extends MrpArgumentOption {
     }
     
     /** 
-     * check if a correct integer value was specified for this.option;
-     * otherwise @throw an IllegalArgumentException
+     *     check if a correct integer value was specified for this.option;
+     *     otherwise @throw an IllegalArgumentException
      * 
      * @throws IllegalArgumentException
     */
@@ -77,7 +80,7 @@ public class MrpIntOption extends MrpArgumentOption {
     }
     
     /**
-     * Return this.option value as integer
+     *     Return this.option value as integer
      *
      * @return  this.option value as an integer
      */

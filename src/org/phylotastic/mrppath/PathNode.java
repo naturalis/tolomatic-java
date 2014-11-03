@@ -3,27 +3,27 @@ package org.phylotastic.mrppath;
 import java.util.Objects;
 
 /**
- * Class: PathNode
+ *     Class: PathNode
  * 
- * The Pathnode class is a helper class for the map/reduce/pruner program.
- * Pathnode objects help to store and convert nodes in the paths from the
- * taxons to their root nodes.
+ *     The Pathnode class is a helper class for the map/reduce/pruner program.
+ *     Pathnode objects help to store and convert nodes in the paths from the
+ *     taxons to their root nodes.
  *
- * @author(s); Rutger Vos, Carla Stegehuis
- * Contributed to:
- * Date:
- * Version: 0.1
+ *     @author(s); Carla Stegehuis, Rutger Vos
+ *     Contributed to:
+ *     Date: 3/11/'14
+ *     Version: V2.0
  */
 public class PathNode implements Comparable<PathNode> {
     /**
-     * Static variables:
+     *     Static variables:
      */
     // none
     
     /**
-     * Static method: fromString()
+     *     Static method: fromString()
      * 
-     * To create a pathnode from it's string representation
+     *     To create a pathnode from it's string representation
      *
      * @param node      the string representation of the node, like: 625:1 or 628:18:parkia
      * @return          the PathNode created from the string
@@ -39,14 +39,14 @@ public class PathNode implements Comparable<PathNode> {
     }
     
     /**
-     * Object variables:
+     *     Object variables:
      */ 
     int mLabel;
     double mLength;
     String mName;
 
     /**
-     * Constructor
+     *     Constructor
      *
      * @param _string         a string representation of the pathnode
      */
@@ -71,7 +71,7 @@ public class PathNode implements Comparable<PathNode> {
     }
 
     /**
-     * Constructor
+     *     Constructor
      *
      * @param label           the digital id for the pathnode
      * @param length          the distance to the node's parentnode
@@ -83,7 +83,7 @@ public class PathNode implements Comparable<PathNode> {
     }
 
     /**
-     * Constructor
+     *     Constructor
      *
      * @param label           the digital id for the pathnode
      * @param length          the distance to the node's parentnode
@@ -96,7 +96,7 @@ public class PathNode implements Comparable<PathNode> {
     }
 
     /**
-     * set this node's label (ID)
+     *     set this node's label (ID)
      *
      * @param label           the digital id for the pathnode
      */
@@ -105,7 +105,7 @@ public class PathNode implements Comparable<PathNode> {
     }
 
     /**
-     * Get this node's label
+     *     Get this node's label
      *
      * @return           the digital id for the pathnode
      */
@@ -114,8 +114,8 @@ public class PathNode implements Comparable<PathNode> {
     }
 
     /**
-     * Set this node's length
-     * i.e. the length between it and its parent's node
+     *     Set this node's length
+     *     i.e. the length between it and its parent's node
      *
      * @param length          the distance to the node's parentnode
      */
@@ -124,8 +124,8 @@ public class PathNode implements Comparable<PathNode> {
     }
 
     /**
-     * Get this node's length
-     * i.e. the length between it and its parent's node
+     *     Get this node's length
+     *     i.e. the length between it and its parent's node
      *
      * @return          the distance to the node's parentnode
      */
@@ -134,7 +134,7 @@ public class PathNode implements Comparable<PathNode> {
     }
 
     /**
-     * Set this (external) node's name
+     *     Set this (external) node's name
      *
      * @param name            the name of the taxon this.node is the external node for
      */
@@ -143,7 +143,7 @@ public class PathNode implements Comparable<PathNode> {
     }
 
     /**
-     * Return this (external) node's name
+     *     Return this (external) node's name
      *
      * @return            the name of the taxon this.node is the external node for
      */
@@ -152,7 +152,7 @@ public class PathNode implements Comparable<PathNode> {
     }
 
     /**
-     * Returns the string representation of this pathnode
+     *     Returns the string representation of this pathnode
      * 
      * @return      this.PathNode as a string, like: 625:1 or 628:18:parkia
      */
@@ -165,17 +165,17 @@ public class PathNode implements Comparable<PathNode> {
     }
 
     /**
-     * compareTo implements (part of) the Coparable interface
+     *     compareTo implements (part of) the Coparable interface
      * 
-     * Beware!
-     * This compareTo is implemented "the wrong way around".
-     * The result is that PathNodeSets will be sorted in
-     * descending order instead of ascending order.
+     *     Beware!
+     *     This compareTo is implemented "the wrong way around".
+     *     The result is that PathNodeSets will be sorted in
+     *     descending order instead of ascending order.
      * 
-     * returns:
-     *          -1 if this node's label is larger then that node's label
-     *           0 if this node's label is equal to that node's label
-     *          +1 if this node's label is less then that node's label
+     *     returns:
+     *              -1 if this node's label is larger then that node's label
+     *               0 if this node's label is equal to that node's label
+     *              +1 if this node's label is less then that node's label
      * 
      * @param that  the PathNode to compare this.node with
      * @return  -1, 0 or +1 depending on the result
@@ -188,8 +188,8 @@ public class PathNode implements Comparable<PathNode> {
     }
     
     /**
-     * Return true if this node is equal to
-     * the other node (i.e. has the same ID)
+     *     Return true if this node is equal to
+     *     the other node (i.e. has the same ID)
      *
      * @param _that the object (PathNode) to compare with
      * @return      true if both nodes are equal
@@ -208,11 +208,11 @@ public class PathNode implements Comparable<PathNode> {
     }
     
     /**
-     * Return this node's hashCode.
-     * (algorithm = auto generated)
+     *     Return this node's hashCode.
+     *     (algorithm = auto generated)
      * 
-     * (When overriding "Equals" also
-     * hashCode has to be overridden)
+     *     (When overriding "Equals" also
+     *     hashCode has to be overridden)
      * 
      * @return      the PathNode's hashcode
      */

@@ -10,33 +10,36 @@ import org.ini4j.*;
 import org.phylotastic.mrpoption.*;
 
 /**
- * Class MrpConfig
+ *     Class MrpConfig
  *  
- * This class forms the central repository for all the 
- * configuration variables for the MapReducePruner proces.
- * Within that framework it also is responsible for the
- * specification and acceptance of the command line options
- * as well as the config.ini options.
+ *     This class forms the central repository for all the
+ *     configuration variables for the MapReducePruner proces.
+ *     Within that framework it also is responsible for the
+ *     specification and acceptance of the command line options
+ *     as well as the config.ini options.
  * 
- * Options specified on the command line take precedence
- * over any values that might be specified in the 
- * environment variables or in the config file. So if both
- * command line and config file specify a value for the
- * input file, like:
- *   cli: -input inputDir\input2.tree
- *   ini: input = inputDir\input1.tree
- * the one from the commend line will be used. So in this
- * case: inputDir\input2.tree
+ *     Options specified on the command line take precedence
+ *     over any values that might be specified in the
+ *     environment variables or in the config file. So if both
+ *     command line and config file specify a value for the
+ *     input file, like:
+ *       cli: -input inputDir\input2.tree
+ *       ini: input = inputDir\input1.tree
+ *     the one from the commend line will be used. So in this
+ *     case: inputDir\input2.tree
  * 
- * For most command line options two versions are available,
- * with either a long or a short option name. E.g. for the
- * input file both:
- *  -i path-to-input-file 
- * and
- *  -input path-to-input-file
- * are valid options.
+ *     For most command line options two versions are available,
+ *     with either a long or a short option name. E.g. for the
+ *     input file both:
+ *      -i path-to-input-file
+ *     and
+ *      -input path-to-input-file
+ *     are valid options.
  *
- * @author ...
+ *     @author(s); Carla Stegehuis, Rutger Vos
+ *     Contributed to:
+ *     Date: 3/11/'14
+ *     Version: V2.0
  */
 public class MrpConfig {
 

@@ -14,7 +14,10 @@ import org.phylotastic.mrppath.*;
  * 
  * Reducer class, an element of the Hadoop MapReduce framework
  *
- * @author ...
+ *     @author(s); Carla Stegehuis, Rutger Vos
+ *     Contributed to:
+ *     Date: 3/11/'14
+ *     Version: V2.0
  */
 public class MrpPass3Reducer extends Reducer<Text, Text, Text, Text>
 {
@@ -24,16 +27,16 @@ public class MrpPass3Reducer extends Reducer<Text, Text, Text, Text>
     private Configuration jobConf;        // the hadoop job configuration
     
     /**
-     * method: setup
+     *     method: setup
      * 
-     * This method is called once for each reducer task. So if 10 reducers 
-     * were spawned for a job, then for each of those reducers it will be 
-     * called once
-     * General guideline is to add any task that is required to be done
-     * only once, like getting the path of the distributed cache, 
-     * passing and getting parameters to reducers, etc.
+     *     This method is called once for each reducer task. So if 10 reducers
+     *     were spawned for a job, then for each of those reducers it will be
+     *     called once
+     *     General guideline is to add any task that is required to be done
+     *     only once, like getting the path of the distributed cache,
+     *     passing and getting parameters to reducers, etc.
      * 
-     * The method has no real function here yet; it is added for completeness
+     *     The method has no real function here yet; it is added for completeness
      *
      * @param context   a Hadoop context, giving access to data related to the pass1 job
      * @throws IOException
@@ -47,48 +50,48 @@ public class MrpPass3Reducer extends Reducer<Text, Text, Text, Text>
     }
 
     /** 
-     * method: reduce
+     *     method: reduce
      * 
-     * For example, for tree
+     *     For example, for tree
      * 
-     *         (n1)                           A        C   D
-     *         /  \                            \      /   /
-     *       (n2)  \                           (n4)  /   /
-     *       /  \   \                            \  /   /
-     *     (n3)  \   \                           (n3)  /
-     *     /  \   \   \                            \  /
-     *   (n4)  \   \   \                           (n2)
-     *   /  \   \   \   \
-     *  A    B   C   D   E
+     *             (n1)                           A        C   D
+     *             /  \                            \      /   /
+     *           (n2)  \                           (n4)  /   /
+     *           /  \   \                            \  /   /
+     *         (n3)  \   \                           (n3)  /
+     *         /  \   \   \                            \  /
+     *       (n4)  \   \   \                           (n2)
+     *       /  \   \   \   \
+     *      A    B   C   D   E
      *
-     * if taxons are A and C and D, Reduce-3() receives:
-     * A    {n2,3;n3,2;n4,1;=A:Agoracea}    // {} = iterable list
-     * C    {n2,3;n3,2;=C:Catonacea}        // {} = iterable list
-     * D    {n2,3;=D:Draconacea}            // {} = iterable list
+     *     if taxons are A and C and D, Reduce-3() receives:
+     *     A    {n2,3;n3,2;n4,1;=A:Agoracea}    // {} = iterable list
+     *     C    {n2,3;n3,2;=C:Catonacea}        // {} = iterable list
+     *     D    {n2,3;=D:Draconacea}            // {} = iterable list
      *
-     * where it lists the keys A, C and D the integer labels of those nodes are meant.
+     *     where it lists the keys A, C and D the integer labels of those nodes are meant.
      * 
-     * processing will:
-     * - assemble the path "per tip"
-     * - remove internal nodes that only subtend 1 tip
-     *   adding their branch length to that of the tip
+     *     processing will:
+     *     - assemble the path "per tip"
+     *     - remove internal nodes that only subtend 1 tip
+     *       adding their branch length to that of the tip
      *
-     * after processing Reduce-3() emits the records:
-     * A:Agoracea           n2,n3
-     * C:Catonacea          n2,n3
-     * D:Draconacea         n2
+     *     after processing Reduce-3() emits the records:
+     *     A:Agoracea           n2,n3
+     *     C:Catonacea          n2,n3
+     *     D:Draconacea         n2
      *
-     * Representing the tree
+     *     Representing the tree
      * 
-     *      (n2)                            A        C   D
-     *      /  \                             \      /   /
-     *    (n3)  D:Draconacea                  \    /   /	
-     *    /  \                                 \  /   /
-     *   /    C:Catonacea                      (n3)  /
-     *  /                                        \  /
-     * A:Agoracea                                (n2)
+     *          (n2)                            A        C   D
+     *          /  \                             \      /   /
+     *        (n3)  D:Draconacea                  \    /   /
+     *        /  \                                 \  /   /
+     *       /    C:Catonacea                      (n3)  /
+     *      /                                        \  /
+     *     A:Agoracea                                (n2)
      *
-     * further processing can then result in the Newick representation for the tree:
+     *     further processing can then result in the Newick representation for the tree:
      * 
      * @param tipText   the key of the taxons external node
      * @param nodes     (all) the nodes on the taxons path
@@ -99,12 +102,12 @@ public class MrpPass3Reducer extends Reducer<Text, Text, Text, Text>
     @Override
     public void reduce(Text tipText, Iterable<Text> nodes, Context context) throws IOException, InterruptedException
     {
-        /* this is a taxon node set like this:
-         * A        n2,3; n3,2; n4,1 and =A:Agoracea
-         * where A is the external node's label tipText
-         * and n2,n3,n4, and =A:Agoracea are the taxon's path nodes
-         * like in the case of the parkia:
-         * "000628      623:1, 625:1 and =628:18:parkia"
+        /*     this is a taxon node set like this:
+         *     A        n2,3; n3,2; n4,1 and =A:Agoracea
+         *     where A is the external node's label tipText
+         *     and n2,n3,n4, and =A:Agoracea are the taxon's path nodes
+         *     like in the case of the parkia:
+         *     "000628      623:1, 625:1 and =628:18:parkia"
          */
         PathNode taxonTip = null;
         PathNodeInternal taxonNode = null;

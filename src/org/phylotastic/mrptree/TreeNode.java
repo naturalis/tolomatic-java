@@ -7,45 +7,48 @@ import java.text.DecimalFormat;
 import java.util.Objects;
 
 /**
- * Class TreeNode
+ *     Class TreeNode
  * 
- * Used in combination with the Tree class to Construct
- * a tree structure that can be used to construct a newick tree from
+ *     Used in combination with the Tree class to Construct
+ *     a tree structure that can be used to construct a newick tree from
  *
- * @author ...
+ *     @author(s); Carla Stegehuis, Rutger Vos
+ *     Contributed to:
+ *     Date: 3/11/'14
+ *     Version: V2.0
  */
 public class TreeNode implements Comparable<TreeNode> {
     /**
-     * Static variable: lengthFormatter
+     *     Static variable: lengthFormatter
      * 
-     * A locale insensitive formatter for the (branche) length
-     * used in the toString() and toNewick() methods.
-     * The formatter, based on the EN/US locale is set by
-     * the static method:formatLength().
+     *     A locale insensitive formatter for the (branche) length
+     *     used in the toString() and toNewick() methods.
+     *     The formatter, based on the EN/US locale is set by
+     *     the static method:formatLength().
      */
     private static DecimalFormat lengthFormatter = null;
     
     /**
-     * Static method: formatLength()
+     *     Static method: formatLength()
      * 
-     * Return a Double formatted such that toNewick outputs
-     * a period as the decimal separator for length in
-     * spite of the current "locale".
-     * eg in NL the separator would be a comma, which would
-     * conflict with the use of the comma in newick as the
-     * node separator.
+     *     Return a Double formatted such that toNewick outputs
+     *     a period as the decimal separator for length in
+     *     spite of the current "locale".
+     *     e.g. in NL the separator would be a comma, which would
+     *     conflict with the use of the comma in newick as the
+     *     node separator.
      */
     private static String formatLength(Double _length) {
         if (lengthFormatter == null) {
             NumberFormat nf = NumberFormat.getNumberInstance(new Locale("en", "US"));
             lengthFormatter = (DecimalFormat)nf;
-            lengthFormatter.applyPattern("##0.0#");
+            lengthFormatter.applyPattern("##0.000000#");
         }
         return lengthFormatter.format(_length);
     }
     
     /**
-     * Object variables:
+     *     Object variables:
      */ 
     private int ID;                                     // the node ID
     private String name;                                // the taxon name
@@ -56,7 +59,7 @@ public class TreeNode implements Comparable<TreeNode> {
 
     // constructors
     // ------------------------------------------------------------------------
-    /** Create a Tree node object
+    /**     Create a Tree node object
     */
     public TreeNode() {
         super();
@@ -67,8 +70,8 @@ public class TreeNode implements Comparable<TreeNode> {
     }
     
     /**
-     * Create a TreeNode object
-     * mainly used for internal treenodes
+     *     Create a TreeNode object
+     *     mainly used for internal treenodes
      *
      * @param _id           the digital id for the treenode
      * @param _length       the distance to the node's parentnode
@@ -82,8 +85,8 @@ public class TreeNode implements Comparable<TreeNode> {
     }
     
     /**
-     * Create a TreeNode object
-     * mainly used for external treenodes (tips or leafs)
+     *     Create a TreeNode object
+     *     mainly used for external treenodes (tips or leafs)
      *
      * @param _id           the digital id for the treenode
      * @param _length       the distance to the node's parentnode
@@ -98,7 +101,7 @@ public class TreeNode implements Comparable<TreeNode> {
     }
     
     /**
-     * Set this node's ditital ID (= label)
+     *     Set this node's ditital ID (= label)
      * 
      * @param _id           the integer id for the treenode
      */
@@ -109,7 +112,7 @@ public class TreeNode implements Comparable<TreeNode> {
     }
     
     /**
-     * Set this node's ditital ID (= label)
+     *     Set this node's ditital ID (= label)
      * 
      * @param _id           the integer id for the treenode
      */
@@ -118,7 +121,7 @@ public class TreeNode implements Comparable<TreeNode> {
     }
     
     /**
-     * Return this node's digital ID
+     *     Return this node's digital ID
      * 
      * @return             the integer id for the treenode
      */
@@ -127,7 +130,7 @@ public class TreeNode implements Comparable<TreeNode> {
     }
     
     /**
-     * Set this node's name
+     *     Set this node's name
      *
      * @param _name        the (external) node's taxon name
      */
@@ -138,7 +141,7 @@ public class TreeNode implements Comparable<TreeNode> {
     }
     
     /**
-     * Return this node's name
+     *     Return this node's name
      *
      * @return        the (external) node's taxon name
      */
@@ -147,10 +150,10 @@ public class TreeNode implements Comparable<TreeNode> {
     }
     
     /**
-     * Return this node's name; create a name
-     * from the node ID if the name is empty.
-     * Diferentiates between internal and
-     * external nodes
+     *     Return this node's name; create a name
+     *     from the node ID if the name is empty.
+     *     Differentiates between internal and
+     *     external nodes
      *
      * @return        the node's name
      */
@@ -165,8 +168,8 @@ public class TreeNode implements Comparable<TreeNode> {
     }
     
     /**
-     * Set the length of the distance between
-     * this (child) node and it's parent node
+     *     Set the length of the distance between
+     *     this (child) node and it's parent node
      *
      * @param _length       the distance to the node's parentnode
      */
@@ -175,8 +178,8 @@ public class TreeNode implements Comparable<TreeNode> {
     }
     
     /**
-     * Return the length of the distance between
-     * this (child) node and it's parent node
+     *     Return the length of the distance between
+     *     this (child) node and it's parent node
      *
      * @return       the distance to the node's parentnode
      */
@@ -185,7 +188,7 @@ public class TreeNode implements Comparable<TreeNode> {
     }
     
     /**
-     * Set this node as a child of another node (parent)
+     *     Set this node as a child of another node (parent)
      *
      * @param _parentNode       the parentnode for this node
      */
@@ -194,7 +197,7 @@ public class TreeNode implements Comparable<TreeNode> {
     }
     
     /**
-     * Return the parent node of this.child node
+     *     Return the parent node of this.child node
      *
      * @return                  the parent node for this.child node
      */
@@ -203,7 +206,7 @@ public class TreeNode implements Comparable<TreeNode> {
     }
     
     /**
-     * Return true if this node has a parent
+     *     Return true if this node has a parent
      *
      * @return      true if this node has a parent
      */
@@ -212,7 +215,7 @@ public class TreeNode implements Comparable<TreeNode> {
     }
     
     /**
-     * Add a given node as a child to this node
+     *     Add a given node as a child to this node
      *
      * @param _childNode    the node that is to be added as a child
      */
@@ -222,7 +225,7 @@ public class TreeNode implements Comparable<TreeNode> {
     }
     
     /**
-     * Return true if this node has children
+     *     Return true if this node has children
      *
      * @return      true if this node has children
      */
@@ -231,7 +234,7 @@ public class TreeNode implements Comparable<TreeNode> {
     }
     
     /**
-     * Set the isRoot property to true or false
+     *     Set the isRoot property to true or false
      *
      * @param _value        the boolean value for te isRooot property
      */
@@ -240,8 +243,8 @@ public class TreeNode implements Comparable<TreeNode> {
     }
     
     /**
-     * Return true if this node is 
-     * designated as the root node
+     *     Return true if this node is
+     *     designated as the root node
      *
      * @return      true if this node is a root node
      */    
@@ -250,12 +253,12 @@ public class TreeNode implements Comparable<TreeNode> {
     }
 
     /**
-     * compareTo implements (part of) the Coparable interface
+     *     compareTo implements (part of) the Coparable interface
      * 
-     * returns:
-     *          -1 if this node's label is less then that node's label
-     *           0 if this node's label is equal to that node's label
-     *          +1 if this node's label is larger then that node's label
+     *     returns:
+     *              -1 if this node's label is less then that node's label
+     *               0 if this node's label is equal to that node's label
+     *              +1 if this node's label is larger then that node's label
      * 
      * @param that  the TreeNode to compare this.node with
      * @return  -1, 0 or +1 depending on the result
@@ -268,8 +271,8 @@ public class TreeNode implements Comparable<TreeNode> {
     }
     
     /**
-     * Return true if this node is equal to
-     * the other node; i.e. has same values
+     *     Return true if this node is equal to
+     *     the other node; i.e. has same values
      *
      * @param _that the object (TreeNode) to compare with
      * @return      true if both nodes are equal
@@ -288,11 +291,11 @@ public class TreeNode implements Comparable<TreeNode> {
     }
     
     /**
-     * Return this node's hashCode.
-     * (algorithm = auto generated)
+     *     Return this node's hashCode.
+     *     (algorithm = auto generated)
      * 
-     * (NB When overriding "Equals" also
-     * hashCode has to be overridden)
+     *     (NB When overriding "Equals" also
+     *     hashCode has to be overridden)
      * 
      * @return      the TreeNode's hashcode
      */   
@@ -307,7 +310,7 @@ public class TreeNode implements Comparable<TreeNode> {
     }
     
     /**
-     * Return a string representation of this node
+     *     Return a string representation of this node
      *
      * @return      the node as a string
      */ 
@@ -317,9 +320,9 @@ public class TreeNode implements Comparable<TreeNode> {
     }
     
     /**
-     * Return a newick representation of this node
-     * and this node's children and those node's children and ...
-     * I.e. this method is recursive.
+     *     Return a newick representation of this node
+     *     and this node's children and those node's children and ...
+     *     I.e. this method is recursive.
      *
      * @param newickString      a stringbuilder that the node's newick "string" will be added to
      */ 

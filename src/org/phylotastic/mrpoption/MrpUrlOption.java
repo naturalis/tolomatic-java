@@ -4,17 +4,20 @@ import java.net.URL;
 import java.net.MalformedURLException;
 
 /**
- * class MrpUrlOption
+ *     Class MrpUrlOption
  * 
- * An implementation of the MrpArgumentOption class
- * focused on URL values.
+ *     An implementation of the MrpArgumentOption class
+ *     focused on URL values.
  *
- * @author ...
+ *     @author(s); Carla Stegehuis, Rutger Vos
+ *     Contributed to:
+ *     Date: 3/11/'14
+ *     Version: V2.0
  */
 public class MrpUrlOption extends MrpArgumentOption {
     
     /**
-     * default constructor
+     *     default constructor
      *
      */
     public MrpUrlOption() {
@@ -22,7 +25,7 @@ public class MrpUrlOption extends MrpArgumentOption {
     }
     
     /**
-     * full constructor
+     *     full constructor
      *
      * @param _description      cli: option description
      * @param _shortOption      cli: short option (name)
@@ -38,8 +41,8 @@ public class MrpUrlOption extends MrpArgumentOption {
     }
     
     /**
-     * This is the method that sets the actual value for
-     * the specific url 
+     *     This is the method that sets the actual value for
+     *     the specific url
      * 
      * @param _value    the URL string to set as this.option's value
      */
@@ -49,8 +52,8 @@ public class MrpUrlOption extends MrpArgumentOption {
     }
     
     /** 
-     * check if a correct URL value was specified for this.option;
-     * otherwise @throw an IllegalArgumentException
+     *     check if a correct URL value was specified for this.option;
+     *     otherwise @throw an IllegalArgumentException
      * 
      * @throws IllegalArgumentException
     */

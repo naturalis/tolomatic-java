@@ -4,65 +4,68 @@ import org.apache.commons.cli.*;
 import org.apache.log4j.*;
 
 /**
- * Class MrpOption
+ *     Class MrpOption
  *   
- * This class contains methods and fields
- * to maintain the data for an optional
- * configuration value.
- * This includes the data needed to implement
- * the value as a command line option and/or
- * as an ini.file option
+ *     This class contains methods and fields
+ *     to maintain the data for an optional
+ *     configuration value.
+ *     This includes the data needed to implement
+ *     the value as a command line option and/or
+ *     as an ini.file option
  * 
- * The class mainly uses a default constructor
- * and one or more specfic setProperties methods
- * This in order to not have to duplicate too
- * many constructors in each of the decendant classes
+ *     The class mainly uses a default constructor
+ *     and one or more specfic setProperties methods
+ *     This in order to not have to duplicate too
+ *     many constructors in each of the decendant classes
  * 
- * The class uses commons.cli. Most of it's properties
- * exist of cli option properties, like:
+ *     The class uses commons.cli. Most of it's properties
+ *     exist of cli option properties, like:
  * 
- *  description:    cli: option description
- *  shortOption:    cli: short option (name), e.d. -c for configfile
- *  longOption:     cli: long option (name), e.d. -config for configfile
+ *      description:    cli: option description
+ *      shortOption:    cli: short option (name), e.d. -c for configfile
+ *      longOption:     cli: long option (name), e.d. -config for configfile
  * 
- * The class can only be used for boolean type options; 
- * i.e. options without arguments values. So only for:
- *  -n              don't use environment values
- *  not for
- *  -c config.ini   path of config file to be used
+ *     The class can only be used for boolean type options;
+ *     i.e. options without arguments values. So only for:
+ *      -n              don't use environment values
+ *      not for
+ *      -c config.ini   path of config file to be used
  * 
  *
- * @author ...
+ *     @author(s); Carla Stegehuis, Rutger Vos
+ *     Contributed to:
+ *     Date: 3/11/'14
+ *     Version: V2.0
  */
 public class MrpOption {
 
     /**
-     * a short string description as used in the cli option
+     *     a short string description as used in the cli option
      */
     public String description;
 
     /**
-     * the short version of the cli option (name)
+     *     the short version of the cli option (name)
      */
     public String shortOption;
 
     /**
-     * the long version of the cli option (name)
+     *     the long version of the cli option (name)
      */
     public String longOption;
     
     /**
-     * the value the user specified for the option
+     *     the value the user specified for the option
      */
     protected String value = "";
 
     /**
-     * a default logger for the option class
+     *     a default logger for the option class
      */
     protected static Logger logger;
     
     /**
-     * default constructor
+     *     default constructor
      *
      */
     public MrpOption() {
@@ -74,7 +77,7 @@ public class MrpOption {
     }
     
     /**
-     * full constructor
+     *     full constructor
      *
      * @param _description      cli: option description
      * @param _shortOption      cli: short option (name)
@@ -90,10 +93,10 @@ public class MrpOption {
     }
     
     /**
-     * Method: setProperties
+     *     Method: setProperties
      * 
-     * set the properties for a command line option without argument
-     * use with default constructor
+     *     set the properties for a command line option without argument
+     *     use with default constructor
      *
      * @param _description      cli: option description
      * @param _shortOption      cli: short option (name)
@@ -106,8 +109,8 @@ public class MrpOption {
     }
     
     /**
-     * create and return an org.apache.commons.cli Option object
-     * for this.option
+     *     create and return an org.apache.commons.cli Option object
+     *     for this.option
      *
      * @return  the org.apache.commons.cli Option object
      */
@@ -136,8 +139,8 @@ public class MrpOption {
     }
     
     /** 
-     * check if a correct value was specified for this.option;
-     * otherwise @throws an IllegalArgumentException
+     *     check if a correct value was specified for this.option;
+     *     otherwise @throws an IllegalArgumentException
      * 
      * @throws IllegalArgumentException
     */
@@ -164,7 +167,7 @@ public class MrpOption {
     }
 
     /**
-     * Returns the string representation of this pathnode
+     *     Returns the string representation of this pathnode
      * 
      * @return      this.Option as a string, like: 
      *      "Option: -n, -noenv: do nót use environment variables"
