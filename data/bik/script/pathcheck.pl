@@ -22,6 +22,6 @@ while(<$fh>) {
 		warn "no path for $id: $path";
 	}
 	else {
-		warn "OK: $id";
+		print "OK: $id\n";
 	}
 }
