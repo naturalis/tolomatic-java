@@ -14,8 +14,10 @@ import org.apache.hadoop.mapreduce.lib.input.KeyValueTextInputFormat;
 import org.apache.log4j.Logger;
 
 /**
- *
- * @author ...
+ *     @author(s); Carla Stegehuis, Rutger Vos
+ *     Contributed to:
+ *     Date: 3/11/'14
+ *     Version: V2.0
  */
 public class MrpRun extends Configured implements Tool {
     // configuration data like paths to files, etc.
@@ -36,58 +38,58 @@ public class MrpRun extends Configured implements Tool {
         logger        = Logger.getLogger(MrpRun.class.getName());
     }
     
-    /** Method Run
+    /**     Method Run
      * -------------------------------------------------------------------------
-     * This proces extracts a subset from an existing tree and removes any superfluous
-     * internal nodes. For instance taking the subset A, C, D from the imaginary tree:
+     *     This proces extracts a subset from an existing tree and removes any superfluous
+     *     internal nodes. For instance taking the subset A, C, D from the imaginary tree:
      *
-     *  A    B   C   D   E
-     *   \  /   /   /   /
-     *   (n4)  /   /   /
-     *     \  /   /   /
-     *     (n3)  /   /
-     *       \  /   /
-     *       (n2)  /
+     *      A    B   C   D   E
+     *       \  /   /   /   /
+     *       (n4)  /   /   /
+     *         \  /   /   /
+     *         (n3)  /   /
+     *           \  /   /
+     *           (n2)  /
+     *             \  /
+     *             (n1)
+     *
+     *     step 1 (map-1/reduce-1) results in the tree:
+     *
+     *      A        C   D
+     *       \      /   /
+     *       (n4)  /   /
+     *         \  /   /
+     *         (n3)  /
+     *           \  /
+     *           (n2)
+     *             \
+     *             (n1)
+     *
+     *     with superfluous nodes like (n1) and (n4). In two further steps
+     *     these nodes are removed, resulting in the tree:
+     *
+     *      A        C   D
+     *       \      /   /
+     *        \    /   /
+     *         \  /   /
+     *         (n3)  /
+     *           \  /
+     *           (n2)
+     *
+     *     Step 2 (map-2/reduce-2) removes any unbranched internal nodes like (n1)
+     *     Step 3 (map-3/reduce-3) removes any remaining internal nodes that subtend
+     *     only 1 tip like (n4).
+     *
+     *     The names of the extracted taxons are carried all the way to reduce-3,
+     *     where they are re-attached to the concerning (external) node, giving:
+     *
+     *      A:Agoracea
+     *       \
+     *        \    C:Catonacea
      *         \  /
-     *         (n1)
-     *
-     * step 1 (map-1/reduce-1) results in the tree:
-     *
-     *  A        C   D
-     *   \      /   /
-     *   (n4)  /   /
-     *     \  /   /
-     *     (n3)  /
-     *       \  /
-     *       (n2)
-     *         \
-     *         (n1)
-     *
-     * with superfluous nodes like (n1) and (n4). In two further steps 
-     * these nodes are removed, resulting in the tree:
-     *
-     *  A        C   D
-     *   \      /   /
-     *    \    /   /	
-     *     \  /   /
-     *     (n3)  / 
-     *       \  /
-     *       (n2)
-     *
-     * Step 2 (map-2/reduce-2) removes any unbranched internal nodes like (n1)
-     * Step 3 (map-3/reduce-3) removes any remaining internal nodes that subtend
-     * only 1 tip like (n4).
-     *
-     * The names of the extracted taxons are carried all the way to reduce-3,
-     * where they are re-attached to the concerning (external) node, giving:
-     *
-     *  A:Agoracea
-     *   \
-     *    \    C:Catonacea
-     *     \  /
-     *     (n3)  D:Draconacea	
-     *       \  /
-     *       (n2)
+     *         (n3)  D:Draconacea
+     *           \  /
+     *           (n2)
      * 
      * -------------------------------------------------------------------------
      * @param args arguments for the run (not used)

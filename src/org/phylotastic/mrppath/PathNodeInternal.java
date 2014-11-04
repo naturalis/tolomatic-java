@@ -7,22 +7,22 @@ package org.phylotastic.mrppath;
  * PathNode class with the interger TipCount
  * This count expresses how many (external) tip nodes
  * have the particular (internal) node in their path.
- * 
- * @author(s); Rutger Vos, Carla Stegehuis
- * Contributed to:
- * Date:
- * Version: 0.1
+ *
+ *     @author(s); Carla Stegehuis, Rutger Vos
+ *     Contributed to:
+ *     Date: 3/11/'14
+ *     Version: V2.0
  */
 public class PathNodeInternal extends PathNode {
     /**
-     * Static variables:
+     *     Static variables:
      */ 
     // none
     
     /**
-     * Static method: fromString()
+     *     Static method: fromString()
      * 
-     * To create a pathnode from it's string representation
+     *     To create a pathnode from it's string representation
      *
      * @param nodeString    the string representation of the node, like: 625:0.1,3
      * @return              the PathNodeInternal created from the string
@@ -41,10 +41,10 @@ public class PathNodeInternal extends PathNode {
     }
 
     /**
-     * Static method: fromText()
+     *     Static method: fromText()
      * 
-     * To create an internal pathnode from an
-     * org.apache.hadoop.io.Text representation
+     *     To create an internal pathnode from an
+     *     org.apache.hadoop.io.Text representation
      *
      * @param nodeText      the Text representation of the node, like: 625:1.0,3
      * @return              the PathNodeInternal created from the string
@@ -60,7 +60,7 @@ public class PathNodeInternal extends PathNode {
     int mTipCount;
 
     /**
-     * Constructor
+     *     Constructor
      *
      * @param label           the digital id for the pathnode
      * @param length          the distance to the node's parentnode
@@ -71,7 +71,7 @@ public class PathNodeInternal extends PathNode {
     }
 
     /**
-     * Constructor
+     *     Constructor
      *
      * @param label           the digital id for the pathnode
      * @param length          the distance to the node's parentnode
@@ -84,7 +84,7 @@ public class PathNodeInternal extends PathNode {
     }
 
     /**
-     * Constructor
+     *     Constructor
      *
      * @param node            the pathnode containing the label and the length
      * @param tipCount        the number of tip nodes this.PathNode is the external node for
@@ -96,7 +96,7 @@ public class PathNodeInternal extends PathNode {
     }
 
     /**
-     * Set this node's tipcount
+     *     Set this node's tipcount
      *
      * @param tipCount        the number of tip nodes this.PathNode is the external node for
      */
@@ -106,7 +106,7 @@ public class PathNodeInternal extends PathNode {
     }
 
     /**
-     * Get this node's tipcount
+     *     Get this node's tipcount
      *
      * @return        the number of tip nodes this.PathNode is the external node for
      */

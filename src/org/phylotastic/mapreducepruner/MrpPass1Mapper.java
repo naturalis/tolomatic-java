@@ -25,8 +25,11 @@ import org.phylotastic.mrppath.PathNode;
  * -------------------------------------------------------------------------
  * 
  * a Mapper class, an element of the Hadoop MapReduce framework
- * 
- * @author ...
+ *
+ *     @author(s); Carla Stegehuis, Rutger Vos
+ *     Contributed to:
+ *     Date: 3/11/'14
+ *     Version: V2.0
  * 
  */
 public class MrpPass1Mapper extends Mapper<LongWritable, Text, Text, Text> 
@@ -47,14 +50,14 @@ public class MrpPass1Mapper extends Mapper<LongWritable, Text, Text, Text>
     
     
     /**
-     * method: setup
+     *     method: setup
      * 
-     * This method is called once for each mapper task. So if 10 mappers 
-     * were spawned for a job, then for each of those mappers it will be 
-     * called once
-     * General guideline is to add any task that is required to be done
-     * only once, like getting the path of the distributed cache, 
-     * passing and getting parameters to mappers, etc.
+     *     This method is called once for each mapper task. So if 10 mappers
+     *     were spawned for a job, then for each of those mappers it will be
+     *     called once
+     *     General guideline is to add any task that is required to be done
+     *     only once, like getting the path of the distributed cache,
+     *     passing and getting parameters to mappers, etc.
      *
      * @param context   a Hadoop context, giving access to data related to the pass1 job
      * @throws IOException
@@ -74,96 +77,96 @@ public class MrpPass1Mapper extends Mapper<LongWritable, Text, Text, Text>
     }
     
     /**
-     * method: map
-     * ---------------------------------------------------------------------
+     *     method: map
+     *     ---------------------------------------------------------------------
      * 
-     * Given a single taxon name as argument, this method reads in a file from a specified tree
-     * database. That file should contain one line: a "|"-separated list of nodes that describes
-     * the path, in pre-order indexed integers, from taxon to the root. The name of the file is 
-     * an encoded version of the taxon name, that contains no chracters that are not allowed in 
-     * a (Unix/Windows, etc.) file name.
+     *     Given a single taxon name as argument, this method reads in a file from a specified tree
+     *     database. That file should contain one line: a "|"-separated list of nodes that describes
+     *     the path, in pre-order indexed integers, from taxon to the root. The name of the file is
+     *     an encoded version of the taxon name, that contains no chracters that are not allowed in
+     *     a (Unix/Windows, etc.) file name.
      * 
-     * Example:
-     * Taxon        : parkia
-     * Encoded      : 001888798bb50357c4ab8bea57ddfe81
-     * File name    : /0/0/1/8/8/001888798bb50357c4ab8bea57ddfe81
-     * Path         : 628:18|625:1|624:1|623:1|622:1|621:1|581:1|513:1|505:1| ..... |5:1|4:1|3:1|2:1|1:1
+     *     Example:
+     *     Taxon        : parkia
+     *     Encoded      : 001888798bb50357c4ab8bea57ddfe81
+     *     File name    : /0/0/1/8/8/001888798bb50357c4ab8bea57ddfe81
+     *     Path         : 628:18|625:1|624:1|623:1|622:1|621:1|581:1|513:1|505:1| ..... |5:1|4:1|3:1|2:1|1:1
      * 
-     * Each segment of that path is emitted as an (internal)node ID => taxon pair. 
-     * For example, for imaginary tree
+     *     Each segment of that path is emitted as an (internal)node ID => taxon pair.
+     *     For example, for imaginary tree
      * 
-     *         (n1)                           A    B   C   D   E
-     *         /  \                            \  /   /   /   /
-     *       (n2)  \                           (n4)  /   /   /
-     *       /  \   \                            \  /   /   /
-     *     (n3)  \   \                           (n3)  /   /
-     *     /  \   \   \                            \  /   /
-     *   (n4)  \   \   \                           (n2)  /
-     *   /  \   \   \   \                            \  /
-     *  A    B   C   D   E                           (n1)
+     *             (n1)                           A    B   C   D   E
+     *             /  \                            \  /   /   /   /
+     *           (n2)  \                           (n4)  /   /   /
+     *           /  \   \                            \  /   /   /
+     *         (n3)  \   \                           (n3)  /   /
+     *         /  \   \   \                            \  /   /
+     *       (n4)  \   \   \                           (n2)  /
+     *       /  \   \   \   \                            \  /
+     *      A    B   C   D   E                           (n1)
      *
-     * if the taxons specified for extraction are A and C and D, Map-1() emits the records:
-     * (=)  A:Agoracea
-     * n4   A
-     * n3   A
-     * n2   A
-     * n1   A
-     * (=)  C:Catonacea
-     * n3   C
-     * n2   C
-     * n1   C
-     * (=)  D:Draconacea
-     * n2   D
-     * n1   D
+     *     if the taxons specified for extraction are A and C and D, Map-1() emits the records:
+     *     (=)  A:Agoracea
+     *     n4   A
+     *     n3   A
+     *     n2   A
+     *     n1   A
+     *     (=)  C:Catonacea
+     *     n3   C
+     *     n2   C
+     *     n1   C
+     *     (=)  D:Draconacea
+     *     n2   D
+     *     n1   D
      *
-     * Representing the tree
+     *     Representing the tree
      * 
-     *  A        C   D
-     *   \      /   /
-     *   (n4)  /   /
-     *     \  /   /
-     *     (n3)  /
-     *       \  /
-     *       (n2)
-     *         \
-     *         (n1)
+     *      A        C   D
+     *       \      /   /
+     *       (n4)  /   /
+     *         \  /   /
+     *         (n3)  /
+     *           \  /
+     *           (n2)
+     *             \
+     *             (n1)
      *
-     * where:
-     * A,C and D are the labels or ID's of the taxons
-     * Agoracea, Catonacea and Draconacea their respective names
-     * n1, n2, .., n4 are the internal nodes
+     *     where:
+     *     A,C and D are the labels or ID's of the taxons
+     *     Agoracea, Catonacea and Draconacea their respective names
+     *     n1, n2, .., n4 are the internal nodes
      *
-     * Before being presented to the Reduce-1() method, the emited records are sorted
-     * if taxons were A and C and D, this results in the records:
-     * (=)  A:Agoracea
-     * (=)  C:Catonacea
-     * (=)  D:Draconacea
-     * n1   A
-     * n1   C
-     * n1   D
-     * n2   A
-     * n2   C
-     * n2   D
-     * n3   A
-     * n3   C
-     * n4   A
+     *     Before being presented to the Reduce-1() method, the emited records are sorted
+     *     if taxons were A and C and D, this results in the records:
+     *     (=)  A:Agoracea
+     *     (=)  C:Catonacea
+     *     (=)  D:Draconacea
+     *     n1   A
+     *     n1   C
+     *     n1   D
+     *     n2   A
+     *     n2   C
+     *     n2   D
+     *     n3   A
+     *     n3   C
+     *     n4   A
      * 
-     * Map is called once for eacht taxon name in the input file
-     * The name is encoded to the file location of the path file
-     * The path is read in and split up into it's constituent nodes
-     * For eacht node a record is written out for the reduce step;
-     * for the parkia example 
-     *   taxon: parkia
-     *   path:  628:18|625:1|624:1|623:1|622:1| ..... |5:1|4:1|3:1|2:1|1:1
-     * the output would be:
-     *   (=)       628:18:parkia
-     *   625:1     628:18
-     *   623:1     628:18
-     *   ...       ...
-     *   ...       ...
-     *   3:1       628:18
-     *   2:1       628:18
-     *   1:1       628:18
+     *     Map is called once for eacht taxon name in the input file
+     *     The name is encoded to the file location of the path file
+     *     The path is read in and split up into it's constituent nodes
+     *     For eacht node a record is written out for the reduce step;
+     *     for the parkia example
+     *       taxon: parkia
+     *       path:  628:18|625:1|624:1|623:1|622:1| ..... |5:1|4:1|3:1|2:1|1:1
+     *     the output would be:
+     *       (=)       628:18:parkia
+     *       625:1     628:18
+     *       623:1     628:18
+     *       ...       ...
+     *       ...       ...
+     *       3:1       628:18
+     *       2:1       628:18
+     *       1:1       628:18
      * 
      * @param key1      the offset into the file (not used)
      * @param taxon     the name of the taxon to proces; like: "parkia"
@@ -217,22 +220,22 @@ public class MrpPass1Mapper extends Mapper<LongWritable, Text, Text, Text>
     }
     
     /**
-     * (static) class: Core
-     * -------------------------------------------------------------------------
+     *     (static) class: Core
+     *     -------------------------------------------------------------------------
      * 
-     * This class contains core methods for the MrpPass1Mapper class
-     * It has been created for the sole purpose of making it possible
-     * to unit test the methods without having to create an instance
-     * of the MrpPass1Mapper class. Something that would require the
-     * use of special unit test packages like MrUnit. At his moment 
-     * however MrUnit won't support but version 2.0.0 of Hadoop while
-     * MRP is already based on hadoop 2.5.0.
+     *     This class contains core methods for the MrpPass1Mapper class
+     *     It has been created for the sole purpose of making it possible
+     *     to unit test the methods without having to create an instance
+     *     of the MrpPass1Mapper class. Something that would require the
+     *     use of special unit test packages like MrUnit. At his moment
+     *     however MrUnit won't support but version 2.0.0 of Hadoop while
+     *     MRP is already based on hadoop 2.5.0.
      * 
-     * Collecting them in a separate inner static class makes testing
-     * them independant of Hadoop, MrUnit, etc. The static indicator
-     * makes it possible to create an instance of the class without 
-     * needing an instance of the surrounding Mapper class. 
-     * Also the "protected" status supports unit testing
+     *     Collecting them in a separate inner static class makes testing
+     *     them independant of Hadoop, MrUnit, etc. The static indicator
+     *     makes it possible to create an instance of the class without
+     *     needing an instance of the surrounding Mapper class.
+     *     Also the "protected" status supports unit testing
      * 
      * @author ...
      *
@@ -309,18 +312,18 @@ public class MrpPass1Mapper extends Mapper<LongWritable, Text, Text, Text>
         }
 
         /** 
-         * method: determineTaxonFile
-         * -------------------------------------------------------------------------
+         *     method: determineTaxonFile
+         *     -------------------------------------------------------------------------
          *
-         * Constructs the location of the file that encodes the tip-to-root path 
-         * for the focal tip given the focal tree
-         * Earlier the same calculation has taken place in order to store the
-         * taxon (path) files in the disk location (taxon "database") they now occupy.
+         *     Constructs the location of the file that encodes the tip-to-root path
+         *     for the focal tip given the focal tree
+         *     Earlier the same calculation has taken place in order to store the
+         *     taxon (path) files in the disk location (taxon "database") they now occupy.
          * 
-         * For the parkia example it would encode "Parkia" into the safe
-         * string: "001888798bb50357c4ab8bea57ddfe81" that is then formed
-         * into the (relative) file path: /0/0/1/8/8/001888798bb50357c4ab8bea57ddfe81
-         * The number of subdirectories used is determined by the variable HashDepth
+         *     For the parkia example it would encode "Parkia" into the safe
+         *     string: "001888798bb50357c4ab8bea57ddfe81" that is then formed
+         *     into the (relative) file path: /0/0/1/8/8/001888798bb50357c4ab8bea57ddfe81
+         *     The number of subdirectories used is determined by the variable HashDepth
          * 
          * @param taxon     the name of the taxon to determine the file path for
          * @return          the (relative) path to the taxon file

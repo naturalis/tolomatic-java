@@ -10,8 +10,10 @@ import org.phylotastic.mrppath.*;
 import org.phylotastic.mrptree.*;
 
 /**
- *
- * @author ...
+ *     @author(s); Carla Stegehuis, Rutger Vos
+ *     Contributed to:
+ *     Date: 3/11/'14
+ *     Version: V2.0
  */
 public class MrpResult {
     private static Logger logger;
@@ -35,10 +37,10 @@ public class MrpResult {
         this.hfsSeparator    = Path.SEPARATOR;
     }
     
-    /** method: process
+    /**     method: process
      * 
-     * Process the mapreduce results into a newick tree
-     * and write that to a diskfile.
+     *     Process the mapreduce results into a newick tree
+     *     and write that to a diskfile.
      *
      * @param inputDir      the Hadoop Path for directory with the result of the MapReduce process
      * @param outputFile    the Hadoop Path for the file where the resulting Newick tree is to be written to
@@ -128,7 +130,7 @@ public class MrpResult {
     }
     
     /**
-     * Writes the given newick string to a specified disk file
+     *     Writes the given newick string to a specified disk file
      *
      * @param newick        the Newick string to be written
      * @param outputFile    the file to write the string to
@@ -153,8 +155,8 @@ public class MrpResult {
     }
     
     /**
-     * Returns a list of File's in a given directory
-     * taking into account a filename filter
+     *     Returns a list of File's in a given directory
+     *     taking into account a filename filter
      *
      * @param directory     the directory to list the file from
      * @param filter        the filter to apply

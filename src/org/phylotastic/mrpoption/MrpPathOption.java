@@ -4,38 +4,41 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Class MrpPathOption
+ *     Class MrpPathOption
  * 
- * An implementation of the MrpArgumentOption class
- * specialised in file and foldername options of items
- * that can be either on the local file system or on
- * the hadoop file system (hfs).
+ *     An implementation of the MrpArgumentOption class
+ *     specialised in file and foldername options of items
+ *     that can be either on the local file system or on
+ *     the hadoop file system (hfs).
  * 
- * If the name starts with "/user/" the location is 
- * asumed to be on the (hfs) server and the name
- * is returned "as is"
- * In all other cases the location is asumed to be on the
- * local file system and the name is returned as it's
- * absolute path. This is the path string after resolving 
- * it against the current directory - if it's relative -
- * resulting in a fully qualified path.
- * This last is done so that the location can be used in a
- * hfs "Path" object without hfs mistaking it for a
- * location on the server.
+ *     If the name starts with "/user/" the location is
+ *     assumed to be on the (hfs) server and the name
+ *     is returned "as is"
+ *     In all other cases the location is assumed to be on the
+ *     local file system and the name is returned as it's
+ *     absolute path. This is the path string after resolving
+ *     it against the current directory - if it's relative -
+ *     resulting in a fully qualified path.
+ *     This last is done so that the location can be used in a
+ *     hfs "Path" object without hfs mistaking it for a
+ *     location on the server.
  * 
- * Because of the nature of the options value, the class does
- * not (yet?) provide methods for testing if the location exists 
- * and is of the right type (file or folder). This is up to the
- * methods that use the pathOption.
+ *     Because of the nature of the options value, the class does
+ *     not (yet?) provide methods for testing if the location exists
+ *     and is of the right type (file or folder). This is up to the
+ *     methods that use the pathOption.
  *
- * @author ...
+ *     @author(s); Carla Stegehuis, Rutger Vos
+ *     Contributed to:
+ *     Date: 3/11/'14
+ *     Version: V2.0
  */
 public class MrpPathOption extends MrpArgumentOption {    
     private static final String userPath = System.getProperty("file.separator")+
             "user"+System.getProperty("file.separator");
     
     /**
-     * Constructor
+     *     Constructor
      *
      */
     public MrpPathOption(){
@@ -43,8 +46,8 @@ public class MrpPathOption extends MrpArgumentOption {
     }
     
     /**
-     * This is the method that sets the actual value for
-     * the specific file.
+     *     This is the method that sets the actual value for
+     *     the specific file.
      *
      * @param _name     the file or folder path or name
      */
@@ -55,11 +58,11 @@ public class MrpPathOption extends MrpArgumentOption {
     }
     
     /**
-     * Return the path value.
-     * If it is a file on the server - starts with "/user/" -
-     * then return the value "as is"
-     * Otherwise it is a location on the local file system
-     * return it's full (absolute) path 
+     *     Return the path value.
+     *     If it is a file on the server - starts with "/user/" -
+     *     then return the value "as is"
+     *     Otherwise it is a location on the local file system
+     *     return it's full (absolute) path
      *
      * @return  the name or path of the file/folder as a string
      * @throws IOException
@@ -74,8 +77,8 @@ public class MrpPathOption extends MrpArgumentOption {
     }
     
     /**
-     * indicates if the file is a local one
-     * or one on a server
+     *     indicates if the file is a local one
+     *     or one on a server
      *
      * @return
      */

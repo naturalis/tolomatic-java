@@ -6,12 +6,15 @@ import java.util.TreeMap;
 import org.phylotastic.mrppath.*;
 
 /**
- * Class Tree
+ *     Class Tree
  * 
- * Constructs a tree structure that can be used to construct
- * a newick tree from
+ *     Constructs a tree structure that can be used to construct
+ *     a newick tree from
  *
- * @author ...
+ *     @author(s); Carla Stegehuis, Rutger Vos
+ *     Contributed to:
+ *     Date: 3/11/'14
+ *     Version: V2.0
  */
 public class Tree {
     private TreeNode root;                          // the root node
@@ -19,7 +22,7 @@ public class Tree {
 
     // constructor
     // ------------------------------------------------------------------------
-    /** Construct a Tree object
+    /**     Construct a Tree object
     */
     public Tree() {
         super();
@@ -28,7 +31,7 @@ public class Tree {
     }
     
     /**
-     * add a TreeNode
+     *     add a TreeNode
      * 
      * @param _node     a TreeNode to add to this tree
      */
@@ -37,7 +40,7 @@ public class Tree {
     }
     
     /**
-     * Create a TreeNode and add it to this.tree
+     *     Create a TreeNode and add it to this.tree
      *
      * @param _nodeID       the digital id for the treenode
      * @param _length       the distance to the node's parentnode
@@ -51,7 +54,7 @@ public class Tree {
     }
     
     /**
-     * Create a TreeNode and add it to this.tree
+     *     Create a TreeNode and add it to this.tree
      *
      * @param _nodeID       the digital id for the treenode
      * @param _length       the distance to the node's parentnode
@@ -64,7 +67,7 @@ public class Tree {
     }
     
     /**
-     * add a TreeNode from a (MrpPath) PathNode
+     *     add a TreeNode from a (MrpPath) PathNode
      *
      * @param _node     the (external) PathNode to create a TreeNode of
      * @return          the created node
@@ -76,7 +79,7 @@ public class Tree {
     }
     
     /**
-     * add a TreeNode from an internal (MrpPath) PathNode
+     *     add a TreeNode from an internal (MrpPath) PathNode
      *
      * @param _node     the internal PathNode to create a TreeNode of
      * @return          the created node
@@ -88,8 +91,8 @@ public class Tree {
     }
     
     /**
-     * Check if the tree contains a node
-     * with a specific key (label/ID)
+     *     Check if the tree contains a node
+     *     with a specific key (label/ID)
      *
      * @param _nodeID       the nodeID for which a TreeNode is searched
      * @return              true if this.tree contains the requested node
@@ -99,8 +102,8 @@ public class Tree {
     }
     
     /**
-     * Return the node with a
-     * specific key (label/ID)
+     *     Return the node with a
+     *     specific key (label/ID)
      *
      * @param _nodeID       the nodeID for which a TreeNode is searched
      * @return              the TreeNode with the requested nodeID
@@ -110,7 +113,7 @@ public class Tree {
     }
     
     /**
-     * Add a node as a child to another treenode (the parent)
+     *     Add a node as a child to another treenode (the parent)
      *
      * @param _parent       the TreeNode to add the childnode to
      * @param _child        the TreeNode to add as a child
@@ -120,7 +123,7 @@ public class Tree {
     }
     
     /**
-     * Find the node with the lowest ID (label
+     *     Find the node with the lowest ID (label
      *
      * @return      the lowest of all the nodeID's in the tree
      */
@@ -134,8 +137,8 @@ public class Tree {
     }
     
     /**
-     * Connect all the nodes that do not yet have
-     * a parent to a specified node as their parent node
+     *     Connect all the nodes that do not yet have
+     *     a parent to a specified node as their parent node
      *
      * @param _root     the TreeNode that is to serve as the rootnode
      */
@@ -147,9 +150,9 @@ public class Tree {
     }
     
     /**
-     * Make this unrooted tree to a rooted tree
-     * by designating the (first) node with the
-     * lowest ID as the root node.
+     *     Make this unrooted tree to a rooted tree
+     *     by designating the (first) node with the
+     *     lowest ID as the root node.
      */
     public void rootTheTree() {
         // if the tree already has a root, then remove it
@@ -165,7 +168,7 @@ public class Tree {
     }
     
     /**
-     * return the root node of the tree
+     *     return the root node of the tree
      *
      * @return      the TreeNode that is the rootnode of this.tree
      */
@@ -174,7 +177,7 @@ public class Tree {
     }
     
     /**
-     * return a newick representation of the tree
+     *     return a newick representation of the tree
      *
      * @return      the Newickk string for this.tree
      */

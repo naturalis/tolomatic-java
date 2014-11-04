@@ -4,46 +4,49 @@ import org.apache.commons.cli.*;
 import org.ini4j.*;
 
 /**
- * Class MrpArgumentOption
+ *     Class MrpArgumentOption
  * 
- * This class extends the MrpOption class with the posibilitie
- * to implement cli options with arguments like the path of an inputfile:
- * "-input inputdir\input.txt"
+ *     This class extends the MrpOption class with the posibilitie
+ *     to implement cli options with arguments like the path of an inputfile:
+ *     "-input inputdir\input.txt"
  * 
- * Within that scope it also extends that class with the possibility to
- * implement ini file options; since those by default are argument
- * options like: 
- * "[Main]"
- * "input = inputdir\input.txt"
+ *     Within that scope it also extends that class with the possibility to
+ *     implement ini file options; since those by default are argument
+ *     options like:
+ *     "[Main]"
+ *     "input = inputdir\input.txt"
  * 
- * Not all cli options need to have counterparts in the ini file
+ *     Not all cli options need to have counterparts in the ini file
  *
- * @author ...
+ *     @author(s); Carla Stegehuis, Rutger Vos
+ *     Contributed to:
+ *     Date: 3/11/'14
+ *     Version: V2.0
  */
 public class MrpArgumentOption extends MrpOption {
 
     /**
-     * the cli name for the argument
+     *     the cli name for the argument
      */
     protected String argumentName;
 
     /**
-     * indicator: option has yes/no a config.ini implementation
+     *     indicator: option has yes/no a config.ini implementation
      */
     protected Boolean hasIniVersion;
 
     /**
-     * the section name for the option in the ini file
+     *     the section name for the option in the ini file
      */
     protected String iniSection;
 
     /**
-     * the name (key) for the option in the ini file
+     *     the name (key) for the option in the ini file
      */
     protected String iniName;
     
     /**
-     * default constructor
+     *     default constructor
      *
      */
     public MrpArgumentOption() {
@@ -55,7 +58,7 @@ public class MrpArgumentOption extends MrpOption {
     }
     
     /**
-     * full constructor
+     *     full constructor
      *
      * @param _description      cli: option description
      * @param _shortOption      cli: short option (name)
@@ -74,8 +77,8 @@ public class MrpArgumentOption extends MrpOption {
     }
     
     /**
-     * set properties for a command line option with argument
-     * use with default constructor
+     *     set properties for a command line option with argument
+     *     use with default constructor
      *
      * @param _description      cli: option description
      * @param _shortOption      cli: short option (name)
@@ -95,8 +98,8 @@ public class MrpArgumentOption extends MrpOption {
     }
     
     /**
-     * set properties for a command line only option with argument
-     * use with default constructor
+     *     set properties for a command line only option with argument
+     *     use with default constructor
      *
      * @param _description      cli: option description
      * @param _shortOption      cli: short option (name)
@@ -110,8 +113,8 @@ public class MrpArgumentOption extends MrpOption {
     }
     
     /**
-     * set properties for an ini only -option
-     * use with default constructor
+     *     set properties for an ini only -option
+     *     use with default constructor
      *
      * @param _iniSection       ini: the section name for the value in he ini file
      * @param _iniName          ini: the key for the value in the ini file
@@ -123,8 +126,8 @@ public class MrpArgumentOption extends MrpOption {
     }
     
     /**
-     * create and return an org.apache.commons.cli Option object
-     * for this config value
+     *     create and return an org.apache.commons.cli Option object
+     *     for this config value
      *
      * @return     a org.apache.commons.cli Option object for this.option
      */
@@ -138,8 +141,8 @@ public class MrpArgumentOption extends MrpOption {
     }
     
     /**
-     * Set the value ot this config value by
-     * reading it from a specified ini file
+     *     Set the value ot this config value by
+     *     reading it from a specified ini file
      *
      * @param configIni     ini: the path to the (config.)ini file
      * @throws java.lang.Exception
@@ -153,8 +156,8 @@ public class MrpArgumentOption extends MrpOption {
     }
     
     /**
-     * Set the value ot this config value by
-     * reading it from a cli command line parser
+     *     Set the value ot this config value by
+     *     reading it from a cli command line parser
      *
      * @param _cmdLine  org.apache.commons.cli CommandLine object
      * @throws Exception
@@ -166,14 +169,14 @@ public class MrpArgumentOption extends MrpOption {
     }
     
     /**
-     * Set the value ot this config value by
-     * reading it both from:
-     * - a specified ini file and
-     * - a specified cli command line parser
+     *     Set the value ot this config value by
+     *     reading it both from:
+     *     - a specified ini file and
+     *     - a specified cli command line parser
      * 
-     * If both ini file and command line specify
-     * a value for the same option, the cli
-     * value overwrites the ini file value
+     *     If both ini file and command line specify
+     *     a value for the same option, the cli
+     *     value overwrites the ini file value
      *
      * @param configIni     ini: the path to the (config.)ini file
      * @param _cmdLine      org.apache.commons.cli CommandLine object
@@ -185,11 +188,11 @@ public class MrpArgumentOption extends MrpOption {
     }
     
     /**
-     * This is the method that sets the actual attribute
-     * value for a specific config value (option)
-     * Also this is the method that should be overridden
-     * in more specialised subclasses of MrpArgumentOption
-     * and nót the setOption method(s)
+     *     This is the method that sets the actual attribute
+     *     value for a specific config value (option)
+     *     Also this is the method that should be overridden
+     *     in more specialised subclasses of MrpArgumentOption
+     *     and nót the setOption method(s)
      *
      * @param _value    this.option's attribute value
      */
@@ -199,8 +202,8 @@ public class MrpArgumentOption extends MrpOption {
     }
     
     /** 
-     * check if a correct value was specified for this.option;
-     * otherwise @throws an IllegalArgumentException
+     *     check if a correct value was specified for this.option;
+     *     otherwise @throws an IllegalArgumentException
      * 
      * @throws IllegalArgumentException
     */
@@ -221,7 +224,7 @@ public class MrpArgumentOption extends MrpOption {
     }
 
     /**
-     * Returns the string representation of this pathnode
+     *     Returns the string representation of this pathnode
      * 
      * @return      this.Option as a string, like: 
      *      "Option: -i, -input / [main]input: file path; path to input file"

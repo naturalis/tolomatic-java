@@ -28,18 +28,20 @@ import org.apache.hadoop.conf.Configuration;		// sara 23-09-2014
 import org.apache.hadoop.util.ToolRunner;		// sara 23-09-2014
 
 /**
- *
- * @author ...
+ *     @author(s); Carla Stegehuis, Rutger Vos
+ *     Contributed to:
+ *     Date: 3/11/'14
+ *     Version: V2.0
  */
 public class MapReducePruner {
 
     /**
-     * default name for the configuration file
+     *     default name for the configuration file
      */
     protected static String defaultConfigName = "config.ini";
 
     /**
-     * default number of tasks to split the mappers/reducers over
+     *      default number of tasks to split the mappers/reducers over
      */
     protected static int defaultNumTasks = 10;
     
@@ -63,6 +65,7 @@ public class MapReducePruner {
      * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException, Exception {
+
         // ---------------------------------------------------------------------
         // Initialization
         // ---------------------------------------------------------------------

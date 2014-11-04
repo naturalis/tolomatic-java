@@ -3,34 +3,37 @@ package org.phylotastic.mrppath;
 import java.util.TreeSet;
 
 /**
- * Class PathNodeSet
+ *     Class PathNodeSet
  * 
- * This class maintains a set of PathNodes in a (jave.util.)TreeSet 
- * and contains some helper methods for it.
+ *     This class maintains a set of PathNodes in a (jave.util.)TreeSet
+ *     and contains some helper methods for it.
  * 
- * A java.util.TreeSet is used instead of a HashSet, because TreeSet 
- * implements the SortedSet<> interface; each pathNode added is inserted 
- * in it's correct place in the following order, according to it's (int)
- * label. In order for this to work PathNode must implement the Comparable
- * interface and so have an implemented compareTo() method.
+ *     A java.util.TreeSet is used instead of a HashSet, because TreeSet
+ *     implements the SortedSet<> interface; each pathNode added is inserted
+ *     in it's correct place in the following order, according to it's (int)
+ *     label. In order for this to work PathNode must implement the Comparable
+ *     interface and so have an implemented compareTo() method.
  * 
- * PathNodeSets however need to be sorted in descending order and
- * therefore PathNode implements a "wrong-way-around" compareTo()
- * method.
+ *     PathNodeSets however need to be sorted in descending order and
+ *     therefore PathNode implements a "wrong-way-around" compareTo()
+ *     method.
  *
- * @author ...
+ *     @author(s); Carla Stegehuis, Rutger Vos
+ *     Contributed to:
+ *     Date: 3/11/'14
+ *     Version: V2.0
  */
 public class PathNodeSet {
     /**
-     * Static variables:
+     *     Static variables:
      */ 
     // none
     
     /**
-     * Static method: fromString
+     *     Static method: fromString
      *        
-     * to create a filled PathNodeSet from a string representation, like:
-     * 628:18|625:1|624:1|623:1|622:1|621:1|581:1|513:1|505:1| ..... |5:1|4:1|3:1|2:1|1:1
+     *     to create a filled PathNodeSet from a string representation, like:
+     *     628:18|625:1|624:1|623:1|622:1|621:1|581:1|513:1|505:1| ..... |5:1|4:1|3:1|2:1|1:1
      *
      * @param listString    the string version of the node list
      * @return              the created PathNodeSet
@@ -45,13 +48,13 @@ public class PathNodeSet {
     }
     
     /**
-     * Object variables:
+     *     Object variables:
      */ 
     protected TreeSet<PathNode> mTipSet;
 
     /**
-     * Constructor
-     * Creates an empty PathNode set
+     *     Constructor
+     *     Creates an empty PathNode set
      */
     public PathNodeSet() {
         super();
@@ -59,7 +62,7 @@ public class PathNodeSet {
     }
 
     /**
-     * Add a node to this set
+     *     Add a node to this set
      *
      * @param node      the PathNode to add to this.PathNodeSet
      */
@@ -68,7 +71,7 @@ public class PathNodeSet {
     }
 
     /**
-     * Return the number of nodes in this set
+     *     Return the number of nodes in this set
      *
      * @return   the number of nodes in this.set
      */
@@ -77,7 +80,7 @@ public class PathNodeSet {
     }
 
     /**
-     * Return the (reference to) this.java.util.TreeSet
+     *     Return the (reference to) this.java.util.TreeSet
      *
      * @return  the reference to the TreeSet that implements this PathNodeSet
      */
@@ -86,10 +89,10 @@ public class PathNodeSet {
     }
 
     /**
-     * Return a string representation
-     * of this.pathnodeset in whitch
-     * the nodes are seperated by 
-     * the "|" character
+     *     Return a string representation
+     *     of this.pathnodeset in whitch
+     *     the nodes are seperated by
+     *     the "|" character
      * 
      * @return      the PathNodeSet as a string
      */
