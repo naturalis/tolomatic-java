@@ -8,12 +8,12 @@ use Bio::Phylo::EvolutionaryModels 'sample';
 
 # process command line arguments
 my ( $tips, $death, $size );
-my @properties = qw(i2 rohlf_stemminess imbalance gamma fiala_stemminess avtd);
+my @properties = qw(i2 rohlf_stemminess imbalance gamma fiala_stemminess avtd fp es pe shapley);
 GetOptions(
-	'tips=s'  => \$tips,
-	'death=s' => \$death,
-	'size=i'  => \$size,
-	'prop=s'  => \@properties,
+	'tips=s'  => \$tips, # number of tips, either a single number or min,max
+	'death=s' => \$death, # death rate, either a single fraction (<1) or min,max
+	'size=i'  => \$size, # sample size, e.g. 100
+	'prop=s'  => \@properties, # tree stats to calculate, has defaults
 );
 
 # post-process command line arguments

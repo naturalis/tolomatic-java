@@ -1,6 +1,7 @@
 library(MASS);
 sim <- read.table("simulate.tsv", header = TRUE, sep = "\t");
 plot(sim$tips,sim$i2);
+plot(sim$tips,sim$gamma);
 plot(sim$death_rate,sim$gamma);
 
 gamma <- read.table("gamma.tsv", header = TRUE, sep = "\t");
