@@ -1,9 +1,15 @@
-library(MASS);
 sim <- read.table("simulate.tsv", header = TRUE, sep = "\t");
-plot(sim$tips,sim$i2);
-plot(sim$tips,sim$gamma);
-plot(sim$death_rate,sim$gamma);
 
-gamma <- read.table("gamma.tsv", header = TRUE, sep = "\t");
-wilcox.test(gamma$gamma_pre, gamma$gamma_post, paired=TRUE);
-t.test(gamma$gamma_pre, gamma$gamma_post, alternative = c("two.sided", "less", "greater"), paired=TRUE);
+# plot stemminess index sensu Fiala & Sokahl (1985) on tip count and 
+# death rate. this is intended to demonstrate that this stemminess 
+# measure is independent of tree size, but correlated with death rate
+plot(sim$tips,sim$fiala_stemminess);
+plot(sim$death_rate,sim$fiala_stemminess);
+
+# not significant, i.e. independent
+lm.r <- lm(sim$tips ~ sim$fiala_stemminess);
+summary(lm.r);
+
+# significant, i.e. correlated
+lm.r <- lm(sim$death_rate ~ sim$fiala_stemminess);
+summary(lm.r);

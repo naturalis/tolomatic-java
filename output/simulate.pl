@@ -4,6 +4,7 @@ use warnings;
 use Math::Round;
 use Getopt::Long;
 use List::Util 'sum';
+use Data::Dumper;
 use Bio::Phylo::EvolutionaryModels 'sample';
 
 # process command line arguments
@@ -51,10 +52,23 @@ for my $i ( 1 .. $size ) {
 # 	});
 	$t->scale(1);
 	
-	# print results	
-	print 
-		$t->calc_number_of_terminals,        "\t",
-		$death_rate,                         "\t",
-		join("\t", map { $t->$_ } @methods), "\t",
-		$t->to_newick,                       "\n";	
+	# prepare results	
+	my $ntax = $t->calc_number_of_terminals;
+	my @results = ( $ntax, $death_rate );
+	for my $m ( @methods ) {
+		my $val = $t->$m;
+		if ( ref $val ) {
+			if ( UNIVERSAL::isa( $val, 'Math::BigFloat' ) ) {
+				$val = $val->bstr();
+			}
+			if ( UNIVERSAL::isa( $val, 'HASH' ) ) {
+				$val = sum(values(%$val))/$ntax;
+			}
+		}
+		push @results, $val;
+	}
+	push @results, $t->to_newick;
+	
+	# print results
+	print join("\t", @results), "\n";	
 }
