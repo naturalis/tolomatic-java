@@ -4,11 +4,6 @@ tolomatic-java
 ###Introduction
 Port of MapReduce pruner to Java/Hadoop
 
-To simplify the use of phylogenetic trees in scientific research, a program has been written
-to extract subsets from arbitrary-size trees. This program uses the MapReduce algorithm(originated from Google)
-of the Apache Hadoop infrastructure to reduce the post-order traversal data of a tree, in order to extract the data
-of the subtree. Once the subset data has been saved in a Newick format file, it can be used for research purposes.
-
 **Authors:**
 - @grvosa           
 - @gaurav           
@@ -16,8 +11,44 @@ of the subtree. Once the subset data has been saved in a Newick format file, it 
 - @arlin
 - @CStegehuis
 
+###Instructions for running inside a docker container
 
-###Installation instructions
+Assuming your docker environment is set up correctly, you can issue the following command
+in this folder location for building a container that depends on hadoop 2.6.0:
+
+	$ docker build -t rvosa/tolomatic-java-docker .
+
+The build process will print a number of environment variable definitions to the terminal.
+Most likely they will look like the following, which will have to be added to the environment:
+
+    $ export DOCKER_CERT_PATH=$HOME/.boot2docker/certs/boot2docker-vm
+    $ export DOCKER_TLS_VERIFY=1
+    $ export DOCKER_HOST=tcp://192.168.59.103:2376
+
+To use the Docker image you have just built use:
+
+	$ docker run -i -t rvosa/tolomatic-java-docker /etc/bootstrap.sh -bash
+
+You will now be logged into a (su) shell where everything should be available (maybe
+run `source /etc/profile.d/tolomatic.sh` to be sure?). Next, copy the database and the 
+input files into the hadoop file system:
+
+	# cd $TOLOMATIC_HOME
+	# hdfs dfs -put input tolomatic-input
+	# hdfs dfs -put data tolomatic-data
+
+Now you should be able to run a test:
+
+	# <tolomatic> -c conf/config.ini -r <hdfs>/data -d <subdir> -i <hdfs>/input.txt
+
+The following applies:
+
+- `tolomatic` refers to the command to run the jar, e.g. `/usr/local/hadoop/bin/hadoop jar /usr/local/src/tolomatic-java/target/MapReducePrune-0.0.1-SNAPSHOT.jar`
+- `hdfs` refers to the file structure inside the Hadoop file system, so these are paths
+  and path fragments that were created when you uploaded data using `hdfs dfs -put`
+- `subdir` refers to a path fragment inside an `hdfs` folder structure
+
+###Installation instructions for developers
 
 The simplest way to use this program is to install the IntelliJ IDE, import the Maven plugin and run the 
 program from within the IDE. These instructions are written on the assumption that the Linux operating 
