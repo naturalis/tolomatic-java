@@ -38,11 +38,11 @@ for PRIMER in $PRIMERS; do
 			sampler -s ${LENGTH} -i ${PRE_LIST} > ${OUTSTEM}.lst
 			
 			# prune the tree from Megatree database, verbose, with tabular output
-			prune_megatree -d ${TREE} -i ${OUTSTEM}.lst -v -t > ${OUTSTEM}.tsv
+			prune_megatree -d ${TREE} -i ${OUTSTEM}.lst -v > ${OUTSTEM}.dnd
 			
 			# compute tree statistics. we're writing to the same file multiple
 			# times, therefore append ***BE AWARE OF THIS***
-			perl treestats-file.pl -v -i ${OUTSTEM}.tsv >> ${STATS}
+			perl treestats-file.pl -v -i ${OUTSTEM}.dnd -f newick >> ${STATS}
 		done  
 	done
 done
