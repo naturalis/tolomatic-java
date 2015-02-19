@@ -9,6 +9,7 @@ use Bio::Phylo::Util::Logger ':levels';
 # process command line arguments
 my $infile;
 my $verbosity = WARN;
+my $format = 'adjacency';
 
 # possible properties:
 # 	tree_length
@@ -28,6 +29,7 @@ GetOptions(
 	'infile=s' => \$infile,
 	'prop=s'   => \@properties,
 	'verbose+' => \$verbosity,
+	'format=s' => \$format,
 );
 
 # instantiate logger
@@ -47,7 +49,7 @@ sub do_stats {
 
 	# read tree
 	my $tree = parse_tree(
-		'-format'     => 'adjacency',
+		'-format'     => $format,
 		'-file'       => $file,
 		'-as_project' => 1,
 	);
