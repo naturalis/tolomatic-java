@@ -26,7 +26,7 @@ for PRIMER in $PRIMERS; do
 		
 		# create directory for replicates
 		OUTDIR=${OUTPUT}/jackknife/${PRIMER}/${SITE}
-		mkdir ${OUTDIR}
+		mkdir -p ${OUTDIR}
 		
 		# create replicates
 		for (( i=1; i <= REPLICATES; i++ )); do
