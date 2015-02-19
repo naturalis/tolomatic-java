@@ -1,12 +1,14 @@
 #!/bin/bash
 
-PRIMERS="F04R22 NF118Sr2b"
-SITES="BayfrontPark BelleairBlvd RyanCt ShellfishLab"
+# PRIMERS="F04R22 NF118Sr2b"
+PRIMERS=NF118Sr2b
+# SITES="BayfrontPark BelleairBlvd RyanCt ShellfishLab"
+SITES=RyanCt
 DATA=../data/bik
 OUTPUT=../output
 ROOTING=midroot
 REPLICATES=100
-STATS=${OUTPUT}/treestats-jackknife.tsv
+STATS=${OUTPUT}/treestats-jackknife-NF118Sr2b-RyanCt.tsv
 
 # iterate over primer sets
 for PRIMER in $PRIMERS; do
@@ -22,7 +24,7 @@ for PRIMER in $PRIMERS; do
 		POST_LIST=${DATA}/presence_lists/${PRIMER}/post/${SITE}.lst
 		
 		# calculate number of lines to sample
-		LENGTH=`wc -l ${POST_LIST}`
+		LENGTH=`wc -l ${PRE_LIST}`
 		
 		# create directory for replicates
 		OUTDIR=${OUTPUT}/jackknife/${PRIMER}/${SITE}
@@ -35,7 +37,7 @@ for PRIMER in $PRIMERS; do
 			OUTSTEM=${OUTDIR}/${i}
 			
 			# sample the taxon list
-			sampler -s ${LENGTH} -i ${PRE_LIST} > ${OUTSTEM}.lst
+			sampler -s ${LENGTH} -i ${POST_LIST} > ${OUTSTEM}.lst
 			
 			# prune the tree from Megatree database, verbose, with tabular output
 			prune_megatree -d ${TREE} -i ${OUTSTEM}.lst -v > ${OUTSTEM}.dnd
