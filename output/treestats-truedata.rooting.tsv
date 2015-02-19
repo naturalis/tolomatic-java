@@ -1,110 +1,56 @@
-file	fiala_stemminess
-F04R22/post/BayfrontPark-midroot.tsv	0.252243412746827
-file	fiala_stemminess
-F04R22/post/BayfrontPark-orig.tsv	0.252421478353369
-file	fiala_stemminess
-F04R22/post/BelleairBlvd-midroot.tsv	0.188005150984206
-file	fiala_stemminess
-F04R22/post/BelleairBlvd-orig.tsv	0.188558759492283
-file	fiala_stemminess
-F04R22/post/CadillacAve-midroot.tsv	0.148916645492405
-file	fiala_stemminess
-F04R22/post/CadillacAve-orig.tsv	0.148723678308786
-file	fiala_stemminess
-F04R22/post/GrandIsle-midroot.tsv	0.117565400180337
-file	fiala_stemminess
-F04R22/post/GrandIsle-orig.tsv	0.117565400180337
-file	fiala_stemminess
-F04R22/post/RyanCt-midroot.tsv	0.0941916629071678
-file	fiala_stemminess
-F04R22/post/RyanCt-orig.tsv	0.0940482656650367
-file	fiala_stemminess
-F04R22/post/ShellfishLab-midroot.tsv	0.163707748005725
-file	fiala_stemminess
-F04R22/post/ShellfishLab-orig.tsv	0.163964196485376
-file	fiala_stemminess
-F04R22/pre/BayfrontPark-midroot.tsv	0.102628506836132
-file	fiala_stemminess
-F04R22/pre/BayfrontPark-orig.tsv*	0.102575563534663
-file	fiala_stemminess
-F04R22/pre/BelleairBlvd-midroot.tsv	0.181319317297931
-file	fiala_stemminess
-F04R22/pre/BelleairBlvd-orig.tsv	0.17848261180946
-file	fiala_stemminess
-F04R22/pre/DauphinBay-midroot.tsv	0.133514177027896
-file	fiala_stemminess
-F04R22/pre/DauphinBay-orig.tsv	0.133423603195386
-file	fiala_stemminess
-F04R22/pre/RyanCt-midroot.tsv	0.0772906466228179
-file	fiala_stemminess
-F04R22/pre/RyanCt-orig.tsv	0.0772906466228179
-file	fiala_stemminess
-F04R22/pre/ShellfishLab-midroot.tsv	0.093970505841573
-file	fiala_stemminess
-F04R22/pre/ShellfishLab-orig.tsv*	0.0939554072358037
-file	fiala_stemminess
-NF118Sr2b/post/BayfrontPark-midroot.tsv	0.341316795612824
-file	fiala_stemminess
-NF118Sr2b/post/BayfrontPark-orig.tsv	0.340943732440908
-file	fiala_stemminess
-NF118Sr2b/post/BelleairBlvd-midroot.tsv	0.248630049599978
-file	fiala_stemminess
-NF118Sr2b/post/BelleairBlvd-orig.tsv	0.240109037036791
-file	fiala_stemminess
-NF118Sr2b/post/CadillacAve-midroot.tsv	0.171774149993246
-file	fiala_stemminess
-NF118Sr2b/post/CadillacAve-orig.tsv	0.171756433137196
-file	fiala_stemminess
-NF118Sr2b/post/GrandIsle-midroot.tsv	0.124779713839578
-file	fiala_stemminess
-NF118Sr2b/post/GrandIsle-orig.tsv	0.12389738631063
-file	fiala_stemminess
-NF118Sr2b/post/RyanCt-midroot.tsv*	0.107314433566728
-file	fiala_stemminess
-NF118Sr2b/post/RyanCt-orig.tsv*	0.107351888816457
-file	fiala_stemminess
-NF118Sr2b/post/ShellfishLab-midroot.tsv	0.343695520350077
-file	fiala_stemminess
-NF118Sr2b/post/ShellfishLab-orig.tsv	0.337518835225476
-file	fiala_stemminess
-NF118Sr2b/pre/BayfrontPark-midroot.tsv	0.16288135960057
-file	fiala_stemminess
-NF118Sr2b/pre/BayfrontPark-orig.tsv	0.162871259985901
-file	fiala_stemminess
-NF118Sr2b/pre/BelleairBlvd-midroot.tsv	0.130294834743177
-file	fiala_stemminess
-NF118Sr2b/pre/BelleairBlvd-orig.tsv	0.130643052191731
-file	fiala_stemminess
-NF118Sr2b/pre/DauphinBay-midroot.tsv	0.147812146617193
-file	fiala_stemminess
-NF118Sr2b/pre/DauphinBay-orig.tsv	0.147796522189146
-file	fiala_stemminess
-NF118Sr2b/pre/RyanCt-midroot.tsv	0.087856522817098
-file	fiala_stemminess
-NF118Sr2b/pre/RyanCt-orig.tsv	0.0876385796911338
-file	fiala_stemminess
-NF118Sr2b/pre/ShellfishLab-midroot.tsv	0.103388642677893
-file	fiala_stemminess
-NF118Sr2b/pre/ShellfishLab-orig.tsv	0.103338373863124
-file	fiala_stemminess
-post/BayfrontPark-outroot.tsv	0.341316795612824
-file	fiala_stemminess
-post/BelleairBlvd-outroot.tsv	0.248906739362534
-file	fiala_stemminess
-post/CadillacAve-outroot.tsv	0.171770835408967
-file	fiala_stemminess
-post/GrandIsle-outroot.tsv	0.124414101103227
-file	fiala_stemminess
-post/RyanCt-outroot.tsv*	0.107262593036686
-file	fiala_stemminess
-post/ShellfishLab-outroot.tsv	0.343963317265799
-file	fiala_stemminess
-pre/BayfrontPark-outroot.tsv	0.162863408419347
-file	fiala_stemminess
-pre/BelleairBlvd-outroot.tsv	0.130302774956227
-file	fiala_stemminess
-pre/DauphinBay-outroot.tsv	0.147763624737722
-file	fiala_stemminess
-pre/RyanCt-outroot.tsv	0.0877127409976452
-file	fiala_stemminess
-pre/ShellfishLab-outroot.tsv	0.103380041603521
+primer	treatment	site	rooting	resolved	fiala_stemminess
+F04R22	post	BayfrontPark	midroot		0.252243412746827
+F04R22	post	BayfrontPark	orig		0.252421478353369
+F04R22	post	BelleairBlvd	midroot		0.188005150984206
+F04R22	post	BelleairBlvd	orig		0.188558759492283
+F04R22	post	CadillacAve	midroot		0.148916645492405
+F04R22	post	CadillacAve	orig		0.148723678308786
+F04R22	post	GrandIsle	midroot		0.117565400180337
+F04R22	post	GrandIsle	orig		0.117565400180337
+F04R22	post	RyanCt	midroot		0.0941916629071678
+F04R22	post	RyanCt	orig		0.0940482656650367
+F04R22	post	ShellfishLab	midroot		0.163707748005725
+F04R22	post	ShellfishLab	orig		0.163964196485376
+F04R22	pre	BayfrontPark	midroot		0.102628506836132
+F04R22	pre	BayfrontPark	orig	*	0.102575563534663
+F04R22	pre	BelleairBlvd	midroot		0.181319317297931
+F04R22	pre	BelleairBlvd	orig		0.17848261180946
+F04R22	pre	DauphinBay	midroot		0.133514177027896
+F04R22	pre	DauphinBay	orig		0.133423603195386
+F04R22	pre	RyanCt	midroot		0.0772906466228179
+F04R22	pre	RyanCt	orig		0.0772906466228179
+F04R22	pre	ShellfishLab	midroot		0.093970505841573
+F04R22	pre	ShellfishLab	orig	*	0.0939554072358037
+NF118Sr2b	post	BayfrontPark	midroot		0.341316795612824
+NF118Sr2b	post	BayfrontPark	orig		0.340943732440908
+NF118Sr2b	post	BelleairBlvd	midroot		0.248630049599978
+NF118Sr2b	post	BelleairBlvd	orig		0.240109037036791
+NF118Sr2b	post	CadillacAve	midroot		0.171774149993246
+NF118Sr2b	post	CadillacAve	orig		0.171756433137196
+NF118Sr2b	post	GrandIsle	midroot		0.124779713839578
+NF118Sr2b	post	GrandIsle	orig		0.12389738631063
+NF118Sr2b	post	RyanCt	midroot	*	0.107314433566728
+NF118Sr2b	post	RyanCt	orig	*	0.107351888816457
+NF118Sr2b	post	ShellfishLab	midroot		0.343695520350077
+NF118Sr2b	post	ShellfishLab	orig		0.337518835225476
+NF118Sr2b	pre	BayfrontPark	midroot		0.16288135960057
+NF118Sr2b	pre	BayfrontPark	orig		0.162871259985901
+NF118Sr2b	pre	BelleairBlvd	midroot		0.130294834743177
+NF118Sr2b	pre	BelleairBlvd	orig		0.130643052191731
+NF118Sr2b	pre	DauphinBay	midroot		0.147812146617193
+NF118Sr2b	pre	DauphinBay	orig		0.147796522189146
+NF118Sr2b	pre	RyanCt	midroot		0.087856522817098
+NF118Sr2b	pre	RyanCt	orig		0.0876385796911338
+NF118Sr2b	pre	ShellfishLab	midroot		0.103388642677893
+NF118Sr2b	pre	ShellfishLab	orig		0.103338373863124
+NF118Sr2b	post	BayfrontPark	outroot		0.341316795612824
+NF118Sr2b	post	BelleairBlvd	outroot		0.248906739362534
+NF118Sr2b	post	CadillacAve	outroot		0.171770835408967
+NF118Sr2b	post	GrandIsle	outroot		0.124414101103227
+NF118Sr2b	post	RyanCt	outroot	*	0.107262593036686
+NF118Sr2b	post	ShellfishLab	outroot		0.343963317265799
+NF118Sr2b	pre	BayfrontPark	outroot		0.162863408419347
+NF118Sr2b	pre	BelleairBlvd	outroot		0.130302774956227
+NF118Sr2b	pre	DauphinBay	outroot		0.147763624737722
+NF118Sr2b	pre	RyanCt	outroot		0.0877127409976452
+NF118Sr2b	pre	ShellfishLab	outroot		0.103380041603521
