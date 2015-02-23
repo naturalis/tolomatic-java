@@ -1,0 +1,119 @@
+INFO  [../script/turnover.pl: 34] - going to compute distances in TREE ../data/bik/trees/NF118Sr2b-midroot.db (Megatree=HASH(0x100bb9e00))
+INFO main::turnover [../script/turnover.pl: 84] - reading PRE file ../data/bik/presence_lists/NF118Sr2b/pre/BayfrontPark.lst
+INFO main::turnover [../script/turnover.pl: 94] - reading POST file ../data/bik/presence_lists/NF118Sr2b/post/BayfrontPark.lst
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+Use of uninitialized value $hash{"POST<->S"} in join or string at ../script/turnover.pl line 168.
+Use of uninitialized value $hash{"PRE<->S"} in join or string at ../script/turnover.pl line 168.
+Use of uninitialized value $hash{"S<->S"} in join or string at ../script/turnover.pl line 168.
+INFO  [../script/turnover.pl: 34] - going to compute distances in TREE ../data/bik/trees/NF118Sr2b-midroot.db (Megatree=HASH(0x100bb9e00))
+INFO main::turnover [../script/turnover.pl: 84] - reading PRE file ../data/bik/presence_lists/NF118Sr2b/pre/BelleairBlvd.lst
+INFO main::turnover [../script/turnover.pl: 94] - reading POST file ../data/bik/presence_lists/NF118Sr2b/post/BelleairBlvd.lst
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+Use of uninitialized value $hash{"POST<->S"} in join or string at ../script/turnover.pl line 168.
+Use of uninitialized value $hash{"PRE<->S"} in join or string at ../script/turnover.pl line 168.
+Use of uninitialized value $hash{"S<->S"} in join or string at ../script/turnover.pl line 168.
+INFO  [../script/turnover.pl: 34] - going to compute distances in TREE ../data/bik/trees/NF118Sr2b-midroot.db (Megatree=HASH(0x100bb9e00))
+INFO main::turnover [../script/turnover.pl: 84] - reading PRE file ../data/bik/presence_lists/NF118Sr2b/pre/RyanCt.lst
+INFO main::turnover [../script/turnover.pl: 94] - reading POST file ../data/bik/presence_lists/NF118Sr2b/post/RyanCt.lst
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO  [../script/turnover.pl: 34] - going to compute distances in TREE ../data/bik/trees/NF118Sr2b-midroot.db (Megatree=HASH(0x100bb9e00))
+INFO main::turnover [../script/turnover.pl: 84] - reading PRE file ../data/bik/presence_lists/NF118Sr2b/pre/ShellfishLab.lst
+INFO main::turnover [../script/turnover.pl: 94] - reading POST file ../data/bik/presence_lists/NF118Sr2b/post/ShellfishLab.lst
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO  [../script/turnover.pl: 34] - going to compute distances in TREE ../data/bik/trees/F04R22-midroot.db (Megatree=HASH(0x100bb9e00))
+INFO main::turnover [../script/turnover.pl: 84] - reading PRE file ../data/bik/presence_lists/F04R22/pre/BayfrontPark.lst
+WARN main::turnover [../script/turnover.pl: 90] - 0 is not in tree
+INFO main::turnover [../script/turnover.pl: 94] - reading POST file ../data/bik/presence_lists/F04R22/post/BayfrontPark.lst
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO  [../script/turnover.pl: 34] - going to compute distances in TREE ../data/bik/trees/F04R22-midroot.db (Megatree=HASH(0x100bb9e00))
+INFO main::turnover [../script/turnover.pl: 84] - reading PRE file ../data/bik/presence_lists/F04R22/pre/BelleairBlvd.lst
+INFO main::turnover [../script/turnover.pl: 94] - reading POST file ../data/bik/presence_lists/F04R22/post/BelleairBlvd.lst
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO  [../script/turnover.pl: 34] - going to compute distances in TREE ../data/bik/trees/F04R22-midroot.db (Megatree=HASH(0x100bb9e00))
+INFO main::turnover [../script/turnover.pl: 84] - reading PRE file ../data/bik/presence_lists/F04R22/pre/RyanCt.lst
+INFO main::turnover [../script/turnover.pl: 94] - reading POST file ../data/bik/presence_lists/F04R22/post/RyanCt.lst
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO  [../script/turnover.pl: 34] - going to compute distances in TREE ../data/bik/trees/F04R22-midroot.db (Megatree=HASH(0x100bb9e00))
+INFO main::turnover [../script/turnover.pl: 84] - reading PRE file ../data/bik/presence_lists/F04R22/pre/ShellfishLab.lst
+INFO main::turnover [../script/turnover.pl: 94] - reading POST file ../data/bik/presence_lists/F04R22/post/ShellfishLab.lst
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist_within [../script/turnover.pl: 152] - calculating mean distance within a set
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets
+INFO main::mean_dist [../script/turnover.pl: 139] - calculating mean distance between two sets

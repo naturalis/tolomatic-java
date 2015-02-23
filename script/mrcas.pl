@@ -73,12 +73,12 @@ sub recurse {
 }
 
 # read the taxon lists
-my ( @pre, @post, @survivors, @immigrants, @deceased, %lookup );
+my ( @pre, @post, %lookup );
 turnover();
 sub turnover {
 
 	# instantiate local variables, will take keys afterwards
-	my ( %pre, %post, %survivors, %immigrants, %deceased );
+	my ( %pre, %post );
 	
 	# read the list of leaves before the event
 	$log->info("reading PRE file $pre");
@@ -95,25 +95,18 @@ sub turnover {
 	POST: for my $id ( read_file( $post, 'chomp' => 1 ) ) {
 		if ( my $node = $tree->_rs->search({'name'=>$id})->single ) {
 			$post{$id} = $node;
-			$pre{$id} ? $survivors{$id} = $node : $immigrants{$id} = $node;
 			next POST;
 		}
 		$log->warn("$id is not in tree");
 	}
 	
-	# compute the deceased list
-	not $post{$_} and $deceased{$_} = $pre{$_} for keys %pre;
-	
 	# get the IDs
-	@pre        = keys %pre;
-	@post       = keys %post;
-	@survivors  = keys %survivors; 
-	@immigrants = keys %immigrants; 
-	@deceased   = keys %deceased;
+	@pre    = keys %pre;
+	@post   = keys %post;
 	%lookup = ( %pre, %post );
 }
 
-# calculates patristic distance between arguments (IDs)
+# calculates MRCA and patristic distance between arguments (IDs)
 sub dist {
 	my ( $this_name, $that_name ) = @_;
 	
@@ -128,66 +121,20 @@ sub dist {
 	
 		# found the MRCA
 		if ( defined $node_dist{$that}->{$anc} ) {
-			return $node_dist{$this}->{$anc} + $node_dist{$that}->{$anc};
+			return $anc => $node_dist{$this}->{$anc} + $node_dist{$that}->{$anc};
 		}
 	}
 	$log->error("$this and $that not in same tree?");
 }
 
-# calculates mean distance between two sets
-sub mean_dist {
-	$log->info("calculating mean distance between two sets");
-	my ( $this, $that ) = @_;
-	my @dist;
-	for my $this ( @$this ) {
-		for my $that ( @$that ) {
-			push @dist, dist( $this, $that );
-		}
+# calculate and print all MRCAs
+my %mrca;
+for my $post ( @post ) {
+	my @mrcas;
+	for my $pre ( @pre ) {
+		push @mrcas, [ dist( $post => $pre ) ];
 	}
-	return scalar(@dist) ? sum(@dist)/scalar(@dist) : undef;
+	my ($nearest) = sort { $a->[1] <=> $b->[1] } @mrcas;
+	$mrca{$nearest->[0]} = $nearest->[1];
 }
-
-# calculates mean distance within a set
-sub mean_dist_within {
-	$log->info("calculating mean distance within a set");
-	my @list = @_;
-	my @dist;
-	for my $i ( 0 .. $#list - 1 ) {
-		for my $j ( $i + 1 .. $#list ) {
-			push @dist, dist( $list[$i], $list[$j] );
-		}
-	}
-	return scalar(@dist) ? sum(@dist)/scalar(@dist) : undef;	
-}
-
-# print hash as tsv table
-sub print_tabular {
-	my %hash = @_;
-	my @keys = sort { $a cmp $b } keys %hash;
-	no warnings 'uninitialized';
-	print join("\t",@keys), "\n";
-	print join("\t",@hash{@keys}), "\n";
-}
-
-# compute and print results
-print_tabular(
-	'TREE' => $db,                                # tree database file
-	'PRE' => $pre,                                # pre list file
-	'POST' => $post,                              # post list file
-	'PRE_N' => scalar(@pre),                      # pre list size
-	'POST_N' => scalar(@post),                    # post list size
-	'I_N' => scalar(@immigrants),                 # immigrants list size
-	'S_N' => scalar(@survivors),                  # survivors list size
-	'D_N' => scalar(@deceased),                   # deceased list size
-	'PRE<->PRE' => mean_dist_within(@pre),        # mean dist within pre list
-	'POST<->POST' => mean_dist_within(@post),     # mean dist within post list
-	'I<->I' => mean_dist_within(@immigrants),     # mean dist within immigrants
-	'S<->S' => mean_dist_within(@survivors),      # mean dist within survivors
-	'D<->D' => mean_dist_within(@deceased),       # mean dist within deceased
-	'PRE<->I' => mean_dist(\@pre,\@immigrants),   # mean dist between pre and immigrants
-	'PRE<->S' => mean_dist(\@pre,\@survivors),    # mean dist between pre and survivors
-	'PRE<->D' => mean_dist(\@pre,\@deceased),     # mean dist between pre and deceased
-	'POST<->I' => mean_dist(\@post,\@immigrants), # mean dist between post and immigrants
-	'POST<->S' => mean_dist(\@post,\@survivors),  # mean dist between post and survivors
-	'POST<->D' => mean_dist(\@post,\@deceased),   # mean dist between post and deceased
-);
+print join "\n", keys %mrca;
