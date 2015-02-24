@@ -1,14 +1,18 @@
 #!/bin/bash
 
 PRIMERS="NF118Sr2b F04R22"
-SITES="BayfrontPark BelleairBlvd RyanCt ShellfishLab"
+#RyanCt
+SITES="BayfrontPark BelleairBlvd ShellfishLab"
 ROOTING=midroot
 DATA=../data/bik
-SCRIPT=../script
+COMMAND="../script/backbone_distances.pl -v"
 OUTPUT=../output
 OUT=${OUTPUT}/backbone_distances
 OUTFILE=${OUT}.tsv
 LOG=${OUT}.log
+
+#echo '' > $OUTFILE
+#echo '' > $LOG
 
 for PRIMER in $PRIMERS; do
 	TREE=${DATA}/trees/${PRIMER}-${ROOTING}.db
@@ -16,11 +20,14 @@ for PRIMER in $PRIMERS; do
 		MRCAS=${OUTPUT}/mrcas/${PRIMER}/${SITE}.lst
 		
 		POST=${DATA}/presence_lists/${PRIMER}/post/${SITE}.lst
-		${SCRIPT}/backbone_distances.pl -v -db $TREE -i $POST -m $MRCAS >>$OUTFILE 2>>$LOG
+		#$COMMAND -db $TREE -i $POST -m $MRCAS >>$OUTFILE 2>>$LOG
 		
-		LISTS=`ls ${OUTPUT}/jackknife/${PRIMER}/${SITE}/*.lst`
-		for LIST in $LISTS; do
-			${SCRIPT}/backbone_distances.pl -v -db $TREE -i $LIST -m $MRCAS >>$OUTFILE 2>>$LOG
-		done
+		PRE=${DATA}/presence_lists/${PRIMER}/pre/${SITE}.lst
+		$COMMAND -db $TREE -i $PRE -m $MRCAS >>$OUTFILE 2>>$LOG
+		
+# 		LISTS=`ls ${OUTPUT}/jackknife/${PRIMER}/${SITE}/*.lst`
+# 		for LIST in $LISTS; do
+# 			$COMMAND -db $TREE -i $LIST -m $MRCAS >>$OUTFILE 2>>$LOG
+# 		done
 	done
 done
