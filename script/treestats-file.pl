@@ -19,12 +19,13 @@ my $format = 'adjacency';
 # 	i2
 # 	gamma
 # 	rohlf_stemminess
+#	fiala_stemminess
 # 	fp
 # 	es
 # 	pe
 # 	shapley	
 # 	avtd
-my @properties = qw(fiala_stemminess);
+my @properties;
 GetOptions(
 	'infile=s' => \$infile,
 	'prop=s'   => \@properties,
