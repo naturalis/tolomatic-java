@@ -1,14 +1,23 @@
 #!/bin/bash
 
-# PRIMERS="F04R22 NF118Sr2b"
-PRIMERS=NF118Sr2b
-# SITES="BayfrontPark BelleairBlvd RyanCt ShellfishLab"
-SITES=RyanCt
+PRIMERS="F04R22 NF118Sr2b"
+#PRIMERS=NF118Sr2b
+SITES="BayfrontPark BelleairBlvd ShellfishLab"
+#SITES=RyanCt
 DATA=../data/bik
 OUTPUT=../output
 ROOTING=midroot
-REPLICATES=100
-STATS=${OUTPUT}/treestats-jackknife-NF118Sr2b-RyanCt.tsv
+REPLICATES=1000
+STATS=${OUTPUT}/treestats-jackknife.tsv
+LOG=${OUTPUT}/treestats-jackknife.log
+#STATS=${OUTPUT}/treestats-jackknife-NF118Sr2b-RyanCt.tsv
+#LOG=${OUTPUT}/treestats-jackknife-NF118Sr2b-RyanCt.log
+
+COMMAND="perl treestats-file.pl -v -p fiala_stemminess -p avtd -p imbalance"
+
+# clear the files
+echo '' > ${STATS}
+echo '' > ${LOG}
 
 # iterate over primer sets
 for PRIMER in $PRIMERS; do
@@ -19,12 +28,15 @@ for PRIMER in $PRIMERS; do
 	# iterate over the sites that have both pre and post treatment
 	for SITE in $SITES; do
 	
+		# compute the tree stats for the real post tree
+		${COMMAND} -i ${OUTPUT}/${PRIMER}/post/${SITE}-${ROOTING}.tsv >> ${STATS} 2>> ${LOG}
+	
 		# get the site's pre- and post treatment's file name
 		PRE_LIST=${DATA}/presence_lists/${PRIMER}/pre/${SITE}.lst
 		POST_LIST=${DATA}/presence_lists/${PRIMER}/post/${SITE}.lst
 		
 		# calculate number of lines to sample
-		LENGTH=`wc -l ${PRE_LIST}`
+		LENGTH=`wc -l ${POST_LIST}`
 		
 		# create directory for replicates
 		OUTDIR=${OUTPUT}/jackknife/${PRIMER}/${SITE}
@@ -37,14 +49,14 @@ for PRIMER in $PRIMERS; do
 			OUTSTEM=${OUTDIR}/${i}
 			
 			# sample the taxon list
-			sampler -s ${LENGTH} -i ${POST_LIST} > ${OUTSTEM}.lst
+			sampler -s ${LENGTH} -i ${PRE_LIST} > ${OUTSTEM}.lst
 			
-			# prune the tree from Megatree database, verbose, with tabular output
-			prune_megatree -d ${TREE} -i ${OUTSTEM}.lst -v > ${OUTSTEM}.dnd
+			# prune the tree from Megatree database, verbose, with newick output
+			prune_megatree -d ${TREE} -i ${OUTSTEM}.lst -v > ${OUTSTEM}.dnd 2>> ${LOG}
 			
 			# compute tree statistics. we're writing to the same file multiple
 			# times, therefore append ***BE AWARE OF THIS***
-			perl treestats-file.pl -v -i ${OUTSTEM}.dnd -f newick >> ${STATS}
+			${COMMAND} -i ${OUTSTEM}.dnd -f newick >> ${STATS} 2>> ${LOG}
 		done  
 	done
 done
