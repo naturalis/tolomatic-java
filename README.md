@@ -157,3 +157,22 @@ Now IntelliJ will download the sources and documentation of all the packages inc
     
     2. In this package create a package *'SourcePackages'* and copy paste the .java files in here. 
     ```
+
+###About the data
+
+The data in the `bik` folder were kindly provided, and patiently explained, by Holly Bik
+(@hollybik) for the express purpose of testing the algorithms developed in this project.
+Please contact Holly if you want to use these data for something else. She'll probably
+be OK with that, but you cannot assume that just because the files are here in this 
+repository. 
+
+The paper where these data were originally presented is:
+
+**Holly M. Bik, Kenneth M. Halanych, Jyotsna Sharma** and **W. Kelley Thomas**. 2012. 
+Dramatic Shifts in Benthic Microbial Eukaryote Communities following the Deepwater Horizon 
+Oil Spill. _PLoS One_. **7**(6): e38550. 
+[doi:[10.1371/journal.pone.0038550](http://dx.doi.org/10.1371/journal.pone.0038550)]
+
+Raw pyrosequencing data obtained from marine sediments have been deposited in Dryad 
+[doi:[10.5061/dryad.4sd51d4b](http://dx.doi.org/10.5061/dryad.4sd51d4b)], MG-RAST 
+(Submission ID: 4478931.3), and the NCBI SRA (Accession No. SRA050276.2).
