@@ -106,8 +106,8 @@ sub turnover {
 	%lookup = ( %pre, %post );
 }
 
-# calculates MRCA and patristic distance between arguments (IDs)
-sub dist {
+# calculates MRCA
+sub mrca {
 	my ( $this_name, $that_name ) = @_;
 	
 	# the distances hash uses the primary keys from 
@@ -121,7 +121,7 @@ sub dist {
 	
 		# found the MRCA
 		if ( defined $node_dist{$that}->{$anc} ) {
-			return $anc => $node_dist{$this}->{$anc} + $node_dist{$that}->{$anc};
+			return $anc;
 		}
 	}
 	$log->error("$this and $that not in same tree?");
@@ -130,11 +130,9 @@ sub dist {
 # calculate and print all MRCAs
 my %mrca;
 for my $post ( @post ) {
-	my @mrcas;
 	for my $pre ( @pre ) {
-		push @mrcas, [ dist( $post => $pre ) ];
+		my $this_mrca = mrca( $post => $pre );
+		$mrca{$this_mrca}++;
 	}
-	my ($nearest) = sort { $a->[1] <=> $b->[1] } @mrcas;
-	$mrca{$nearest->[0]} = $nearest->[1];
 }
 print join "\n", keys %mrca;

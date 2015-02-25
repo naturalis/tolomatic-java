@@ -1,25 +1,26 @@
-INFO  [../script/mrcas.pl: 34] - going to compute distances in TREE ../data/bik/trees/NF118Sr2b-midroot.db (Megatree=HASH(0x100bd73c8))
+
+INFO  [../script/mrcas.pl: 34] - going to compute distances in TREE ../data/bik/trees/NF118Sr2b-midroot.db (Megatree=HASH(0x100bd7290))
 INFO main::turnover [../script/mrcas.pl: 84] - reading PRE file ../data/bik/presence_lists/NF118Sr2b/pre/BayfrontPark.lst
 INFO main::turnover [../script/mrcas.pl: 94] - reading POST file ../data/bik/presence_lists/NF118Sr2b/post/BayfrontPark.lst
-INFO  [../script/mrcas.pl: 34] - going to compute distances in TREE ../data/bik/trees/NF118Sr2b-midroot.db (Megatree=HASH(0x100bd73c8))
+INFO  [../script/mrcas.pl: 34] - going to compute distances in TREE ../data/bik/trees/NF118Sr2b-midroot.db (Megatree=HASH(0x100bd7290))
 INFO main::turnover [../script/mrcas.pl: 84] - reading PRE file ../data/bik/presence_lists/NF118Sr2b/pre/BelleairBlvd.lst
 INFO main::turnover [../script/mrcas.pl: 94] - reading POST file ../data/bik/presence_lists/NF118Sr2b/post/BelleairBlvd.lst
-INFO  [../script/mrcas.pl: 34] - going to compute distances in TREE ../data/bik/trees/NF118Sr2b-midroot.db (Megatree=HASH(0x100bd73c8))
+INFO  [../script/mrcas.pl: 34] - going to compute distances in TREE ../data/bik/trees/NF118Sr2b-midroot.db (Megatree=HASH(0x100bd7290))
 INFO main::turnover [../script/mrcas.pl: 84] - reading PRE file ../data/bik/presence_lists/NF118Sr2b/pre/RyanCt.lst
 INFO main::turnover [../script/mrcas.pl: 94] - reading POST file ../data/bik/presence_lists/NF118Sr2b/post/RyanCt.lst
-INFO  [../script/mrcas.pl: 34] - going to compute distances in TREE ../data/bik/trees/NF118Sr2b-midroot.db (Megatree=HASH(0x100bd73c8))
+INFO  [../script/mrcas.pl: 34] - going to compute distances in TREE ../data/bik/trees/NF118Sr2b-midroot.db (Megatree=HASH(0x100bd7290))
 INFO main::turnover [../script/mrcas.pl: 84] - reading PRE file ../data/bik/presence_lists/NF118Sr2b/pre/ShellfishLab.lst
 INFO main::turnover [../script/mrcas.pl: 94] - reading POST file ../data/bik/presence_lists/NF118Sr2b/post/ShellfishLab.lst
-INFO  [../script/mrcas.pl: 34] - going to compute distances in TREE ../data/bik/trees/F04R22-midroot.db (Megatree=HASH(0x100bd73c8))
+INFO  [../script/mrcas.pl: 34] - going to compute distances in TREE ../data/bik/trees/F04R22-midroot.db (Megatree=HASH(0x100bd7290))
 INFO main::turnover [../script/mrcas.pl: 84] - reading PRE file ../data/bik/presence_lists/F04R22/pre/BayfrontPark.lst
 WARN main::turnover [../script/mrcas.pl: 90] - 0 is not in tree
 INFO main::turnover [../script/mrcas.pl: 94] - reading POST file ../data/bik/presence_lists/F04R22/post/BayfrontPark.lst
-INFO  [../script/mrcas.pl: 34] - going to compute distances in TREE ../data/bik/trees/F04R22-midroot.db (Megatree=HASH(0x100bd73c8))
+INFO  [../script/mrcas.pl: 34] - going to compute distances in TREE ../data/bik/trees/F04R22-midroot.db (Megatree=HASH(0x100bd7290))
 INFO main::turnover [../script/mrcas.pl: 84] - reading PRE file ../data/bik/presence_lists/F04R22/pre/BelleairBlvd.lst
 INFO main::turnover [../script/mrcas.pl: 94] - reading POST file ../data/bik/presence_lists/F04R22/post/BelleairBlvd.lst
-INFO  [../script/mrcas.pl: 34] - going to compute distances in TREE ../data/bik/trees/F04R22-midroot.db (Megatree=HASH(0x100bd73c8))
+INFO  [../script/mrcas.pl: 34] - going to compute distances in TREE ../data/bik/trees/F04R22-midroot.db (Megatree=HASH(0x100bd7290))
 INFO main::turnover [../script/mrcas.pl: 84] - reading PRE file ../data/bik/presence_lists/F04R22/pre/RyanCt.lst
 INFO main::turnover [../script/mrcas.pl: 94] - reading POST file ../data/bik/presence_lists/F04R22/post/RyanCt.lst
-INFO  [../script/mrcas.pl: 34] - going to compute distances in TREE ../data/bik/trees/F04R22-midroot.db (Megatree=HASH(0x100bd73c8))
+INFO  [../script/mrcas.pl: 34] - going to compute distances in TREE ../data/bik/trees/F04R22-midroot.db (Megatree=HASH(0x100bd7290))
 INFO main::turnover [../script/mrcas.pl: 84] - reading PRE file ../data/bik/presence_lists/F04R22/pre/ShellfishLab.lst
 INFO main::turnover [../script/mrcas.pl: 94] - reading POST file ../data/bik/presence_lists/F04R22/post/ShellfishLab.lst

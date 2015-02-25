@@ -8,6 +8,8 @@ SCRIPT=../script
 OUT=../output/mrcas
 LOG=${OUT}.log
 
+echo '' > $LOG
+
 for PRIMER in $PRIMERS; do
 	TREE=${DATA}/trees/${PRIMER}-${ROOTING}.db
 	mkdir -p ${OUT}/${PRIMER}
