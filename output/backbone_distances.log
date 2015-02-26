@@ -4,6 +4,10 @@ INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../data/
 INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/NF118Sr2b/BayfrontPark.lst
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/NF118Sr2b-midroot.db
+INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../data/bik/presence_lists/NF118Sr2b/pre/BayfrontPark.lst
+INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/NF118Sr2b/BayfrontPark.lst
+INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
+INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/NF118Sr2b-midroot.db
 INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../output/jackknife/NF118Sr2b/BayfrontPark/1.lst
 INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/NF118Sr2b/BayfrontPark.lst
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
@@ -4005,6 +4009,10 @@ INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/NF118Sr2b-midroot.db
 INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../data/bik/presence_lists/NF118Sr2b/post/BelleairBlvd.lst
+INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/NF118Sr2b/BelleairBlvd.lst
+INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
+INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/NF118Sr2b-midroot.db
+INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../data/bik/presence_lists/NF118Sr2b/pre/BelleairBlvd.lst
 INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/NF118Sr2b/BelleairBlvd.lst
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/NF118Sr2b-midroot.db
@@ -8012,6 +8020,10 @@ INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../data/
 INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/NF118Sr2b/ShellfishLab.lst
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/NF118Sr2b-midroot.db
+INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../data/bik/presence_lists/NF118Sr2b/pre/ShellfishLab.lst
+INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/NF118Sr2b/ShellfishLab.lst
+INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
+INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/NF118Sr2b-midroot.db
 INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../output/jackknife/NF118Sr2b/ShellfishLab/1.lst
 INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/NF118Sr2b/ShellfishLab.lst
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
@@ -12016,6 +12028,11 @@ INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../data/
 INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/F04R22/BayfrontPark.lst
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
+INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../data/bik/presence_lists/F04R22/pre/BayfrontPark.lst
+WARN  [../script/backbone_distances.pl: 38] - 0 is not in tree
+INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/F04R22/BayfrontPark.lst
+INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
+INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
 INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../output/jackknife/F04R22/BayfrontPark/1.lst
 INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/F04R22/BayfrontPark.lst
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
@@ -12085,7 +12102,6 @@ INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
 INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../output/jackknife/F04R22/BayfrontPark/113.lst
-WARN  [../script/backbone_distances.pl: 38] - 0 is not in tree
 INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/F04R22/BayfrontPark.lst
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
@@ -12154,6 +12170,7 @@ INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
 INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../output/jackknife/F04R22/BayfrontPark/129.lst
+WARN  [../script/backbone_distances.pl: 38] - 0 is not in tree
 INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/F04R22/BayfrontPark.lst
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
@@ -12206,6 +12223,7 @@ INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
 INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../output/jackknife/F04R22/BayfrontPark/140.lst
+WARN  [../script/backbone_distances.pl: 38] - 0 is not in tree
 INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/F04R22/BayfrontPark.lst
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
@@ -12706,7 +12724,6 @@ INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
 INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../output/jackknife/F04R22/BayfrontPark/253.lst
-WARN  [../script/backbone_distances.pl: 38] - 0 is not in tree
 INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/F04R22/BayfrontPark.lst
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
@@ -12767,7 +12784,6 @@ INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
 INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../output/jackknife/F04R22/BayfrontPark/267.lst
-WARN  [../script/backbone_distances.pl: 38] - 0 is not in tree
 INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/F04R22/BayfrontPark.lst
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
@@ -12928,6 +12944,7 @@ INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
 INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../output/jackknife/F04R22/BayfrontPark/302.lst
+WARN  [../script/backbone_distances.pl: 38] - 0 is not in tree
 INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/F04R22/BayfrontPark.lst
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
@@ -13132,7 +13149,6 @@ INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
 INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../output/jackknife/F04R22/BayfrontPark/349.lst
-WARN  [../script/backbone_distances.pl: 38] - 0 is not in tree
 INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/F04R22/BayfrontPark.lst
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
@@ -13337,7 +13353,6 @@ INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
 INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../output/jackknife/F04R22/BayfrontPark/395.lst
-WARN  [../script/backbone_distances.pl: 38] - 0 is not in tree
 INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/F04R22/BayfrontPark.lst
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
@@ -13374,6 +13389,7 @@ INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
 INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../output/jackknife/F04R22/BayfrontPark/402.lst
+WARN  [../script/backbone_distances.pl: 38] - 0 is not in tree
 INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/F04R22/BayfrontPark.lst
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
@@ -14338,6 +14354,7 @@ INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
 INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../output/jackknife/F04R22/BayfrontPark/62.lst
+WARN  [../script/backbone_distances.pl: 38] - 0 is not in tree
 INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/F04R22/BayfrontPark.lst
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
@@ -14890,6 +14907,7 @@ INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
 INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../output/jackknife/F04R22/BayfrontPark/744.lst
+WARN  [../script/backbone_distances.pl: 38] - 0 is not in tree
 INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/F04R22/BayfrontPark.lst
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
@@ -14986,7 +15004,6 @@ INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
 INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../output/jackknife/F04R22/BayfrontPark/766.lst
-WARN  [../script/backbone_distances.pl: 38] - 0 is not in tree
 INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/F04R22/BayfrontPark.lst
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
@@ -15655,6 +15672,7 @@ INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
 INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../output/jackknife/F04R22/BayfrontPark/916.lst
+WARN  [../script/backbone_distances.pl: 38] - 0 is not in tree
 INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/F04R22/BayfrontPark.lst
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
@@ -15871,7 +15889,6 @@ INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
 INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../output/jackknife/F04R22/BayfrontPark/965.lst
-WARN  [../script/backbone_distances.pl: 38] - 0 is not in tree
 INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/F04R22/BayfrontPark.lst
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
@@ -16024,6 +16041,10 @@ INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
 INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../data/bik/presence_lists/F04R22/post/BelleairBlvd.lst
+INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/F04R22/BelleairBlvd.lst
+INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
+INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
+INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../data/bik/presence_lists/F04R22/pre/BelleairBlvd.lst
 INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/F04R22/BelleairBlvd.lst
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
@@ -20031,6 +20052,10 @@ INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../data/
 INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/F04R22/ShellfishLab.lst
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
+INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../data/bik/presence_lists/F04R22/pre/ShellfishLab.lst
+INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/F04R22/ShellfishLab.lst
+INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
+INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
 INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../output/jackknife/F04R22/ShellfishLab/1.lst
 INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/F04R22/ShellfishLab.lst
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
@@ -24028,30 +24053,5 @@ INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
 INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
 INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../output/jackknife/F04R22/ShellfishLab/999.lst
-INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/F04R22/ShellfishLab.lst
-INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
-INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/NF118Sr2b-midroot.db
-INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../data/bik/presence_lists/NF118Sr2b/pre/BayfrontPark.lst
-INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/NF118Sr2b/BayfrontPark.lst
-INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
-INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/NF118Sr2b-midroot.db
-INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../data/bik/presence_lists/NF118Sr2b/pre/BelleairBlvd.lst
-INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/NF118Sr2b/BelleairBlvd.lst
-INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
-INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/NF118Sr2b-midroot.db
-INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../data/bik/presence_lists/NF118Sr2b/pre/ShellfishLab.lst
-INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/NF118Sr2b/ShellfishLab.lst
-INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
-INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
-INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../data/bik/presence_lists/F04R22/pre/BayfrontPark.lst
-WARN  [../script/backbone_distances.pl: 38] - 0 is not in tree
-INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/F04R22/BayfrontPark.lst
-INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
-INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
-INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../data/bik/presence_lists/F04R22/pre/BelleairBlvd.lst
-INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/F04R22/BelleairBlvd.lst
-INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
-INFO  [../script/backbone_distances.pl: 25] - going to use tree ../data/bik/trees/F04R22-midroot.db
-INFO  [../script/backbone_distances.pl: 32] - going to read leaves from ../data/bik/presence_lists/F04R22/pre/ShellfishLab.lst
 INFO  [../script/backbone_distances.pl: 46] - going to read MRCAs from ../output/mrcas/F04R22/ShellfishLab.lst
 INFO  [../script/backbone_distances.pl: 58] - going to calculate distances
