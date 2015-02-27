@@ -15,7 +15,7 @@ use Bio::Phylo::Util::Logger ':levels';
 # 'stat' are methods of the Statistics::Descriptive::Full object, the others
 # are defined in the call to the template processor
 my @fields = (
-	'tree',  
+	'db',  
 	'pre', 
 	'post', 
 	'class', 
@@ -32,7 +32,7 @@ my @fields = (
 	'stat.harmonic_mean',
 	'stat.geometric_mean',
 	'stat.mode',
-	'newick',
+	'tree.to_newick',
 );
 
 # process command line arguments
@@ -141,19 +141,19 @@ for my $key ( keys %bin ) {
 		# produce output
 		$stat->add_data(@dist);
 		$tmpl->process( \$template, {
-			'tree'   => $db,
+			'db'     => $db,
 			'pre'    => $pre,
 			'post'   => $post,
 			'class'  => $key,
 			'id'     => $mrca->get_id,
 			'stat'   => $stat,
-			'newick' => make_newick(@tips),
+			'tree'   => make_newick(@tips),
 		});
 		$stat->clear;		
 	}
 }
 
-sub make_newick {
+sub make_subtree {
 	my ( @tips ) = @_;
 	my $list = join ',', map { $_->get_name } @tips;
 	my $newick = `prune_megatree -db $db -list $list`;
@@ -163,6 +163,6 @@ sub make_newick {
 		'-as_project' => 1,
 	);
 	$tree->scale(1);
-	return $tree->to_newick;
+	return $tree;
 }
 
