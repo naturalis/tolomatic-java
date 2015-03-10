@@ -1,9 +1,9 @@
 #!/bin/bash
 
-PRIMERS="F04R22 NF118Sr2b"
+PRIMERS="F04R22"
 #PRIMERS=NF118Sr2b
-SITES="BayfrontPark BelleairBlvd ShellfishLab"
-#SITES=RyanCt
+#SITES="BayfrontPark BelleairBlvd ShellfishLab"
+SITES=RyanCt
 DATA=../data/bik
 OUTPUT=../output
 ROOTING=midroot
@@ -13,10 +13,10 @@ LOG=${OUTPUT}/treestats-jackknife.log
 #STATS=${OUTPUT}/treestats-jackknife-NF118Sr2b-RyanCt.tsv
 #LOG=${OUTPUT}/treestats-jackknife-NF118Sr2b-RyanCt.log
 
-COMMAND="perl treestats-file.pl -v -p fiala_stemminess -p avtd -p imbalance"
+COMMAND="perl treestats-file.pl -v -p fiala_stemminess"
 
 # clear the files
-echo '' > ${STATS}
+#echo '' > ${STATS}
 echo '' > ${LOG}
 
 # iterate over primer sets
